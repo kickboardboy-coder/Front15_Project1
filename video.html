@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>youtube 구현</title>
+    <title>youtube 구현 - channel page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="youtube-style.css">
+    <link rel="stylesheet" href="video-style.css"
 </head>
 <body>
     <!-- 헤더 -->
@@ -23,7 +28,7 @@
             <button type="search-submit" aria-label="검색실행">
                 <img src="#">
             </button>
-            <!-- 헤더 - 검색 바 - 버튼 마이크 사용 검색 -->
+            <!-- 헤더 - 검색 바 - 버튼 마이크 사용 검색 -->   
             <button class="mic-btn">
                 <img src="#">
             </button>
@@ -47,6 +52,7 @@
     <div class="main">
         <!-- video-player -->
         <div class="video-player">
+            <img src="./img/video/image.svg" alt="메인영상">
             <!-- video-player__frame -->
             <div class="video-player__frame">
                 <!-- video-player__title-overlay -->
@@ -68,13 +74,19 @@
             <!-- video-player__controls -->
             <div class="video-player__controls">
                 <!-- video-player__play-btn -->
-                <button class="video-player__play-btn">▶</button>
+                <button class="video-player__play-btn">
+                    <img src="./img/video/ico-play.svg" alt="">
+                </button>
 
                 <!-- video-player__next-btn -->
-                <button class="video-player__next-btn">⏭</button>
+                <button class="video-player__next-btn">
+                    <img src="./img/video/ico-next.svg" alt="">
+                </button>
 
                 <!-- video-player__volume-btn -->
-                <button class="video-player__volume-btn">🔊</button>
+                <button class="video-player__volume-btn">
+                    <img src="./img/video/ico-sound.svg" alt="">
+                </button>
 
                 <!-- video-player__time -->
                 <span class="video-player__time">5:07 / 15:28</span>
@@ -82,19 +94,29 @@
                 <!-- video-player__settings -->
                 <div class="video-player__settings">
                     <!-- video-player__caption-btn -->
-                    <button class="video-player__caption-btn">CC</button>
+                    <button class="video-player__caption-btn">
+                        <img src="./img/video/ico-titles.svg" alt="">
+                    </button>
 
                     <!-- video-player__quality-btn -->
-                    <button class="video-player__quality-btn">HD</button>
+                    <button class="video-player__quality-btn">
+                        <img src="./img/video/ico-hd.svg" alt="">
+                    </button>
 
                     <!-- video-player__theater-btn -->
-                    <button class="video-player__theater-btn">⬜</button>
+                    <button class="video-player__theater-btn">
+                        <img src="./img/video/ico-theater.svg" alt="">
+                    </button>
 
                     <!-- video-player__miniplayer-btn -->
-                    <button class="video-player__miniplayer-btn">📶</button>
+                    <button class="video-player__miniplayer-btn">
+                        <img src="./img/video/ico-tv.svg" alt="">
+                    </button>
 
                     <!-- video-player__fullscreen-btn -->
-                    <button class="video-player__fullscreen-btn">⛶</button>
+                    <button class="video-player__fullscreen-btn">
+                        <img src="./img/video/ico-fullscreen.svg" alt="">
+                    </button>
 
                 </div>
 
@@ -115,19 +137,29 @@
                     <!-- video-details__actions -->
                     <div class="video-details__actions">
                         <!-- video-details__like -->
-                        <button class="video-details__like">👍 1.7K</button>
+                        <button class="video-details__like">
+                            <img src="./img/video/liked.svg" alt=""><span>1.7K</span>
+                        </button>
 
                         <!-- video-details__dislike -->
-                        <button class="video-details__dislike">👎 632</button>
+                        <button class="video-details__dislike">
+                            <img src="./img/video/disliked.svg" alt=""><span>632</span>
+                        </button>
 
                         <!-- video-details__share -->
-                        <button class="video-details__share">↗ SHARE</button>
+                        <button class="video-details__share">
+                            <img src="./img/video/share.svg" alt=""><span>SHARE</span>
+                        </button>
 
                         <!-- video-details__save -->
-                        <button class="video-details__save">☰+ SAVE</button>
+                        <button class="video-details__save">
+                            <img src="./img/video/save.svg" alt=""><span>SAVE</span>
+                        </button>
 
                         <!-- video-details__more -->
-                        <button class="video-details__more">⋯</button>
+                        <button class="video-details__more">
+                            <img src="./img/video/more.svg" alt="">
+                        </button>
                     </div>
 
 
@@ -144,7 +176,7 @@
             <!-- channel-info-row -->
             <div class="channel-info-row">
                 <!-- channel-info__avartar -->
-                <img src="" alt="채널사진" class="channel-info__avatar">
+                <img src="./img/video/Marcus Levin.svg" alt="채널사진" class="channel-info__avatar">
                 <!-- channel-info__meta -->
                 <div class="channel-info__meta">
                     <!-- channel-info__name -->
@@ -172,7 +204,7 @@
                 <!-- comment-section__sort -->
                 <div class="comment-section__sort">
                     <!-- comment-section__sort-icon -->
-                    <img src="" alt="" class="comment-section__sort-icon">
+                    <img src="./img/video/Dropdown.svg" alt="정렬" class="comment-section__sort-icon">
                     <!-- comment-section__sort-label -->
                     <span class="comment-section__sort-label">SORT BY</span>
                 </div>
@@ -182,7 +214,7 @@
             <!-- comment-input -->
             <div class="comment-input">
                 <!-- comment-input__avatar -->
-                <img src="" alt="" class="comment-input__avatar">
+                <img src="./img/video/Comment Avatar.svg" alt="" class="comment-input__avatar">
                 <!-- comment-input__field -->
                 <input type="text" class="comment-input__field" placeholder="Add a public comment...">
             </div>
@@ -194,7 +226,7 @@
             <!-- comment-item -->
             <div class="comment-item">
                 <!-- comment-item__avatar -->
-                <img src="" alt="" class="comment-item__avatar">
+                <img src="./img/video/James Gouse.svg" alt="" class="comment-item__avatar">
                 <!-- comment-item__body -->
                 <div class="comment-item__body">
                     <!-- comment-item__header -->
@@ -231,7 +263,7 @@
             <!-- comment-item -->
             <div class="comment-item">
                 <!-- comment-item__avatar -->
-                <img src="" alt="" class="comment-item__avatar">
+                <img src="./img/video/Alan Cooper.svg" alt="" class="comment-item__avatar">
                 <!-- comment-item__body -->
                 <div class="comment-item__body">
                     <!-- comment-item__header -->
@@ -291,11 +323,10 @@
                 <!-- video-card__thumbnail -->
                 <div class="video-card__thumbnail">
                     <!-- video-card__thumbnail-image -->
-                    <img src="#" alt="" class="video-card__thumbnail-image">
+                    <img src="./img/video/Images1.svg" alt="" class="video-card__thumbnail-image">
                     <!-- video-card__duration -->
                     <span class="video-card_duration">23:45</span>
-                </div>
-                
+                </div>   
 
                 <!-- video-card__info -->
                 <div class="video-card__info">
@@ -306,7 +337,16 @@
                     <!-- video-card__meta -->
                     <p class="video-card__meta">1M views &middot; 3 years ago</p>
                 </div>
-                                <!-- video-card__info -->
+            <!-- video-card * 9 -->
+            <a class="video-card" href="#">
+                <!-- video-card__thumbnail -->
+                <div class="video-card__thumbnail">
+                    <!-- video-card__thumbnail-image -->
+                    <img src="./img/video/Images2.svg" alt="" class="video-card__thumbnail-image">
+                    <!-- video-card__duration -->
+                    <span class="video-card_duration">23:45</span>
+                </div>
+                <!-- video-card__info -->
                 <div class="video-card__info">
                     <!-- video-card__title -->
                     <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
@@ -314,6 +354,15 @@
                     <p class="video-card__channel">Marcus Levin</p>
                     <!-- video-card__meta -->
                     <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                </div>
+            <!-- video-card * 9 -->
+            <a class="video-card" href="#">
+                <!-- video-card__thumbnail -->
+                <div class="video-card__thumbnail">
+                    <!-- video-card__thumbnail-image -->
+                    <img src="./img/video/Images3.svg" alt="" class="video-card__thumbnail-image">
+                    <!-- video-card__duration -->
+                    <span class="video-card_duration">23:45</span>
                 </div>
                 <!-- video-card__info -->
                 <div class="video-card__info">
@@ -324,6 +373,15 @@
                     <!-- video-card__meta -->
                     <p class="video-card__meta">1M views &middot; 3 years ago</p>
                 </div>
+            <!-- video-card * 9 -->
+            <a class="video-card" href="#">
+                <!-- video-card__thumbnail -->
+                <div class="video-card__thumbnail">
+                    <!-- video-card__thumbnail-image -->
+                    <img src="./img/video/Images4.svg" alt="" class="video-card__thumbnail-image">
+                    <!-- video-card__duration -->
+                    <span class="video-card_duration">23:45</span>
+                </div>
                 <!-- video-card__info -->
                 <div class="video-card__info">
                     <!-- video-card__title -->
@@ -332,6 +390,15 @@
                     <p class="video-card__channel">Jesica Lambert</p>
                     <!-- video-card__meta -->
                     <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                </div>
+            <!-- video-card * 9 -->
+            <a class="video-card" href="#">
+                <!-- video-card__thumbnail -->
+                <div class="video-card__thumbnail">
+                    <!-- video-card__thumbnail-image -->
+                    <img src="./img/video/Images5.svg" alt="" class="video-card__thumbnail-image">
+                    <!-- video-card__duration -->
+                    <span class="video-card_duration">23:45</span>
                 </div>
                 <!-- video-card__info -->
                 <div class="video-card__info">
@@ -342,6 +409,15 @@
                     <!-- video-card__meta -->
                     <p class="video-card__meta">1M views &middot; 3 years ago</p>
                 </div>
+            <!-- video-card * 9 -->
+            <a class="video-card" href="#">
+                <!-- video-card__thumbnail -->
+                <div class="video-card__thumbnail">
+                    <!-- video-card__thumbnail-image -->
+                    <img src="./img/video/Images6.svg" alt="" class="video-card__thumbnail-image">
+                    <!-- video-card__duration -->
+                    <span class="video-card_duration">23:45</span>
+                </div>
                 <!-- video-card__info -->
                 <div class="video-card__info">
                     <!-- video-card__title -->
@@ -350,6 +426,15 @@
                     <p class="video-card__channel">Skylar Dias</p>
                     <!-- video-card__meta -->
                     <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                </div>
+            <!-- video-card * 9 -->
+            <a class="video-card" href="#">
+                <!-- video-card__thumbnail -->
+                <div class="video-card__thumbnail">
+                    <!-- video-card__thumbnail-image -->
+                    <img src="./img/video/Images7.svg" alt="" class="video-card__thumbnail-image">
+                    <!-- video-card__duration -->
+                    <span class="video-card_duration">23:45</span>
                 </div>
                 <!-- video-card__info -->
                 <div class="video-card__info">
@@ -360,6 +445,15 @@
                     <!-- video-card__meta -->
                     <p class="video-card__meta">1M views &middot; 3 years ago</p>
                 </div>
+            <!-- video-card * 9 -->
+            <a class="video-card" href="#">
+                <!-- video-card__thumbnail -->
+                <div class="video-card__thumbnail">
+                    <!-- video-card__thumbnail-image -->
+                    <img src="./img/video/Images8.svg" alt="" class="video-card__thumbnail-image">
+                    <!-- video-card__duration -->
+                    <span class="video-card_duration">23:45</span>
+                </div>
                 <!-- video-card__info -->
                 <div class="video-card__info">
                     <!-- video-card__title -->
@@ -368,6 +462,15 @@
                     <p class="video-card__channel">James Gouse</p>
                     <!-- video-card__meta -->
                     <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                </div>
+            <!-- video-card * 9 -->
+            <a class="video-card" href="#">
+                <!-- video-card__thumbnail -->
+                <div class="video-card__thumbnail">
+                    <!-- video-card__thumbnail-image -->
+                    <img src="#" alt="" class="video-card__thumbnail-image">
+                    <!-- video-card__duration -->
+                    <span class="video-card_duration">23:45</span>
                 </div>
                 <!-- video-card__info -->
                 <div class="video-card__info">
