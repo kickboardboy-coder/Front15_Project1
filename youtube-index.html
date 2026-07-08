@@ -4,46 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>youtube 구현</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="youtube-style.css">
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
-        <!-- 헤더 - 햄버거 버튼 -->
-        <button class="hamburger" onclick="toggle()">
-            <span></span><span></span><span></span>
-        </button>
-        <!-- 유튜브 로고 -->
-        <div class="main-logo">
-            <img src="./img/youtube-index/header/main-logo.png">
+    <header class="header">
+        <div class="hd-sec1">
+            <!-- 헤더 - 햄버거 버튼 -->
+            <input type="checkbox" id="hamburger-toggle" class="hamburger-input">
+            <label for="hamburger-toggle" class="hamburger">
+                <img src="./img/youtube-index/header/hamburger.svg" alt="메뉴">
+            </label>
+            <!-- 유튜브 로고 -->
+            <div class="main-logo">
+                <img src="./img/youtube-index/header/main-logo.png">
+            </div>
         </div>
-        <!-- 헤더 - 검색 바-->
-        <div class="searchbar">
-            <input type="text" placeholder="Search">
-            <button type="search-submit" aria-label="검색실행">
-                <img src="./img/youtube-index/header/search.svg">
-            </button>
-            <!-- 헤더 - 검색 바 - 버튼 마이크 사용 검색 -->
-            <button class="mic-btn">
-                <img src="./img/youtube-index/header/mic.svg">
-            </button>
+        <div class="hd-sec2">
+            <!-- 헤더 - 검색 바-->
+            <div class="searchbar">
+                <input type="text" placeholder="Search">
+                <button type="search-submit" aria-label="검색실행">
+                    <img src="./img/youtube-index/header/search.svg">
+                </button>
+                <!-- 헤더 - 검색 바 - 버튼 마이크 사용 검색 -->
+                <button class="mic-btn">
+                    <img src="./img/youtube-index/header/mic.svg">
+                </button>
+            </div>
+        </div>
+        <div class="hd-sec3">
+            <!-- 헤더 - 네비 -->
+            <nav class="menu">
+            <!-- 헤더 - 네비 - Create 버튼 - Google Apps 버튼(지메일, 드라이브, 지도 등) - 알림 버튼 -->
+                <ul class="h-nav">
+                    <li class="Create-btn">
+                        <img src="./img/youtube-index/header/create.svg">
+                    </li>
+                    <li class="apps-btn">
+                        <img src="./img/youtube-index/header/apps.svg">
+                    </li>
+                    <li class="notification-btn">
+                        <img src="./img/youtube-index/header/notifications.svg">
+                    </li>
+                </ul>
+            </nav>
         </div>
         
-        <!-- 헤더 - 네비 -->
-        <nav class="navigation">
-        <!-- 헤더 - 네비 - Create 버튼 - Google Apps 버튼(지메일, 드라이브, 지도 등) - 알림 버튼 -->
-            <ul class="h-nav">
-                <li class="Create-btn">
-                    <img src="./img/youtube-index/header/create.svg">
-                </li>
-                <li class="apps-btn">
-                    <img src="./img/youtube-index/header/apps.svg">
-                </li>
-                <li class="notification-btn">
-                    <img src="./img/youtube-index/header/notifications.svg">
-                </li>
-            </ul>
-        </nav>
+        
     </header>
 
     <!-- 사이드바 -->
@@ -53,13 +66,22 @@
         <!-- 사이드바 Subscriptions -->
         <nav class="sidebar-nav1">
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/home.svg">Home</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/home.svg">
+                    <span class="menu-text">Home</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/explore.svg">Explore</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/explore.svg">
+                    <span class="menu-text">Explore</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/subscriptions.svg">Subscriptions</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/subscriptions.svg">
+                    <span class="menu-text">Subscriptions</span>
+                </span>
             </a>
         </nav>
         
@@ -71,25 +93,40 @@
         <!-- 사이드바 - 아코디언 - Show More-->
         <nav class="sidebar-nav1">
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/Library.svg">Library</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/Library.svg">
+                    <span class="menu-text">Library</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/History.svg">History</span>
+                <span class="menu-item">
+                    <img src="./img/youtube-index/sidebar/History.svg">
+                    <span>History</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/History.svg">Your Video</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/History.svg">
+                    <span class="menu-text">Your Video</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/watchLater.svg">Watch Later</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/watchLater.svg">
+                    <span class="menu-text">Watch Later</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span ><img src="./img/youtube-index/sidebar/Liked Videos.svg">Liked Video</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/Liked Videos.svg">
+                    <span class="menu-text">Liked Video</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <img src="./img/youtube-index/sidebar/Show More.svg">
-                <div class="side-acc">
-                    <button class="acc-btn">Show More</button>
-                </div>
+                <span class="side-acc">
+                    <img src="./img/youtube-index/sidebar/Show More.svg">
+                    <span class="acc-btn">Show More</span>
+                </span>
             </a>
         </nav>
 
@@ -105,31 +142,53 @@
         <nav class="sidebar-nav2">
             <span>SUBSCRIPTIONS</span>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/James Gouse.svg">James gouse</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/James Gouse.svg">
+                    <span class="menu-text">James gouse</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/Alan Cooper.svg">Alan Cooper</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/Alan Cooper.svg">
+                    <span class="menu-text">Alan Cooper</span>
+                </span>
             </a>
             <a href="channel.html" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/Marcus Levin.svg">Marcus Levin</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/Marcus Levin.svg">
+                    <span class="menu-text">Marcus Levin</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/Alexis Sears.svg">Alexis Sears</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/Alexis Sears.svg">
+                    <span class="menu-text">Alexis Sears</span>
+                </span>
+
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/Jesica Lambert.svg">Jesica Lambert</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/Jesica Lambert.svg">
+                    <span class="menu-text">Jesica Lambert</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/Anna White.svg">Anna White</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/Anna White.svg">
+                    <span class="menu-text">Anna White</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/Skylar Dias.svg">Skyal Dias</span>
-            </a>
-            <a href="#" class="sidenav-act">
-                <div class="side-acc">
+                <span>
                     <img src="./img/youtube-index/sidebar/Skylar Dias.svg">
-                    <button class="acc-btn">Show 13 more</button>
-                </div>
+                    <span class="menu-text">Skyal Dias</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span class="side-acc">
+                    <img src="./img/youtube-index/sidebar/Show 13 more.svg">
+                    <span class="acc-btn">Show 13 More</span>
+                </span>
             </a>
         </nav>
 
@@ -140,17 +199,30 @@
         <!-- 사이드바 - Sports -->
         <nav class="sidebar-nav3">
             <span>MORE FROM YOUTUBE</span>
-            <a href="./img/youtube-index/sidebar/premium.svg" class="sidenav-act">
-                <span><img src="#">Youtube Premium</span>
-            </a>
-            <a href="./img/youtube-index/sidebar/gaming.svg" class="sidenav-act">
-                <span><img src="#">Gaming</span>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/premium.svg">
+                    <span class="menu-text">Youtube Premium</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/live.svg">Live</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/gaming.svg">
+                    <span class="menu-text">Gaming</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/sports.svg">Sports</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/live.svg">
+                    <span class="menu-text">Live</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/sports.svg">
+                    <span class="menu-text">Sports</span>
+                </span>
+
             </a>
         </nav>
 
@@ -158,18 +230,30 @@
         <!-- 사이드바 - Report history -->
         <!-- 사이드바 - Help -->
         <!-- 사이드바 - Send feedback -->
-        <nav class="sidebar-nav3">
+        <nav class="sidebar-nav4">
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/settings.svg">Settings</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/settings.svg">
+                    <span class="menu-text">Settings</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/report.svg">Report history</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/report.svg">
+                    <span class="menu-text">Report history</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/help.svg">Help</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/help.svg">
+                    <span class="menu-text">Help</span>
+                </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span><img src="./img/youtube-index/sidebar/feedback.svg">Send feedback</span>
+                <span>
+                    <img src="./img/youtube-index/sidebar/feedback.svg">
+                    <span class="menu-text">Send feedback</span>
+                </span>
             </a>
         </nav>
     </aside>
