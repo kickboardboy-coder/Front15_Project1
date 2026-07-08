@@ -1,1 +1,127 @@
-* { padding: 0; margin: 0; box-sizing: border-box;}
+* { padding: 0; margin: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif;}
+
+:root { 
+    --bg1: #212121;
+    --bg2: #AAAAAA;
+    --boder: #303030;
+    --youtube: #FF0000;
+}
+
+body { background: var(--bg1); width: 1440px; height: 1246px;}
+
+.header {
+    display: flex;
+    top: 0;
+    align-items: center;
+    width: 1440px;
+    height: 56px;
+}
+
+.hamburger-input {
+    display: none;
+}
+
+.sidebar {
+    width: 240px;
+    height: calc(100vh - 56px);
+    transition: width 0.2s ease;
+    flex-shrink: 0;
+}
+
+/* 간격 설정 */
+.sidebar-nav1,
+.sidebar-nav4 {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 12px;
+}
+
+    /* 제목 있는 nav */
+.sidebar-nav2,
+.sidebar-nav3 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12px;
+}
+
+    /* 제목 - 첫 항목 사이 간격 10px */
+.sidebar-nav2 > span:first-child,
+.sidebar-nav3 > span:first-child {
+    margin-bottom: 10px;
+}
+
+    /* 항목들 사이 간격 12px */
+.sidebar-nav2 .sidenav-act,
+.sidebar-nav3 .sidenav-act {
+    margin-bottom: 12px;
+}
+
+.sidebar-nav2 .sidenav-act:last-child,
+.sidebar-nav3 .sidenav-act:last-child {
+    margin-bottom: 0;
+}
+
+    /* 메뉴 항목 공통 */
+.sidenav-act {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar-act > img { width: 24px; height: 24px;}
+.sidenav-act > span {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 8px 8px 8px 24px;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+/* SUBSCRIPTIONS, MORE FROM YOUTUBE 같은 카테고리 제목 */
+.sidebar-nav2 > span,
+.sidebar-nav3 > span {
+    display: block;
+    padding: 8px 24px;
+    border-top: 1px solid var(--boder);
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--bg2);
+}
+
+/* Show More / Show 13 more 버튼 영역 */
+.side-acc {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 8px 8px 8px 24px;
+    white-space: nowrap;
+}
+
+/* ---- 체크됐을 때: 사이드바 축소 ---- */
+body:has(.hamburger-input:checked) .sidebar {
+    width: 72px;
+}
+
+/* 메뉴 텍스트 숨김 */
+body:has(.hamburger-input:checked) .menu-text {
+    display: none;
+}
+
+/* 카테고리 제목 숨김 */
+body:has(.hamburger-input:checked) .sidebar-nav2 > span,
+body:has(.hamburger-input:checked) .sidebar-nav3 > span {
+    display: none;
+}
+
+/* 아이콘 가운데 정렬로 전환 */
+body:has(.hamburger-input:checked) .sidenav-act > span {
+    justify-content: center;
+    padding: 12px 0;
+}
+
+/* Show More / Show 13 more 항목 숨김 */
+body:has(.hamburger-input:checked) .side-acc {
+    display: none;
+}
