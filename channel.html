@@ -13,451 +13,465 @@
 </head>
 <body>
 <!-- 원본 -->
-    <header class="banner">
+    <!-- 헤더와 메인을 감싸는 랩 -->
+    <div class="main-wrapper">
         <!-- 배너 -->
-        <!-- 배너 - 배너 사진 -->
-        <img class="main-banner" src="./img/Channel/main-banner.svg">
-        <!-- 배너 - 프로필 사진  -->
-        <img class="user-avatar" src="./img/Channel/Marcus Levin.svg">
-        <!-- 배너 - 프로필 이름 / 구독자 수 -->
-        <span class="channel-name">Marcus Levin</span>
-        <span class="channel-subs">1.2M subscribers</span>
-        <!-- 배너 탭 -->
-        <div class="tabs">
-            <input type="radio" name="channel-tab" id="tab-home" class="tab-input" checked>
-            <label for="tab-home" class="tab-item">HOME</label>
-        
-            <input type="radio" name="channel-tab" id="tab-videos" class="tab-input">
-            <label for="tab-videos" class="tab-item">VIDEOS</label>
-        
-            <input type="radio" name="channel-tab" id="tab-playlists" class="tab-input">
-            <label for="tab-playlists" class="tab-item">PLAYLISTS</label>
-        
-            <input type="radio" name="channel-tab" id="tab-community" class="tab-input">
-            <label for="tab-community" class="tab-item">COMMUNITY</label>
-        
-            <input type="radio" name="channel-tab" id="tab-channels" class="tab-input">
-            <label for="tab-channels" class="tab-item">CHANNELS</label>
-        
-            <input type="radio" name="channel-tab" id="tab-about" class="tab-input">
-            <label for="tab-about" class="tab-item">ABOUT</label>
-        </div>
-        
-        
-    </header>
-    
-    <main class="channel">
-        <!-- 탭 콘텐츠는 tabs 바깥, 아래에 위치 (형제 관계 유지) -->
-        <div class="tab-content" id="content-home">홈 콘텐츠
+        <header class="banner">
+            <!-- 배너 - 배너 사진 -->
+            <img class="main-banner" src="./img/Channel/main-banner.svg">
+            <div class="banner-info-wrapper">
+                <!-- 배너 프사와 이름 구독자수 묶는 래퍼 -->
+                <div class="info-wrapper-left">
+                    <!-- 배너 - 프로필 사진  -->
+                    <img class="user-avatar" src="./img/Channel/Marcus Levin.svg">
+                    <!-- 프로필 이름과 구독자 수를 묶는 래퍼 -->
+                    <div class="channel-namesubs">
+                        <!-- 배너 - 프로필 이름 / 구독자 수 -->
+                        <p class="channel-name">Marcus Levin</p>
+                        <p class="channel-subs">1.2M subscribers</p>
+                    </div>
+                </div>
+                <button class="subcribes-btn">
+                    <img src="./img/Channel/Subscribes-Btn.svg" alt="구독 버튼">
+                </button>
+            </div>
+            <!-- 배너 탭 -->
+            <div class="tabs">
+                <input type="radio" name="channel-tab" id="tab-home" class="tab-input" checked>
+                <label for="tab-home" class="tab-item">HOME</label>
             
-            <!-- 메인 영상 -->
-            <article class="video-box">
-                <div class="video-player">
-                    <img src="./img/channel/video-player-yt.svg" alt="메인영상">
-                    <!-- 메인 영상 - 영상 위 프레임 -->
-                    <div class="video-player__frame">
-                        <!-- 오버레이 타이틀: 영상 제목 -->
-                        <span class="video-player__title-overlay">Blind Woodturner: Turning passion info fine art</span>
-
-                        <!-- info-icon -->
-                        <button class="video-player__info-icon">i</button>
-                    </div>
-
-                    <!-- 재생 바 -->
-                    <div class="progress-container">
-                        <!-- progress-bar -->
-                        <div class="progress-bar"></div>
-
-                        <!-- seek-bar -->
-                        <div class="seek-bar"></div>
-
-                    </div>
-
-                    <!-- 컨트롤 버튼들 -->
-                    <div class="player-controls">
-                        <!-- 재생 버튼 -->
-                        <button class="play-btn">
-                            <img src="./img/video/ico-play.svg" alt="">
-                        </button>
-
-                        <!-- 다음 영상 버튼 -->
-                        <button class="next-btn">
-                            <img src="./img/video/ico-next.svg" alt="">
-                        </button>
-
-                        <!-- 음량 조절 버튼 -->
-                        <button class="volume-btn">
-                            <img src="./img/video/ico-sound.svg" alt="">
-                        </button>
-
-                        <!-- 비디오 재생 시간 -->
-                        <span class="player-time">5:07 / 15:28</span>
-
-                        <!-- 세팅 박스 -->
-                        <div class="player-settings">
-                            <!-- 자막 버튼 -->
-                            <button class="caption-btn">
-                                <img src="./img/video/ico-titles.svg" alt="">
-                            </button>
-
-                            <!-- 설정 버튼 -->
-                            <button class="quality-btn">
-                                <img src="./img/video/ico-hd.svg" alt="">
-                            </button>
-
-                            <!-- 영화관 모드 버튼 -->
-                            <button class="theater-btn">
-                                <img src="./img/video/ico-theater.svg" alt="">
-                            </button>
-
-                            <!-- 확장 버튼 -->
-                            <button class="miniplayer-btn">
-                                <img src="./img/video/ico-tv.svg" alt="">
-                            </button>
-
-                            <!-- 전체 화면 버튼  -->
-                            <button class="fullscreen-btn">
-                                <img src="./img/video/ico-fullscreen.svg" alt="">
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- 메인 영상 - 영상 -->
-                <div class="video-desc">
-                    <!-- 메인 영상 - 영상 제목 -->
-                    <h2>Blind Woodturner: Turning passion info fine art</h2>
-                    <!-- 메인 영상 - 영상 조회수 , 업로드 일자 -->
-                    <p>576,969 views . 3 weeks ago</p>
-                    <!-- 메인 영상 - 영상 설명 -->
-                    <p>Chris Fisher, also known as the Blind Woodturner, 
-                        learned his craft by listening to hundreds of hours of YouTube videos 
-                        and experimenting in his workshop. Now he’s a YouTube creator himself, 
-                        sells his products worldwide, and does demonstrations all around the country.</p>
-                </div>
-                
-            </article>
+                <input type="radio" name="channel-tab" id="tab-videos" class="tab-input">
+                <label for="tab-videos" class="tab-item">VIDEOS</label>
             
-            <!-- 플레이리스트 * 4-->
-            <article class="playlist">
+                <input type="radio" name="channel-tab" id="tab-playlists" class="tab-input">
+                <label for="tab-playlists" class="tab-item">PLAYLISTS</label>
+            
+                <input type="radio" name="channel-tab" id="tab-community" class="tab-input">
+                <label for="tab-community" class="tab-item">COMMUNITY</label>
+            
+                <input type="radio" name="channel-tab" id="tab-channels" class="tab-input">
+                <label for="tab-channels" class="tab-item">CHANNELS</label>
+            
+                <input type="radio" name="channel-tab" id="tab-about" class="tab-input">
+                <label for="tab-about" class="tab-item">ABOUT</label>
+            </div>
 
-                <div class="playlist-part"> <!-- Playlist 1 -->
-                    <header class="list-name">
-                        <!-- 플레이리스트 - 제목 -->
-                        <span>Search On '21</span>
-                        <!-- 플레이리스트 - 전체 재생 버튼 PLAY ALL -->
-                        <div class="play-all">
-                            <img src="./img/Channel/playall.svg">
-                            <span>PLAY ALL</span>
+
+        </header>
+
+        <main class="channel">
+            <!-- 탭 콘텐츠는 tabs 바깥, 아래에 위치 (형제 관계 유지) -->
+            <div class="tab-content" id="content-home">홈 콘텐츠
+
+                <!-- 메인 영상 -->
+                <article class="video-box">
+                    <div class="player">
+                        <img src="./img/video/video-player-yt.svg" class="player-img">
+                        <!-- 비디오 재생 화면 상단 구역 -->
+                        <header class="player-frame">
+                            <!-- 비디오 상단 제목 -->
+                            <span class="player-title">Blind Woodturner: Turning passion info fine art</span>
+                            <!-- 비디오 상단 정보 아이콘 -->
+                            <button class="player-info-icon">
+                                <img src="./img/video/ico-info.svg" alt="정보 아이콘">
+                            </button>
+                        </header>
+                        <!-- 재생시간 바 -->
+                        <div class="progress-bar">
+                            <div class="progress-buffered"></div>
+                            <div class="progress-played"></div>
+                            <div class="progress-handle"></div>
                         </div>
-                    </header>
-                    <!-- 플레이리스트 - 영상 * 5 --> 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-yt.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
+
+
+                        <!-- 비디오 재생 화면 하단 아이콘들 모음 -->
+                        <footer class="player-controls">
+                            <div class="player-controls-left">
+                                <button class="player-play-btn"><!-- 플레이 버튼 -->
+                                    <img src="./img/video/ico-play.svg" alt="">
+                                </button>
+
+                                <!-- 다음 영상 버튼 -->
+                                <button class="player-next-btn">
+                                    <img src="./img/video/ico-next.svg" alt="">
+                                </button>
+
+                                <!-- 볼륨 버튼 -->
+                                <button class="player-volume-btn">
+                                    <img src="./img/video/ico-sound.svg" alt="">
+                                </button>
+
+                                <!-- 재생 시간 -->
+                                <span class="player-time">5:07 / 15:28</span>
+                            </div>    
+                            <!-- 우측 버튼 모음 -->
+                            <div class="player-settings">
+                                <!-- 자막 버튼 -->
+                                <li><button class="player-caption-btn">
+                                    <img src="./img/video/ico-titles.svg" alt="">
+                                </button></li>
+
+                                <!-- 화질 설정 버튼 -->
+                                <li><button class="player-quality-btn">
+                                    <img src="./img/video/ico-hd.svg" alt="">
+                                </button></li>
+
+                                <!-- 작은 화면 버튼 -->
+                                <li><button class="player-theater-btn">
+                                    <img src="./img/video/ico-theater.svg" alt="">
+                                </button></li>
+
+                                <!-- 미러링 버튼 -->
+                                <li><button class="player-miniplayer-btn">
+                                    <img src="./img/video/ico-tv.svg" alt="">
+                                </button></li>
+
+                                <!-- 풀 스크린 버튼 -->
+                                <li><button class="player-fullscreen-btn">
+                                    <img src="./img/video/ico-fullscreen.svg" alt="">
+                                </button></li>
+                            </div>
+                        </footer>
                     </div>
 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-ig.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
+                    <!-- 메인 영상 - 영상 -->
+                    <div class="video-desc">
+                        <!-- 메인 영상 - 영상 제목 -->
+                        <h2>Blind Woodturner: Turning passion info fine art</h2>
+                        <!-- 메인 영상 - 영상 조회수 , 업로드 일자 -->
+                        <p>576,969 views . 3 weeks ago</p>
+                        <!-- 메인 영상 - 영상 설명 -->
+                        <p>Chris Fisher, also known as the Blind Woodturner, 
+                            learned his craft by listening to hundreds of hours of YouTube videos 
+                            and experimenting in his workshop. Now he’s a YouTube creator himself, 
+                            sells his products worldwide, and does demonstrations all around the country.</p>
                     </div>
 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-tict.svg">
-                            <span>23:56</span>
+                </article>
+
+                <!-- 플레이리스트 * 4-->
+                <article class="playlist">
+
+                        <div class="playlist-part"> <!-- Playlist 1 -->
+                            <header class="list-name">
+                                <!-- 플레이리스트 - 제목, 버튼 감싸는 랩 -->
+                                <div class="list-wrapper">
+                                    <!-- 플레이리스트 - 제목 -->
+                                    <span>Search On '21</span>
+                                    <!-- 플레이리스트 - 전체 재생 버튼 PLAY ALL -->
+                                    <div class="play-all">
+                                        <img src="./img/Channel/playall.svg">
+                                        <span>PLAY ALL</span>
+                                    </div>
+                                </div>
+                            </header>
                         </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
+                        <!-- 플레이리스트 파트 감싸는 랩 -->
+                        <div class="playlist-part-wrapper">
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-yt.svg">
 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-nf.svg">
-                            <span>23:56</span>
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-ig.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-tict.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-nf.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-twit.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
                         </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-twit.svg">
-                            <span>23:56</span>
+
+
+                        <div class="playlist-part"> <!-- Playlist 2 -->
+                            <header class="list-name">
+                                <!-- 플레이리스트 - 제목, 버튼 감싸는 랩 -->
+                                <div class="list-wrapper">
+                                    <!-- 플레이리스트 - 제목 -->
+                                    <span>Search On '21</span>
+                                    <!-- 플레이리스트 - 전체 재생 버튼 PLAY ALL -->
+                                    <div class="play-all">
+                                        <img src="./img/Channel/playall.svg">
+                                        <span>PLAY ALL</span>
+                                    </div>
+                                </div>
+                            </header>
                         </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-                </div>
-                    
+                        <!-- 플레이리스트 파트 감싸는 랩 -->
+                        <div class="playlist-part-wrapper">
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-yt.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
 
-                <div class="playlist-part"> <!-- Playlist 2 -->
-                    <header class="list-name">
-                        <span>Search On '21</span>
-                        <div class="play-all">
-                            <img src="./img/Channel/playall.svg">
-                            <span>PLAY ALL</span>
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-ig.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-tict.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-nf.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-twit.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
                         </div>
-                    </header>
-                    <!-- 플레이리스트 - 영상 * 5 --> 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-yt.svg">
-                            <span>23:56</span>
+
+                        <div class="playlist-part"> <!-- Playlist 3 -->
+                            <header class="list-name">
+                                <!-- 플레이리스트 - 제목, 버튼 감싸는 랩 -->
+                                <div class="list-wrapper">
+                                    <!-- 플레이리스트 - 제목 -->
+                                    <span>Search On '21</span>
+                                    <!-- 플레이리스트 - 전체 재생 버튼 PLAY ALL -->
+                                    <div class="play-all">
+                                        <img src="./img/Channel/playall.svg">
+                                        <span>PLAY ALL</span>
+                                    </div>
+                                </div>
+                            </header>
                         </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
+                        <!-- 플레이리스트 파트 감싸는 랩 -->
+                        <div class="playlist-part-wrapper">
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-yt.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-ig.svg">
-                            <span>23:56</span>
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-ig.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-tict.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-nf.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-twit.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
                         </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-tict.svg">
-                            <span>23:56</span>
+                        <div class="playlist-part"> <!-- Playlist 4 -->
+                            <header class="list-name">
+                                <!-- 플레이리스트 - 제목, 버튼 감싸는 랩 -->
+                                <div class="list-wrapper">
+                                    <!-- 플레이리스트 - 제목 -->
+                                    <span>Search On '21</span>
+                                    <!-- 플레이리스트 - 전체 재생 버튼 PLAY ALL -->
+                                    <div class="play-all">
+                                        <img src="./img/Channel/playall.svg">
+                                        <span>PLAY ALL</span>
+                                    </div>
+                                </div>
+                            </header>
                         </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
+                        <!-- 플레이리스트 파트 감싸는 랩 -->
+                        <div class="playlist-part-wrapper">
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-yt.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-nf.svg">
-                            <span>23:56</span>
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-ig.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-tict.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-nf.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
+
+                            <div class="playlist-item">
+                                <div class="vd-sec">
+                                    <img src="./img/Channel/list-img-twit.svg">
+                                </div>
+                                <!-- 플레이리스트 - 영상 제목 -->
+                                <h4>Lorem ipsum dolor sit amet, consecte...</h4>
+                                <!-- 플레이리스트 - 채널명 -->
+                                <p>Marcus Levin</p>
+                                <!-- 플레이리스트 - 조회수, 업로드 일자 -->
+                                <p>329K views . 1 month ago</p>
+                            </div>
                         </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-twit.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-                </div>
+            </div> <!-- HOME 콘텐츠 끝-->
 
 
-                <div class="playlist-part"> <!-- Playlist 3 -->
-                    <header class="list-name">
-                        <span>Search On '21</span>
-                        <div class="play-all">
-                            <img src="./img/Channel/playall.svg">
-                            <span>PLAY ALL</span>
-                        </div>
-                    </header>
-                    <!-- 플레이리스트 - 영상 * 5 --> 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-yt.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
+            <div class="tab-content" id="content-videos">비디오 콘텐츠</div>
+            <div class="tab-content" id="content-playlists">플레이리스트 콘텐츠</div>
+            <div class="tab-content" id="content-community">커뮤니티 콘텐츠</div>
+            <div class="tab-content" id="content-channels">채널 콘텐츠</div>
+            <div class="tab-content" id="content-about">소개 콘텐츠</div>
 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-ig.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-tict.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-nf.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-twit.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-                </div>
-
-
-                <div class="playlist-part"> <!-- Playlist 4 -->
-                    <header class="list-name">
-                        <span>Search On '21</span>
-                        <div class="play-all">
-                            <img src="./img/Channel/playall.svg">
-                            <span>PLAY ALL</span>
-                        </div>
-                    </header>
-                    <!-- 플레이리스트 - 영상 * 5 --> 
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-yt.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-ig.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-tict.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-nf.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-
-                    <div class="playlist-item">
-                        <div class="vd-sec">
-                            <img src="./img/Channel/list-img-twit.svg">
-                            <span>23:56</span>
-                        </div>
-                        <!-- 플레이리스트 - 영상 제목 -->
-                        <h2>Lorem ipsum dolor sit amet, consecte...</h2>
-                        <!-- 플레이리스트 - 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 플레이리스트 - 조회수, 업로드 일자 -->
-                        <p>329K views . 1 month ago</p>
-                    </div>
-                </div>
-            </article> <!-- PLAYLIST 박스 -->
-
-        </div> <!-- HOME 콘텐츠 끝-->
-
-
-        <div class="tab-content" id="content-videos">비디오 콘텐츠</div>
-        <div class="tab-content" id="content-playlists">플레이리스트 콘텐츠</div>
-        <div class="tab-content" id="content-community">커뮤니티 콘텐츠</div>
-        <div class="tab-content" id="content-channels">채널 콘텐츠</div>
-        <div class="tab-content" id="content-about">소개 콘텐츠</div>
-
-    </main>
-
+        </main>
+    </div>
     
     
 
