@@ -28,8 +28,9 @@ body { background: var(--bg1); width: 1440px; height: 1246px;}
     align-items: center;
     height: 56px; width: 169px; 
     margin-inline-start: 16px;
+    flex-shrink: 0;
 }
-.hamburger { width: 40px; height: 40px; padding: 8px; margin-top: 8px; margin-bottom: 8px; }
+.hamburger { width: 40px; height: 40px; padding: 8px; margin-top: 8px; margin-bottom: 8px; flex-shrink: 0;}
 .hamburger-input { display: none; }
 
 .main-logo { display: flex; align-items: center; padding: 18px 14px 18px 16px;}
