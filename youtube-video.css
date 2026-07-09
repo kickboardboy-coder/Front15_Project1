@@ -1,0 +1,25 @@
+body {
+    display: grid;
+    border: 1px solid;
+
+}
+
+
+
+
+
+.video {
+    position: relative;
+    width: 500px;
+}
+.video img {
+    width: 100%;
+    display: block;
+}
+.player-frame {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: white;
+    font-size: 14px;
+}
