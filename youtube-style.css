@@ -7,7 +7,13 @@
     --youtube: #FF0000;
 }
 
-body { background: var(--bg1); width: 1440px; height: 1246px;}
+body {
+    background: var(--bg1);
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
 
 .header {
     position: fixed;
@@ -16,9 +22,10 @@ body { background: var(--bg1); width: 1440px; height: 1246px;}
     align-items: center;
     background: var(--bg1);
     top: 0;
-    left: 0;
-    right: 0;
-    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1440px;
     height: 56px;
     z-index: 1000;
 }
@@ -183,6 +190,7 @@ body { background: var(--bg1); width: 1440px; height: 1246px;}
     white-space: nowrap;
     font-size: 14px;
 }
+.sidenav-act.is-active > span { background: var(--boder); }
 
 /* SUBSCRIPTIONS, MORE FROM YOUTUBE 카테고리 제목 */
 .sidebar-nav2 > span,
@@ -230,3 +238,44 @@ body:has(.hamburger-input:checked) .sidenav-act > span {
 body:has(.hamburger-input:checked) .side-acc {
     display: none;
 }
+
+/* 바텀 네비; 평소에는 숨김 */
+.bottom-nav {
+    display: none;
+}
+
+
+@media (max-width: 767px) {
+    .hd-sec1 {
+        width: auto;
+    }
+}
+
+@media (max-width: 1023px) {
+    .hamburger { display: none; }
+    .hd-sec1 { margin-inline-start: 16px; order: 1; margin-right: auto; }
+    .searchbar input, .searchbar button { display: none; }
+    .searchbar { border: none; width: auto; }
+    .searchbar::after { 
+        content: '';
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: url('./img/youtube-index/header/search.svg') center / 24px no-repeat;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .mic-btn { display: none; }
+    .hd-sec2 { order: 3; width: auto; flex: 0 0 auto; max-width: none; min-width: 0; margin: 0; }
+    .create-btn, .apps-btn, .profile-btn { display: none; }
+    .hd-sec3 { order: 2; }
+    .header { justify-content: flex-end; }
+
+    .sidebar { display: none; }
+    .top-menu { left: 0; width: 100%; }
+
+    .bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; height: 56px; background: var(--bg1); border-top: 1px solid var(--boder); z-index: 150; }
+    .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #fff; font-size: 10px; }
+    .nav-item img { width: 27px; height: 27px; border-radius: 50%;}
+}
+

@@ -13,13 +13,13 @@
 
 /* 탭 버튼 */
 .top-menu {
-    position: fixed;
+    position: sticky;
     top: 56px;
-    left: 240px;
-    right: 0;
     display: flex;
     align-items: center;
     height: 56px;
+    border-top: 1px solid var(--boder);
+    border-bottom: 1px solid var(--boder);
     background: var(--bg1);
     z-index: 90;
 }
@@ -32,8 +32,6 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    border-top: 1px solid var(--boder);
-    border-bottom: 1px solid var(--boder);
     overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: none;
@@ -94,6 +92,7 @@
 
 .grid {
     display: grid;
+    background: #000;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     padding: 24px;
@@ -102,13 +101,14 @@
 .grid-item {
     display: flex;
     flex-direction: column;
-    width: 276px;
+    width: 100%;
     height: 247px;
 }
 
 /* 썸네일 영역 */
 .grid-video {
     width: 100%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
 }
 
@@ -122,8 +122,8 @@
 .grid-desc {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    padding: 0px 12px 12px 26px;
+    gap: 12px;
+    padding: 12px 24px 18px 0;
 }
 
 .grid-desc > img {
@@ -141,21 +141,14 @@
 }
 
 .grid-text h3 {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: bold;
     color: #fff;
-    line-height: 1.4;
-    margin: 0;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-clamp: 2;
-    overflow: hidden;
+    margin: 0 0 6px 0;
 }
 
 .grid-text p {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--bg2);
     margin: 0;
 }
@@ -165,7 +158,40 @@
 
 /* 태블릿 */
 @media (max-width: 1023px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr); /* 태블릿: 2열 */
+    .main-grid {
+        margin-left: 0;
+        padding-bottom: 56px;
+    }
+
+    .grid-item {
+        width: 100%;
+        height: auto; 
+    }
+
+    .grid-video img {
+        height: 100%; 
+    }
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+    .grid { grid-template-columns: 1fr; }
+
+    .grid-item { width: 100%; max-width: none; }
+
+    .grid-video { width: 100%; aspect-ratio: 16 / 9; }
+
+    .grid-video img { width: 100%; height: 100%; object-fit: cover; }
+
+    .main-grid { margin-left: 0; }
+
+    .top-menu {
+        left: 0;
+        width: 100%;
     }
 }
