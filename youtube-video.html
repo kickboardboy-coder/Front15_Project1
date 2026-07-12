@@ -16,40 +16,53 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
-        <!-- 헤더 - 햄버거 버튼 -->
-        <button class="hamburger" onclick="toggle()">
-            <span></span><span></span><span></span>
-        </button>
-        <!-- 유튜브 로고 -->
-        <div class="main-logo">
-            <img src="./img/youtube-index/header/main-logo.png">
+    <header class="header">
+        <div class="hd-sec1">
+            <!-- 헤더 - 햄버거 버튼 -->
+            <input type="checkbox" id="hamburger-toggle" class="hamburger-input">
+            <label for="hamburger-toggle" class="hamburger">
+                <img src="./img/youtube-index/header/hamburger.svg" alt="메뉴">
+            </label>
+            <!-- 유튜브 로고 -->
+            <div class="main-logo">
+                <img src="./img/youtube-index/header/youtube-logo.svg">
+            </div>
         </div>
-        <!-- 헤더 - 검색 바-->
-        <div class="searchbar">
-            <input class="search" placeholder="Search">
-            <button type="search-submit" aria-label="검색실행">
-                <img src="#">
-            </button>
-            <!-- 헤더 - 검색 바 - 버튼 마이크 사용 검색 -->   
-            <button class="mic-btn">
-                <img src="#">
-            </button>
+        <div class="hd-sec2">
+            <!-- 헤더 - 검색 바-->
+            <div class="searchbar">
+                <input type="text" placeholder="Search">
+                <button type="search-submit" aria-label="검색실행">
+                    <img src="./img/youtube-index/header/search.svg">
+                </button>
+            </div>
+                <!-- 헤더 - 검색 바 - 버튼 마이크 사용 검색 -->
+                <button class="mic-btn">
+                    <img src="./img/youtube-index/header/mic-icon.svg">
+                </button>
+        </div>
+        <div class="hd-sec3">
+            <!-- 헤더 - 네비 -->
+            <nav class="menu">
+            <!-- 헤더 - 네비 - Create 버튼 - Google Apps 버튼(지메일, 드라이브, 지도 등) - 알림 버튼 -->
+                <ul class="h-nav">
+                    <li class="create-btn">
+                        <img src="./img/youtube-index/header/create.svg">
+                    </li>
+                    <li class="apps-btn">
+                        <img src="./img/youtube-index/header/apps.svg">
+                    </li>
+                    <li class="notification-btn">
+                        <img src="./img/youtube-index/header/notifications.svg">
+                    </li>
+                    <li class="profile-btn">
+                        <img src="./img/youtube-index/header/User-Avatar.png" alt="프로필">
+                    </li>
+                </ul>
+            </nav>
         </div>
         
-        <!-- 헤더 - 네비 -->
-        <nav class="navigation">
-        <!-- 헤더 - 네비 - Create 버튼 - Google Apps 버튼(지메일, 드라이브, 지도 등) - 알림 버튼 -->
-            <button class="Create-btn">
-                <img src="#">
-            </button>
-            <button class="apps-btn">
-                <img src="#">
-            </button>
-            <button class="notification-btn">
-                <img src="#">
-            </button>
-        </nav>
+        
     </header>
     <div class="main-aside-wrapper">
         <!-- main -->
@@ -295,7 +308,7 @@
         </main>
 
         <!-- 사이드 추천영상 리스트  -->
-        <aside class="reccomend-list">
+        <aside class="recommend-list">
             <!-- 추천 영상 선택 버튼모음 -->
             <nav class="recommend-list__filters">
                 <!-- 모든 영상 보기 버튼 -->
