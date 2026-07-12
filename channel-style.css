@@ -1,6 +1,12 @@
-* {
-    margin: 0; padding: 0; 
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+
+:root { 
+    --bg1: #212121;
+    --bg2: #AAAAAA;
+    --boder: #303030;
+    --youtube: #FF0000;
 }
+
 body {
     color: white;
 }
@@ -12,7 +18,7 @@ button {
     cursor: pointer;
 
 }
-.main-wrapper {
+.main-wrap {
     display: flex;
     flex-direction: column;
     width: 1200px;
@@ -26,41 +32,43 @@ button {
     width: 1200px;
     height: 192px;
 }
-.banner-info-wrapper {
+.banner-info-wrap {
     display: flex;
     justify-content: space-between;
 }
-.info-wrapper-left {
+.info-left {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 24px;
+    margin: 16px 0 4px 65px;
 }
-.channel-namesubs {
+.namesubs {
     display: flex;
     flex-direction: column;
 }
-.tab-input {
-    display: none;
-}
+.channel-name { font-size: 24px; color: white; }
+.channel-subs { font-size: 14px; color: var(--bg2); }
+.subcribes-btn { margin: 16px 65px 4px 0; }
 
+/* tabs */
+.tabs { margin: 0 0 0 65px; }
+.tab-content {  background: black; }
+.tab-input { display: none; }
 .tab-item {
     padding: 12px 16px;
     color: var(--bg2);
     cursor: pointer;
     display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 16px 32px 15px 32px;
 }
 
-.tab-input:checked + .tab-item {
-    color: white;
-    border-bottom: 2px solid white;
-}
-
+.tab-input:checked + .tab-item { color: white; border-bottom: 2px solid white; }
 /* 콘텐츠 기본은 숨김 */
-.tab-content {
-    display: none;
-}
+.tab-content { display: none; }
 
-/* body 안 어딘가에 특정 라디오가 체크되면, 대응하는 콘텐츠 보이기 */
+/* checked -> 컨텐츠 보이기 */
 body:has(#tab-home:checked) #content-home,
 body:has(#tab-videos:checked) #content-videos,
 body:has(#tab-playlists:checked) #content-playlists,
@@ -69,10 +77,9 @@ body:has(#tab-channels:checked) #content-channels,
 body:has(#tab-about:checked) #content-about {
     display: block;
 }
-.video-box {
-    display: flex;
-    gap: 10px;
-}
+
+/* 비디오 */
+.video-box { display: flex; gap: 24px; margin: 24px 287px 24px 65px; }
 .player {
     position: relative;
     width: 424px;
@@ -94,6 +101,9 @@ body:has(#tab-about:checked) #content-about {
     display: flex;
     align-items: center;
 }
+.player-title { font-size: 14px; margin: 14px 0 0 16px; }
+.player-info-icon { margin: 14px 16px 0 0; }
+
 .player-controls {
     border-top: 1px solid;
     position: absolute;
@@ -105,7 +115,7 @@ body:has(#tab-about:checked) #content-about {
     justify-content: space-between;
 }
 
-
+/* 재생바 */
 .progress-bar {
     position: relative;
     width: 100%;
@@ -142,32 +152,36 @@ body:has(#tab-about:checked) #content-about {
 
 }
 
-.player-settings {
-    display: flex;
-}
+.player-settings { display: flex; }
 .video-desc {
     display: flex;
     flex-direction: column;
-    gap: 10px
+    gap: 10px;
+    margin: 0 0 88px 0;
 }
+.video-desc h2 { font-size: 14px; font-weight: bold; color: white;}
+.video-desc .desc-view {  font-size: 13px; font-weight: bold; color: var(--bg2); padding: 20px 0 19px 0; }
+.video-desc .desc-detail { font-size: 14px; font-weight: 400; color: white;}
 
+/* 플레이리스트 */
 .playlist {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    margin: 1px 65px;
 }
+.playlist-part { display: flex; border-top: 1px solid var(--boder); }
 
-.playlist-part {
+.list-wrap {
     display: flex;
-}
-.list-wrapper {
-    display: flex;
-    gap: 18px;
+    gap: 24px;
     align-items: center;
+    margin-top: 8px;
 }
-.playlist-part-wrapper {
-    display: flex;
-}
+.list-wrap > span { font-size: 16px; font-weight: bold; padding: 9px 0 8px 0; }
+.play-all { padding: 6px 0 6px 0; display: flex; color:#AAAAAA; align-items: center; justify-content: center; }
+
+.playlist-part-wrap { display: flex; }
 .playlist-item {
     border: 1px solid blue;
     width: 210px;
