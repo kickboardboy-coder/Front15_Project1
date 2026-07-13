@@ -37,7 +37,7 @@ body {
     margin-inline-start: 16px;
     flex-shrink: 0;
 }
-.hamburger { width: 40px; height: 40px; padding: 8px; margin-top: 8px; margin-bottom: 8px; flex-shrink: 0;}
+.hamburger { width: 40px; height: 40px; padding: 8px; margin-top: 8px; margin-bottom: 8px; flex-shrink: 0; }
 .hamburger-input { display: none; }
 
 .main-logo { display: flex; align-items: center; padding: 18px 14px 18px 16px;}
@@ -148,6 +148,134 @@ body {
     object-fit: cover;
 }
 
+/* 프로필 드롭다운 */
+.profile-item {
+    position: relative;   /* 드롭다운 위치 기준점 */
+}
+
+.profile-input {
+    display: none;
+}
+
+.profile-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile-btn img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 드롭다운 - 평소엔 숨김 */
+.profile-drop {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    width: 300px;
+    background: var(--bg1);
+    border: 1px solid var(--boder);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    padding: 8px 0;
+    z-index: 1100;
+}
+
+.profile-input:checked ~ .profile-drop {
+    display: block;
+}
+
+/* 1. 프로필 카드 */
+.drop-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--boder);
+}
+
+.drop-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.drop-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.drop-name {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.drop-handle {
+    color: var(--bg2);
+    font-size: 14px;
+    margin: 2px 0 4px 0;
+}
+
+.drop-channel-link {
+    color: #3EA6FF;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.drop-channel-link:hover {
+    text-decoration: underline;
+}
+
+/* 섹션 공통 */
+.drop-section {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--boder);
+}
+
+.drop-section:last-child {
+    border-bottom: none;
+}
+
+.drop-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.drop-item:hover {
+    background: var(--boder);
+}
+
+.drop-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.drop-chevron {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;   /* 화살표를 오른쪽 끝으로 밀어냄 */
+    flex-shrink: 0;
+}
+
 
 .body-wrap {
     max-width: 1440px;
@@ -164,7 +292,8 @@ body {
     width: 240px;
     height: calc(100vh - 56px);
     top: 56px;
-    transition: width 0.2s ease;
+    padding-right: 16px;
+    transition: width 0.1s ease;
     flex-shrink: 0;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -181,7 +310,7 @@ body {
     outline: none;
 }
 
-.sidebar-act > img { width: 24px; height: 24px;}
+.sidebar-act > img { width: 24px; height: 24px; flex-shrink: 0;}
 .sidenav-act > span {
     display: flex;
     align-items: center;
@@ -189,15 +318,32 @@ body {
     padding: 8px 8px 8px 24px;
     white-space: nowrap;
     font-size: 14px;
+    overflow: hidden;
 }
 .sidenav-act.is-active > span { background: var(--boder); }
+
+.menu-text {
+    display: inline-block;
+    opacity: 1;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.15s ease, max-width 0.2s ease;
+}
+
+
+.sidebar-nav1,
+.sidebar-nav2,
+.sidebar-nav3,
+.sidebar-nav4 { 
+    padding: 12px 0; border-bottom: 1px solid var(--boder);
+}
 
 /* SUBSCRIPTIONS, MORE FROM YOUTUBE 카테고리 제목 */
 .sidebar-nav2 > span,
 .sidebar-nav3 > span {
     display: block;
     padding: 8px 24px;
-    border-top: 1px solid var(--boder);
     font-size: 14px;
     font-weight: bold;
     color: var(--bg2);
@@ -210,16 +356,18 @@ body {
     gap: 24px;
     padding: 8px 8px 8px 24px;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 /* ---- 체크됐을 때: 사이드바 축소 ---- */
 body:has(.hamburger-input:checked) .sidebar {
     width: 72px;
+    padding-right: 0;
 }
 
-/* 메뉴 텍스트 숨김 */
 body:has(.hamburger-input:checked) .menu-text {
-    display: none;
+    opacity: 0;
+    max-width: 0;
 }
 
 /* 카테고리 제목 숨김 */
@@ -230,14 +378,31 @@ body:has(.hamburger-input:checked) .sidebar-nav3 > span {
 
 /* 아이콘 가운데 정렬로 전환 */
 body:has(.hamburger-input:checked) .sidenav-act > span {
-    justify-content: center;
-    padding: 12px 0;
+    padding: 8px 24px;
+    gap: 0;
+}
+
+body:has(.hamburger-input:checked) .sidenav-act img {
+    width: 24px;
+    height: 24px;
 }
 
 /* Show More / Show 13 more 항목 숨김 */
 body:has(.hamburger-input:checked) .side-acc {
-    display: none;
+    padding: 8px 24px;
+    gap: 0;
 }
+body:has(.hamburger-input:checked) .side-acc .acc-btn {
+    opacity: 0;
+    max-width: 0;
+}
+
+body:has(.hamburger-input:checked) .sidebar-nav2 .sidenav-act > span,
+body:has(.hamburger-input:checked) .sidebar-nav3 .sidenav-act > span {
+    padding: 8px 24px;
+}
+
+
 
 /* 바텀 네비; 평소에는 숨김 */
 .bottom-nav {
