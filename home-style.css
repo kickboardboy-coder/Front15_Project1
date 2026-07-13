@@ -18,8 +18,8 @@
     display: flex;
     align-items: center;
     height: 56px;
-    border-top: 1px solid var(--boder);
-    border-bottom: 1px solid var(--boder);
+    border-top: 1.5px solid var(--boder);
+    border-bottom: 1.5px solid var(--boder);
     background: var(--bg1);
     z-index: 90;
 }
@@ -27,6 +27,7 @@
 .menu-list {
     display: flex;
     flex: 1;
+    align-items: center;
     min-width: 0;
     gap: 12px;
     list-style: none;
@@ -42,19 +43,23 @@
 }
 
 .menu-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: auto;
+    height: 32px;
     flex: 0 0 auto;
-    padding: 8px 12px;
     border-radius: 32px;
-    border: 0.3px solid var(--bg2);
-    padding: 8px 12px;
+    border: 1px solid var(--bg2);
+    padding: 0 12px;
     margin: 12px 0 12px 0;
     background: var(--boder);
     color: #fff;
     font-size: 14px;
-    font-weight: lighter;
+    font-weight: 300;
     cursor: pointer;
     white-space: nowrap;
+    line-height: 1;
 }
 
 .menu-item.active {
@@ -93,7 +98,7 @@
     display: grid;
     background: #000;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 40px 24px;
     padding: 24px;
 }
 
