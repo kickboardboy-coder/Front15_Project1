@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="youtube-style.css">
-    <link rel="stylesheet" href="youtube-video.css">
+    <link rel="stylesheet" href="side-video.css">
+    <link rel="stylesheet" href="video-style.css">
     <style>
 
 
@@ -263,6 +263,8 @@
             </a>
         </nav>
         </aside>
+        <!-- 사이드바 열렸을 때 뒷배경을 어둡게 하는 오버레이 -->
+        <label for="hamburger-toggle" class="sidebar-overlay"></label>
         <div class="main-aside-wrapper">
             <!-- main -->
             <main class="main">
@@ -338,7 +340,7 @@
                     <!-- 제목/조회수/좋아요 등 영상 메타정보 -->
                     <div class="video-details">
                         <!-- 영상 제목 -->
-                        <h3 class="details-title">Blind Woodturner: Turning passion into fine art</h3>
+                        <p class="details-title">Blind Woodturner: Turning passion into fine art</p>
                         <!-- 제목 아래 그룹 -->
                         <div class="details-statsgroup">
                             <!-- 조회수, 업로드 날짜 -->
@@ -509,20 +511,17 @@
             <aside class="rm-list">
                 <!-- 추천 영상 선택 버튼모음 -->
                 <nav class="rm-list__filters">
-                    <!-- 모든 영상 보기 버튼 -->
-                    <div class="chip-wrapper">
-                        <button class="rm-list__filter-chip1">All</button>
-                    </div>
-                    <!-- 현재 채널 영상 보기 버튼 -->
-                    <div class="chip-wrapper">
-                        <button class="rm-list__filter-chip2">From Marcus Levin</button>
-                    </div>
+                    <input type="radio" name="rm-filter" id="filter-all" class="rm-filter-input" checked>
+                    <label for="filter-all" class="rm-list__filter-chip">All</label>
+
+                    <input type="radio" name="rm-filter" id="filter-channel" class="rm-filter-input">
+                    <label for="filter-channel" class="rm-list__filter-chip">From Marcus Levin</label>
                 </nav>
             
                 <!--추천 영상 리스트 -->
                 <ul class="rm-list__items">
                     <!-- 추천 영상 카드 -->
-                    <li>
+                    <li class="video-card-wrapper">
                         <a class="video-card" href="#">
                             <!-- 추천 영상 · 썸네일 구역 -->
                             <div class="video-card__thumbnail">
@@ -543,7 +542,7 @@
                             </div>
                         </a>
                     </li>
-                
+                    <!-- 추천 영상 카드 -->
                     <li>
                         <a class="video-card" href="#">
                             <div class="video-card__thumbnail">
@@ -674,5 +673,5 @@
             <img src="./img/youtube-index/header/User-Avatar.png" alt="">
         </a>
     </nav>
-</body> 
+</body>
 </html>
