@@ -45,16 +45,75 @@
             <!-- 헤더 - 네비 - Create 버튼 - Google Apps 버튼(지메일, 드라이브, 지도 등) - 알림 버튼 -->
                 <ul class="h-nav">
                     <li class="create-btn">
-                        <img src="./img/youtube-index/header/create.svg">
+                        <a href="#" class="create-btn"><img src="./img/youtube-index/header/create.svg"></a>
                     </li>
                     <li class="apps-btn">
-                        <img src="./img/youtube-index/header/apps.svg">
+                        <a href="#" class="apps-btn"><img src="./img/youtube-index/header/apps.svg"></a>
                     </li>
                     <li class="notification-btn">
-                        <img src="./img/youtube-index/header/notifications.svg">
+                        <a href="#" class="notifications-btn"><img src="./img/youtube-index/header/notifications.svg"></a>
                     </li>
-                    <li class="profile-btn">
-                        <img src="./img/youtube-index/header/User-Avatar.png" alt="프로필">
+                    <!-- 프로필 + 드롭다운 메뉴 -->
+                    <li class="profile-item">
+                        <input type="checkbox" id="profile-toggle" class="profile-input">
+                        <label for="profile-toggle" class="profile-btn">
+                            <img src="./img/youtube-index/header/User-Avatar.png" alt="프로필">
+                        </label>
+                    
+                        <div class="profile-drop">
+                            <!-- 1. 프로필 카드 -->
+                            <div class="drop-card">
+                                <img src="./img/youtube-index/header/User-Avatar.png" class="drop-avatar">
+                                <div class="profile-drop__info">
+                                    <p class="drop-name">Ruby Han</p>
+                                    <p class="drop-handle">@rubyhan</p>
+                                    <a href="#" class="drop-channel-link">View your channel</a>
+                                </div>
+                            </div>
+                        
+                            <!-- 2. 계정 관련 -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/google-logo.png" class="drop-icon">
+                                    <span>Google Account</span>
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/switch-account.png" class="drop-icon">
+                                    <span>Switch account</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/logout.png" class="drop-icon">
+                                    <span>Sign out</span>
+                                </a>
+                            </div>
+                        
+                            <!-- 3. Appearance / Language -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/design.png" class="drop-icon">
+                                    <span>Appearance: Device theme</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/lang-change.png" class="drop-icon">
+                                    <span>Language: English</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                            </div>
+                        
+                            <!-- 4. Settings / Help  -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/setting.png" class="drop-icon">
+                                    <span>Settings</span>
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/help.png" class="drop-icon">
+                                    <span>Help</span>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -104,9 +163,9 @@
                 </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span class="menu-item">
+                <span>
                     <img src="./img/youtube-index/sidebar/History.svg">
-                    <span>History</span>
+                    <span class="menu-text">History</span>
                 </span>
             </a>
             <a href="#" class="sidenav-act">
@@ -269,32 +328,32 @@
             <nav class="top-menu">
                 <ul class="menu-list">
                     <li><button class="menu-item active">All</li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
-                    <li><button class="menu-item">Item</button></li>
+                    <li><button class="menu-item">Music</button></li>
+                    <li><button class="menu-item">Hip hop</button></li>
+                    <li><button class="menu-item">Mixes</button></li>
+                    <li><button class="menu-item">Travel</button></li>
+                    <li><button class="menu-item">Gaming</button></li>
+                    <li><button class="menu-item">Cooking</button></li>
+                    <li><button class="menu-item">Live</button></li>
+                    <li><button class="menu-item">Recentlt uploaded</button></li>
+                    <li><button class="menu-item">Watched</button></li>
+                    <li><button class="menu-item">New to you</button></li>
+                    <li><button class="menu-item">Comedy</button></li>
+                    <li><button class="menu-item">Sports</button></li>
+                    <li><button class="menu-item">News</button></li>
+                    <li><button class="menu-item">Podcasts</button></li>
+                    <li><button class="menu-item">Documentaries</button></li>
+                    <li><button class="menu-item">Fashion</button></li>
+                    <li><button class="menu-item">Tech</button></li>
+                    <li><button class="menu-item">Fitness</button></li>
+                    <li><button class="menu-item">Beauty</button></li>
+                    <li><button class="menu-item">Movies</button></li>
+                    <li><button class="menu-item">Education</button></li>
+                    <li><button class="menu-item">Science</button></li>
+                    <li><button class="menu-item">Animals</button></li>
+                    <li><button class="menu-item">Automotive</button></li>
+                    <li><button class="menu-item">DIY</button></li>
+                    <li><button class="menu-item">History</button></li>
                 </ul>
             <button class="arrow" aria-label="더보기">
                 <img src="./img/youtube-index/main/arrow-right.svg" alt="">
@@ -303,344 +362,382 @@
             <!-- 영상 그리드 -->
             <article class="grid">
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/yout.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/James Gouse.svg">
-                        <!-- 영상 제목 -->
-                    <div class="grid-text">
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>James Gouse</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="youtube-video.html" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/yout.svg">
                     </div>
-                </div>
+                    <!-- VIDEO 페이지 연동 부분 -->
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Marcus Levin.svg">
+                            <!-- 영상 제목 -->
+                        <div class="grid-text">
+                            <h3>Blind Woodturner: Turning passion into fine art</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Marcus Levin</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>576K Views . 3 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/insta.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alan Cooper.svg">
-                    <div class="grid-text">
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alan Cooper</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/insta.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alan Cooper.svg">
+                        <div class="grid-text">
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alan Cooper</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/tict.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Marcus Levin.svg">
-                    <div class="grid-text">
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/tict.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/James Gouse.svg">
+                        <div class="grid-text">
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>James Gouse</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/netf.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alexis Sears.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alexis Sears</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/netf.svg">
                     </div>
-                </div>
-                
-            </div>
-
-            <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/twit.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Jesica Lambert.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Jesica Lambert</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alexis Sears.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alexis Sears</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/spot.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Anna White.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Anna White</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/disc.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Skylar Dias.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Skylar Dias</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/tesla.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alexis Sears.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alexis Sears</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
-                    </div>
-                </div>
-                
+                </a>
             </div>
 
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/insta.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/James Gouse.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>James Gouse</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/twit.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Jesica Lambert.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Jesica Lambert</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/yout.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alan Cooper.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alan Cooper</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/spot.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Anna White.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Anna White</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/tict.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Marcus Levin.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/disc.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Skylar Dias.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Skylar Dias</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/netf.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alexis Sears.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alexis Sears</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/tesla.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alexis Sears.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alexis Sears</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/twit.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/James Gouse.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>James Gouse</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/insta.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/James Gouse.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>James Gouse</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/spot.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alan Cooper.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alan Cooper</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>                        
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/yout.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alan Cooper.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alan Cooper</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/disc.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Marcus Levin.svg">
-                    <div class="grid-text">
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>                    
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/tict.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Marcus Levin.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Marcus Levin</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/tesla.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alexis Sears.svg">
-                    <div class="grid-text">
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alexis Sears</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>    
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/netf.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alexis Sears.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alexis Sears</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div> 
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/insta.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/James Gouse.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>James Gouse</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/twit.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/James Gouse.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>James Gouse</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/yout.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alan Cooper.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alan Cooper</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/spot.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alan Cooper.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alan Cooper</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>                        
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/tict.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Marcus Levin.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Marcus Levin</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/disc.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Marcus Levin.svg">
+                        <div class="grid-text">
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Marcus Levin</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>                    
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="grid-item">
-                <!-- 영상 -->
-                <div class="grid-video">
-                    <img src="./img/youtube-index/main/netf.svg">
-                </div>
-                <div class="grid-desc">
-                    <img src="./img/youtube-index/main/Alexis Sears.svg">
-                    <div class="grid-text">
-                        <!-- 영상 제목 -->
-                        <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
-                        <!-- 영상 채널명 -->
-                        <p>Alexis Sears</p>
-                        <!-- 영상 조회수, 업로드 일자 -->
-                        <p>15K Views .1 week ago</p>
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/tesla.svg">
                     </div>
-                </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alexis Sears.svg">
+                        <div class="grid-text">
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alexis Sears</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>    
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/insta.svg">
+                    </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/James Gouse.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>James Gouse</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/yout.svg">
+                    </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alan Cooper.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alan Cooper</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/tict.svg">
+                    </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Marcus Levin.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Marcus Levin</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="#" class="grid-item">
+                    <!-- 영상 -->
+                    <div class="grid-video">
+                        <img src="./img/youtube-index/main/netf.svg">
+                    </div>
+                    <div class="grid-desc">
+                        <img src="./img/youtube-index/main/Alexis Sears.svg">
+                        <div class="grid-text">
+                            <!-- 영상 제목 -->
+                            <h3>Lorem ipsum dolor sit amet, consecte adipiscing elit.</h3>
+                            <!-- 영상 채널명 -->
+                            <p>Alexis Sears</p>
+                            <!-- 영상 조회수, 업로드 일자 -->
+                            <p>15K Views .1 week ago</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             </article>
         </main>
