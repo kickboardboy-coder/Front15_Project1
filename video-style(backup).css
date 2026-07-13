@@ -1,38 +1,23 @@
-/* ============================================
-   기본 요소 스타일
-   ============================================ */
-
-/* 링크 밑줄 제거 (전역) */
 a {
     text-decoration: none;
 }
 
-/* 페이지 전체 배경/최소 높이 설정 */
 body {
     background: var(--bg1);
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;   /* 가로 스크롤바 방지 */
+    overflow-x: hidden;
     overflow-y: visible;
 }
 
-/* ============================================
-   전체 레이아웃 뼈대
-   ============================================ */
-
-/* 헤더 아래 본문 전체를 감싸는 컨테이너
-   - max-width로 큰 화면에서 중앙 정렬
-   - position: relative → .sidebar(absolute)의 기준점 역할 */
 .body-wrap {
     max-width: 1440px;
     margin: 0 auto;
     position: relative;
-    padding-top: 56px;   /* 헤더 높이(56px)만큼 아래로 밀어줌 */
+     /* 헤더 높이만큼 아래로 밀어줌 */
+    padding-top: 56px;
 }
-
-/* 사이드바가 열렸을 때 뒷배경을 어둡게 덮는 오버레이
-   - 평소엔 display: none으로 숨겨져 있다가
-   - body:has(.hamburger-input:checked) 상태일 때 side-video.css에서 block으로 전환됨 */
+/* 사이드바 열렸을 때 뒷배경을 어둡게 하는 오버레이 */
 .sidebar-overlay {
     display: none;
     position: fixed;
@@ -41,27 +26,20 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 400;      /* sidebar(500)보다는 낮고, 본문 콘텐츠보다는 높게 */
-    cursor: pointer;    /* 클릭하면 사이드바 닫히는 label 역할 */
+    z-index: 400;      /* sidebar(500)보다는 낮고, 본문보다는 높게 */
+    cursor: pointer;
 }
-
-/* 메인 콘텐츠(.main) + 추천영상(.rm-list)을 가로로 배치하는 컨테이너
-   - 데스크탑 기준 두 영역을 나란히 중앙 정렬 */
 .main-aside-wrapper {
     display: flex;
     gap: 24px;
     justify-content: center;
     background-color: #181818;
-}
 
-/* 비디오 페이지의 메인(왼쪽) 영역 - 플레이어, 상세정보, 댓글 포함
-   - 데스크탑 기준 664px 고정 너비 */
+}
 .main {
     width: 664px;
     padding: 24px 0 0 24px;
 }
-
-/* 버튼 기본 스타일 초기화 (브라우저 기본 여백/테두리 제거) */
 button {
     background: none;
     border: none;
@@ -69,8 +47,6 @@ button {
     outline: none;
     cursor: pointer;
 }
-
-/* 리스트 마커 제거 */
 ul {
     list-style: none;
 }
@@ -79,19 +55,11 @@ li, button {
 }
 
 
-/* ============================================
-   비디오 플레이어 영역
-   ============================================ */
 
-/* 플레이어 컨테이너 - 자식 요소(::before, ::after, .player-frame 등)의
-   position: absolute 기준점 역할 */
 .player {
     position: relative;
 }
-
-/* 플레이어 상단 그라데이션
-   - 제목/정보 아이콘(.player-frame)이 밝은 배경 위에서도 잘 보이도록
-     위쪽만 살짝 어둡게 처리 */
+/* 상단 그라데이션 */
 .player::before {
     content: '';
     position: absolute;
@@ -100,12 +68,10 @@ li, button {
     right: 0;
     height: 50px;
     background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0));
-    pointer-events: none;   /* 클릭/터치가 그대로 아래 버튼으로 전달되게 */
+    pointer-events: none;   /* 클릭/터치가 아래 요소로 그대로 전달되게 */
     z-index: 10;
 }
-
-/* 플레이어 하단 그라데이션
-   - 재생 컨트롤(.player-controls)이 잘 보이도록 아래쪽을 어둡게 처리 */
+/* 하단 그라데이션 */
 .player::after {
     content: '';
     position: absolute;
@@ -117,15 +83,10 @@ li, button {
     pointer-events: none;
     z-index: 10;
 }
-
-/* 플레이어 썸네일 이미지 - 부모 너비에 꽉 차게 */
 .player img {
     width: 100%;
     display: block;
 }
-
-/* 플레이어 상단 바 (영상 제목 + 정보 아이콘)
-   - .player 기준으로 절대 위치 배치 */
 .player-frame {
     position: absolute;
     top: 14px;
@@ -133,18 +94,14 @@ li, button {
     right: 16px;
     color: white;
     font-size: 14px;
-    justify-content: space-between;
+    justify-content: space-between; 
     display: flex;
     align-items: center;
 }
-
 .player-info-icon {
     width: 20px;
     height: 20px;
 }
-
-/* 플레이어 하단 컨트롤 바 (재생/음량/자막/전체화면 등)
-   - 좌측 그룹(.player-controls-left)과 우측 그룹(.player-settings)을 양끝 정렬 */
 .player-controls {
     position: absolute;
     bottom: 8px;
@@ -152,16 +109,12 @@ li, button {
     right: 12px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; 
 }
-
-/* 좌측 컨트롤: 재생/다음/음량/시간 */
 .player-controls-left {
     display: flex;
     align-items: center;
 }
-
-/* 개별 컨트롤 아이콘들 - 각각 원본 아이콘 비율에 맞춘 크기 + 간격용 margin-left */
 .player-play-btn {
     width: 13px;
     height: 16px;
@@ -182,8 +135,6 @@ li, button {
     margin-left: 19.75px;
     color: white;
 }
-
-/* 우측 컨트롤 그룹: 자막/화질/극장모드/미니플레이어/전체화면 */
 .player-settings {
     display: flex;
 }
@@ -213,10 +164,6 @@ li, button {
     margin-right: 10px;
 }
 
-/* 재생 진행 바 (progress bar)
-   - .progress-buffered: 버퍼링된 구간 (연한 흰색)
-   - .progress-played: 실제 재생된 구간 (빨간색)
-   - 둘 다 .progress-bar 기준 절대 위치, width%로 진행률 표현 */
 .progress-bar {
     position: relative;
     width: 97%;
@@ -243,47 +190,34 @@ li, button {
     height: 3px;
     width: 32%;
     background-color: #ff0000;
+
 }
 
 
-/* ============================================
-   영상 제목 / 조회수 / 좋아요 등 메타정보
-   ============================================ */
-
-/* 플레이어 아래, 제목+통계+액션 버튼을 세로로 쌓는 컨테이너 */
 .video-details {
     display: flex;
     flex-direction: column;
     padding: 20px 0 8px 0;
 }
-
-/* 영상 제목 텍스트 */
 .details-title {
     color: white;
     font-weight: 400;
-}
+} 
 
-/* 조회수/업로드일 + 좋아요·공유 등 액션 버튼을 양끝 정렬하는 줄 */
 .details-statsgroup {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-/* 조회수/업로드일 텍스트 */
 .details-stats {
     color: var(--bg2);
     font-size: 14px;
     font-weight: 700;
 }
-
-/* 좋아요/싫어요/공유/저장/더보기 버튼 그룹 */
 .details-actions {
     display: flex;
     align-items: center;
 }
-
-/* 액션 버튼 각각 - 아이콘+숫자(텍스트)를 가로로 정렬 */
 .details-actions button {
     display: flex;
     align-items: center;
@@ -299,42 +233,28 @@ li, button {
     height: 24px;
 }
 
-
-/* ============================================
-   채널 정보 (아바타 + 이름 + 구독자수 + 설명)
-   ============================================ */
-
-/* 채널 정보 섹션 전체 컨테이너 */
 .channel-info {
     display: flex;
     flex-direction: column;
     padding: 16px 0;
 }
 
-/* 아바타 + 이름/구독버튼을 가로로 배치하는 줄
-   - 위쪽에 구분선(border-top) */
 .channel-info-wrapper {
     display: flex;
     border-top: 1px solid var(--boder);
     padding-top: 16px;
 }
-
-/* 채널 프로필 이미지 */
 .info-avatar {
     width: 48px;
     height: 48px;
     margin-right: 16px;
 }
-
-/* 채널명/구독자수(.info-meta)와 구독 버튼을 양끝 정렬하는 줄
-   - flex: 1로 남은 공간을 전부 차지해야 구독 버튼이 오른쪽 끝까지 밀림 */
 .channel-info-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex: 1;
 }
-
 .info-name {
     font-size: 14px;
     color: white;
@@ -343,32 +263,19 @@ li, button {
     font-size: 12px;
     color: var(--bg2)
 }
-
-/* 채널 설명 텍스트 - 아바타(48px)+간격(16px) 만큼 왼쪽 들여쓰기 */
 .info-description {
     font-size: 14px;
     color: white;
     padding: 12px 0 0 64px;
 }
-
-/* "더보기" 텍스트 - 설명과 같은 들여쓰기 */
 .info-show-more {
     font-size: 12px;
     color: var(--bg2);
     padding: 8px 0 0 64px;
 }
-
-
-/* ============================================
-   댓글 섹션
-   ============================================ */
-
-/* 댓글 섹션 전체 - 채널 정보와 구분선으로 분리 */
 .comment {
     border-top: 1px solid var(--boder)
 }
-
-/* "286 Comments" + 정렬(SORT BY) 버튼을 가로 배치 */
 .cm-header {
     display: flex;
     align-items: center;
@@ -391,11 +298,9 @@ li, button {
     font-size: 14px;
     color: white;
 }
-
-/* 댓글 입력 폼 - 아바타 + 입력창을 가로 배치 */
 .cm-input {
     display: flex;
-    /* align-items: center; */  /* 필요시 세로 중앙 정렬용, 현재 비활성 */
+    /* align-items: center; */
     margin-bottom: 32px;
 }
 .cm-input-avatar {
@@ -403,26 +308,22 @@ li, button {
     height: 40px;
     margin-right: 16px;
 }
-
-/* 댓글 입력창을 감싸는 wrapper - 밑줄 텍스트 입력 형태 */
 .cm-field-wrapper {
     display: flex;
-    width: 584px;   /* 데스크탑 고정 너비 (반응형에서 100%로 재정의됨) */
+    width: 584px;
     align-items: center;
     padding-top: 5px;
 }
 .cm-field {
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--boder);  /* 밑줄 형태의 입력창 */
+    border-bottom: 1px solid var(--boder);
     outline: none;
     color: white;
     width: 100%;
     font-size: 14px;
-    padding-bottom: 5px;   /* 텍스트와 밑줄 사이 간격 */
+    padding-bottom: 5px;
 }
-
-/* 댓글 한 개 항목 - 아바타 + 본문(이름/시간/내용/액션)을 가로 배치 */
 .cm-item {
     display: flex;
     gap: 16px;
@@ -448,8 +349,6 @@ li, button {
     color: white;
     padding: 2px 0;
 }
-
-/* 댓글 좋아요/싫어요/답글 버튼 그룹 */
 .cm-item-actions {
     display: flex;
     align-items: center;
@@ -478,37 +377,24 @@ li, button {
     color: var(--bg2);
     padding: 8px 16px;
 }
-
-
-/* ============================================
-   우측 추천 영상 리스트 (rm-list)
-   ============================================ */
-
-/* 추천 리스트 전체 컨테이너 - 데스크탑 기준 426px 고정 너비 */
 .rm-list {
     display: flex;
     flex-direction: column;
     width: 426px;
     padding: 24px 24px 0 0;
 }
-
-/* "All" / "From Marcus Levin" 필터 칩 묶음 */
 .rm-list__filters {
     display: flex;
     align-items: center;
     gap: 8px;
 }
-
-/* 필터용 라디오 버튼 자체는 화면에서 숨김 (라디오+label 조합으로 선택 상태 표현) */
 .rm-filter-input {
     display: none;
 }
-
-/* 필터 칩 버튼(label) 기본 스타일 - 알약(pill) 모양 */
 .rm-list__filter-chip {
     display: inline-flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 8px 12px;      /* 직접 지정 */
     border: none;
     outline: none;
     cursor: pointer;
@@ -519,30 +405,21 @@ li, button {
     white-space: nowrap;
     margin: 8px 0;
 }
-
-/* 라디오가 체크된(선택된) 필터 칩만 흰 배경 + 검정 글씨로 강조
-   - 인접 형제 선택자(+)로 "체크된 input 바로 다음 label"만 선택 */
 .rm-filter-input:checked + .rm-list__filter-chip {
     color: #000;
     background-color: white;
 }
-
-/* 추천 영상 카드들을 세로로 쌓는 리스트 */
 .rm-list__items {
     display: flex;
     flex-direction: column;
 }
 
-/* 추천 영상 카드 한 개 - 썸네일 + 정보를 가로 배치
-   - align-items: flex-end로 썸네일과 정보 영역을 하단 기준 정렬 */
 .video-card {
     display: flex;
     align-items: flex-end;
     width: 402px;
-    height: 102px;
+    height: 102px; 
 }
-
-/* 카드 썸네일 이미지 영역 */
 .video-card__thumbnail {
     width: 168px;
     height: 94px;
@@ -552,9 +429,6 @@ li, button {
     width: 100%;
     height: 100%;
 }
-
-/* 카드 텍스트 정보(제목/채널명/조회수) 영역
-   - justify-content: center로 세로 중앙 배치 */
 .video-card__info {
     display: flex;
     flex-direction: column;
@@ -567,28 +441,18 @@ li, button {
     font-size: 14px;
     font-weight: 400;
     color: white;
-    margin-bottom: 6px;   /* 제목과 채널명 사이 간격 */
+    margin-bottom: 6px;
 }
 .video-card__channel {
     font-size: 12px;
     color: var(--bg2);
-    margin-bottom: 4px;   /* 채널명과 조회수 사이 간격 */
+    margin-bottom: 4px;
 }
 .video-card__meta {
     font-size: 12px;
     color: var(--bg2);
 }
-
-
-/* ============================================
-   반응형: 태블릿 가로모드 (뷰포트 1300px 이하)
-   - 데스크탑 고정폭(.main 664px, .rm-list 426px)을
-     비율(%) 기반으로 바꿔서 화면 크기에 맞게 유동적으로 조절
-   - 반드시 위쪽 데스크탑 기본 스타일보다 "뒤에" 위치해야
-     같은 우선순위에서 이 규칙이 덮어씀
-   ============================================ */
 @media (max-width: 1300px) {
-    /* 메인 영역(80%) : 추천 리스트(20%) 비율로 재배치 */
     .main-aside-wrapper {
         gap: 16px;
         align-items: flex-start;
@@ -603,12 +467,12 @@ li, button {
 
     .rm-list {
         width: 20%;
-        min-width: 220px;   /* 너무 좁아지지 않도록 최소값 보장 */
+        min-width: 220px;
         padding: 24px 16px 0 0;
         flex-shrink: 0;
     }
 
-    /* rm-list 폭이 좁아졌으니 카드 내부도 고정 px 대신 %로 재조정 */
+    /* rm-list 안의 카드도 유동 너비로 */
     .video-card {
         width: 100%;
         height: auto;
@@ -616,7 +480,7 @@ li, button {
     .video-card__thumbnail {
         width: 45%;
         height: auto;
-        aspect-ratio: 16 / 9;   /* 비율 고정, 너비만 줄어들어도 찌그러지지 않게 */
+        aspect-ratio: 16 / 9;
     }
     .video-card__thumbnail-image {
         width: 100%;
@@ -634,28 +498,17 @@ li, button {
         font-size: 11px;
     }
 
-    /* 댓글 입력창도 고정폭(584px) 대신 100%로 */
+    /* 댓글 입력창도 고정폭 제거 */
     .cm-field-wrapper {
         width: 100%;
     }
 }
-
-
-/* ============================================
-   반응형: 모바일 (뷰포트 767px 이하)
-   - 1300px 블록과 겹치는 구간(0~767px)이 있으므로
-     반드시 1300px 블록보다 "뒤에" 위치해야 최종 적용됨
-   - 헤더를 모바일 형태로 축소하고,
-     본문을 완전히 세로 스택 구조로 전환
-   ============================================ */
 @media (max-width: 767px) {
-    /* 헤더: 햄버거/검색창/마이크/생성/앱/프로필 아이콘 숨기고
-       검색 아이콘만 원형 버튼으로 대체 */
     .hamburger { display: none; }
     .hd-sec1 { margin-inline-start: 16px; order: 1; margin-right: auto; width: auto;}
     .searchbar input, .searchbar button { display: none; }
     .searchbar { border: none; width: auto; }
-    .searchbar::after {
+    .searchbar::after { 
         content: '';
         display: block;
         width: 40px;
@@ -670,23 +523,17 @@ li, button {
     .hd-sec3 { order: 2; }
     .header { justify-content: flex-end; }
 
-    /* 데스크탑 사이드바는 모바일에서 완전히 숨김 */
     .sidebar { display: none; }
     .top-menu { left: 0; width: 100%; }
 
-    /* 모바일 전용 하단 내비게이션 바 표시 */
     .bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; height: 56px; background: var(--bg1); border-top: 1px solid var(--boder); z-index: 150; }
     .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #fff; font-size: 10px; }
     .nav-item img { width: 27px; height: 27px; border-radius: 50%;}
-
-    /* 하단 내비게이션에 콘텐츠가 가려지지 않도록 여백 확보 */
-    .body-wrap {
+        .body-wrap {
         padding-top: 56px;
-        padding-bottom: 56px;
+        padding-bottom: 56px;   /* 하단 nav에 안 가려지게 */
     }
 
-    /* 메인 콘텐츠(.main)와 추천 리스트(.rm-list)를
-       가로 배치 → 세로 배치(column)로 전환 */
     .main-aside-wrapper {
         flex-direction: column;
         gap: 0;
@@ -697,7 +544,7 @@ li, button {
         padding: 0;
     }
 
-    /* 비디오 플레이어를 화면 전체 너비로 확장 */
+    /* 비디오 플레이어 풀 와이드 */
     .video { width: 100%; }
     .player { width: 100%; }
 
@@ -707,41 +554,34 @@ li, button {
     .details-title {
         font-size: 16px;
     }
-
-    /* 통계(조회수)와 액션 버튼을 가로 배치 대신 세로로 쌓음 */
     .details-statsgroup {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
-
-    /* 액션 버튼이 화면 폭을 넘으면 가로 스크롤로 확인 가능하게 */
     .details-actions {
         width: 100%;
-        overflow-x: auto;
+        overflow-x: auto;     /* 좋아요/공유 등 버튼 가로 스크롤 */
         flex-wrap: nowrap;
     }
 
     .channel-info {
         padding: 16px;
     }
-
-    /* 데스크탑에서 아바타 기준으로 줬던 좌측 들여쓰기(64px) 제거 */
     .info-description,
     .info-show-more {
-        padding-left: 0;
+        padding-left: 0;      /* 아바타 기준 들여쓰기 제거 */
     }
 
     .cm-field-wrapper {
         width: 100%;
     }
 
-    /* 추천 영상 리스트: 댓글 아래쪽으로 이동, 전체 너비로 세로 스택
-       - 위쪽 두꺼운 border로 섹션 구분 */
+    /* 추천 영상 리스트: 댓글 아래로 이동, 세로 스택 */
     .rm-list {
         width: 100%;
         padding: 16px;
-        border-top: 8px solid var(--boder);
+        border-top: 8px solid var(--boder);  /* 섹션 구분 */
     }
     .video-card {
         width: 100%;
