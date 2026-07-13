@@ -44,16 +44,75 @@
             <!-- 헤더 - 네비 - Create 버튼 - Google Apps 버튼(지메일, 드라이브, 지도 등) - 알림 버튼 -->
                 <ul class="h-nav">
                     <li class="create-btn">
-                        <img src="./img/youtube-index/header/create.svg">
+                        <a href="#" class="create-btn"><img src="./img/youtube-index/header/create.svg"></a>
                     </li>
                     <li class="apps-btn">
-                        <img src="./img/youtube-index/header/apps.svg">
+                        <a href="#" class="apps-btn"><img src="./img/youtube-index/header/apps.svg"></a>
                     </li>
                     <li class="notification-btn">
-                        <img src="./img/youtube-index/header/notifications.svg">
+                        <a href="#" class="notifications-btn"><img src="./img/youtube-index/header/notifications.svg"></a>
                     </li>
-                    <li class="profile-btn">
-                        <img src="./img/youtube-index/header/User-Avatar.png" alt="프로필">
+                    <!-- 프로필 + 드롭다운 메뉴 -->
+                    <li class="profile-item">
+                        <input type="checkbox" id="profile-toggle" class="profile-input">
+                        <label for="profile-toggle" class="profile-btn">
+                            <img src="./img/youtube-index/header/User-Avatar.png" alt="프로필">
+                        </label>
+                    
+                        <div class="profile-drop">
+                            <!-- 1. 프로필 카드 -->
+                            <div class="drop-card">
+                                <img src="./img/youtube-index/header/User-Avatar.png" class="drop-avatar">
+                                <div class="profile-drop__info">
+                                    <p class="drop-name">Ruby Han</p>
+                                    <p class="drop-handle">@rubyhan</p>
+                                    <a href="#" class="drop-channel-link">View your channel</a>
+                                </div>
+                            </div>
+                        
+                            <!-- 2. 계정 관련 -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/google-logo.png" class="drop-icon">
+                                    <span>Google Account</span>
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/switch-account.png" class="drop-icon">
+                                    <span>Switch account</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/logout.png" class="drop-icon">
+                                    <span>Sign out</span>
+                                </a>
+                            </div>
+                        
+                            <!-- 3. Appearance / Language -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/design.png" class="drop-icon">
+                                    <span>Appearance: Device theme</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/lang-change.png" class="drop-icon">
+                                    <span>Language: English</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                            </div>
+                        
+                            <!-- 4. Settings / Help  -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/setting.png" class="drop-icon">
+                                    <span>Settings</span>
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/help.png" class="drop-icon">
+                                    <span>Help</span>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -63,7 +122,7 @@
     </header>
 
     <div class="body-wrap">
-        <!-- 사이드 바 -->
+        <!-- 사이드바 -->
         <aside class="sidebar">
         <!-- 사이드바 Home -->
         <!-- 사이드바 Explore -->
@@ -103,9 +162,9 @@
                 </span>
             </a>
             <a href="#" class="sidenav-act">
-                <span class="menu-item">
+                <span>
                     <img src="./img/youtube-index/sidebar/History.svg">
-                    <span>History</span>
+                    <span class="menu-text">History</span>
                 </span>
             </a>
             <a href="#" class="sidenav-act">
@@ -302,6 +361,16 @@
             
                 <input type="radio" name="channel-tab" id="tab-about" class="tab-input">
                 <label for="tab-about" class="tab-item">ABOUT</label>
+
+                <!-- 검색 버튼 -->
+                <button class="tab-search" aria-label="검색">
+                    <img src="./img/Channel/ch-search.svg" alt="">
+                </button>
+            
+                <!-- 더보기(화살표) 버튼 -->
+                <button class="tab-forward" aria-label="더보기">
+                    <img src="./img/Channel/ch-forward.png" alt="">
+                </button>
             </div>
 
 
@@ -473,6 +542,13 @@
                                 <!-- 플레이리스트 - 조회수, 업로드 일자 -->
                                 <p>329K views . 1 month ago</p>
                             </div>
+
+                            <button class="playlist-more" aria-label="더보기" type="button">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+
                         </div>
 
 
@@ -552,6 +628,13 @@
                                 <!-- 플레이리스트 - 조회수, 업로드 일자 -->
                                 <p>329K views . 1 month ago</p>
                             </div>
+
+                            <button class="playlist-more" aria-label="더보기" type="button">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+
                         </div>
 
                         <div class="playlist-part"> <!-- Playlist 3 -->
@@ -629,6 +712,13 @@
                                 <!-- 플레이리스트 - 조회수, 업로드 일자 -->
                                 <p>329K views . 1 month ago</p>
                             </div>
+
+                            <button class="playlist-more" aria-label="더보기" type="button">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+
                         </div>
 
                         <div class="playlist-part"> <!-- Playlist 4 -->
@@ -706,6 +796,13 @@
                                 <!-- 플레이리스트 - 조회수, 업로드 일자 -->
                                 <p>329K views . 1 month ago</p>
                             </div>
+
+                            <button class="playlist-more" aria-label="더보기" type="button">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+
                         </div>
             </div> <!-- HOME 콘텐츠 끝-->
 
