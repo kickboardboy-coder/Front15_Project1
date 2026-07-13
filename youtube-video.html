@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="youtube-style.css">
     <link rel="stylesheet" href="youtube-video.css">
     <style>
 
@@ -64,401 +65,614 @@
         
         
     </header>
-    <div class="main-aside-wrapper">
-        <!-- main -->
-        <main class="main">
-            <!-- 비디오 재생 화면 -->
-            <article class="video">
-                <div class="player">
-                    <img src="./img/video/video-player-yt.svg">
-                    <!-- 비디오 재생 화면 상단 구역 -->
-                    <header class="player-frame">
-                        <!-- 비디오 상단 제목 -->
-                        <span class="player-title">Blind Woodturner: Turning passion info fine art</span>
-                        <!-- 비디오 상단 정보 아이콘 -->
-                        <button class="player-info-icon">
-                            <img src="./img/video/ico-info.svg" alt="정보 아이콘">
-                        </button>
-                    </header>
-                    <!-- 재생시간 바 -->
-                    <div class="progress-bar">
-                        <div class="progress-buffered"></div>
-                        <div class="progress-played"></div>
-                    </div>
+    <div class="body-wrap">
+        <aside class="sidebar">
+        <!-- 사이드바 Home -->
+        <!-- 사이드바 Explore -->
+        <!-- 사이드바 Subscriptions -->
+        <nav class="sidebar-nav1">
+            <a href="#" class="sidenav-act is-active">
+                <span>
+                    <img src="./img/youtube-index/sidebar/home.svg">
+                    <span class="menu-text">Home</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/explore.svg">
+                    <span class="menu-text">Explore</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/subscriptions.svg">
+                    <span class="menu-text">Subscriptions</span>
+                </span>
+            </a>
+        </nav>
+        
+        <!-- 사이드바 Library -->
+        <!-- 사이드바 History -->
+        <!-- 사이드바 Your Video -->
+        <!-- 사이드바 Watch Later -->
+        <!-- 사이드바 Liked Videos -->
+        <!-- 사이드바 - 아코디언 - Show More-->
+        <nav class="sidebar-nav1">
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Library.svg">
+                    <span class="menu-text">Library</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/History.svg">
+                    <span class="menu-text">History</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Your Videos.svg">
+                    <span class="menu-text">Your Video</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/watchLater.svg">
+                    <span class="menu-text">Watch Later</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Liked Videos.svg">
+                    <span class="menu-text">Liked Video</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span class="side-acc">
+                    <img src="./img/youtube-index/sidebar/Show More.svg">
+                    <span class="acc-btn">Show More</span>
+                </span>
+            </a>
+        </nav>
 
+        <!-- 사이드바 - 채널 - SUBSCRIPTIONS -->
+        <!-- 사이드바 - 채널 - James Gouse -->
+        <!-- 사이드바 - 채널 - Alan Cooper -->
+        <!-- 사이드바 - 채널 - Marcus Levin -->
+        <!-- 사이드바 - 채널 - Alexis Sears -->
+        <!-- 사이드바 - 채널 - Jesica Lambert -->
+        <!-- 사이드바 - 채널 - Anna White -->
+        <!-- 사이드바 - 채널 - Skyal Dias -->
 
-                    <!-- 비디오 재생 화면 하단 아이콘들 모음 -->
-                    <footer class="player-controls">
-                        <div class="player-controls-left">
-                            <button class="player-play-btn"><!-- 플레이 버튼 -->
-                                <img src="./img/video/ico-play.svg" alt="">
-                            </button>
+        <nav class="sidebar-nav2">
+            <span>SUBSCRIPTIONS</span>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/James Gouse.svg">
+                    <span class="menu-text">James gouse</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Alan Cooper.svg">
+                    <span class="menu-text">Alan Cooper</span>
+                </span>
+            </a>
+            <a href="channel.html" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Marcus Levin.svg">
+                    <span class="menu-text">Marcus Levin</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Alexis Sears.svg">
+                    <span class="menu-text">Alexis Sears</span>
+                </span>
 
-                            <!-- 다음 영상 버튼 -->
-                            <button class="player-next-btn">
-                                <img src="./img/video/ico-next.svg" alt="">
-                            </button>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Jesica Lambert.svg">
+                    <span class="menu-text">Jesica Lambert</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Anna White.svg">
+                    <span class="menu-text">Anna White</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/Skylar Dias.svg">
+                    <span class="menu-text">Skyal Dias</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span class="side-acc">
+                    <img src="./img/youtube-index/sidebar/Show 13 more.svg">
+                    <span class="acc-btn">Show 13 More</span>
+                </span>
+            </a>
+        </nav>
 
-                            <!-- 볼륨 버튼 -->
-                            <button class="player-volume-btn">
-                                <img src="./img/video/ico-sound.svg" alt="">
-                            </button>
+        <!-- 사이드바 - MORE FROM YOUTUBE-->
+        <!-- 사이드바 - Youtube Premium -->
+        <!-- 사이드바 - Gaming -->
+        <!-- 사이드바 - Live -->
+        <!-- 사이드바 - Sports -->
+        <nav class="sidebar-nav3">
+            <span>MORE FROM YOUTUBE</span>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/premium.svg">
+                    <span class="menu-text">Youtube Premium</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/gaming.svg">
+                    <span class="menu-text">Gaming</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/live.svg">
+                    <span class="menu-text">Live</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/sports.svg">
+                    <span class="menu-text">Sports</span>
+                </span>
 
-                            <!-- 재생 시간 -->
-                            <span class="player-time">5:07 / 15:28</span>
-                        </div>    
-                        <!-- 우측 버튼 모음 -->
-                        <div class="player-settings">
-                            <!-- 자막 버튼 -->
-                            <li><button class="player-caption-btn">
-                                <img src="./img/video/ico-titles.svg" alt="">
-                            </button></li>
+            </a>
+        </nav>
 
-                            <!-- 화질 설정 버튼 -->
-                            <li><button class="player-quality-btn">
-                                <img src="./img/video/ico-hd.svg" alt="">
-                            </button></li>
-
-                            <!-- 작은 화면 버튼 -->
-                            <li><button class="player-theater-btn">
-                                <img src="./img/video/ico-theater.svg" alt="">
-                            </button></li>
-
-                            <!-- 미러링 버튼 -->
-                            <li><button class="player-miniplayer-btn">
-                                <img src="./img/video/ico-tv.svg" alt="">
-                            </button></li>
-
-                            <!-- 풀 스크린 버튼 -->
-                            <li><button class="player-fullscreen-btn">
-                                <img src="./img/video/ico-fullscreen.svg" alt="">
-                            </button></li>
-                        </div>
-                    </footer>
-                </div>
-                <!-- 제목/조회수/좋아요 등 영상 메타정보 -->
-                <div class="video-details">
-                    <!-- 영상 제목 -->
-                    <h3 class="details-title">Blind Woodturner: Turning passion into fine art</h3>
-                    <!-- 제목 아래 그룹 -->
-                    <div class="details-statsgroup">
-                        <!-- 조회수, 업로드 날짜 -->
-                        <span class="details-stats">576,969 views . Oct 8, 2021</span>
-                        <!-- 아이콘 메뉴들 -->
-                        <menu class="details-actions">
-
-                            <!-- 좋아요 아이콘 -->
-                            <li><button class="details-like">
-                                <img src="./img/video/liked.svg" alt=""><span>1.7K</span>
-                            </button></li>
-
-                            <!-- 싫어요 아이콘 -->
-                            <li><button class="details-dislike">
-                                <img src="./img/video/disliked.svg" alt=""><span>632</span>
-                            </button></li>
-
-                            <!-- 공유 아이콘 -->
-                            <li><button class="details-share">
-                                <img src="./img/video/share.svg" alt=""><span>SHARE</span>
-                            </button></li>
-
-                            <!-- 저장 아이콘 -->
-                            <li><button class="details-save">
-                                <img src="./img/video/save.svg" alt=""><span>SAVE</span>
-                            </button></li>
-
-                            <!-- 더보기 아이콘 -->
-                            <li><button class="details-more">
-                                <img src="./img/video/more.svg" alt="">
-                            </button></li>
-                        </menu>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 채널 정보 -->
-            <section class="channel-info">
-                <div class="channel-info-wrapper">
-                    <!-- 채널 프사 -->
-                    <img src="./img/video/Marcus Levin.svg" alt="채널사진" class="info-avatar">
-
-                        <!-- 채널 정보 상단 구역 -->
-                        <header class="channel-info-row">
-                            <!-- 채널명과 구독자수 -->
-                            <div class="info-meta">
-                                <!-- 채널명 -->
-                                <p class="info-name">Marcus Levin</p>
-                                <!-- 구독자 수 -->
-                                <p class="info-subscribers">1.2M subscribers</p>
-                            </div>
-
-                            <!-- 구독 버튼 -->
-                            <button class="info-subscribe-btn">
-                                <img src="./img/video/Subscribes-Btn.svg" alt="구독 버튼">
+        <!-- 사이드바 - Settings -->
+        <!-- 사이드바 - Report history -->
+        <!-- 사이드바 - Help -->
+        <!-- 사이드바 - Send feedback -->
+        <nav class="sidebar-nav4">
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/settings.svg">
+                    <span class="menu-text">Settings</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/report.svg">
+                    <span class="menu-text">Report history</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/help.svg">
+                    <span class="menu-text">Help</span>
+                </span>
+            </a>
+            <a href="#" class="sidenav-act">
+                <span>
+                    <img src="./img/youtube-index/sidebar/feedback.svg">
+                    <span class="menu-text">Send feedback</span>
+                </span>
+            </a>
+        </nav>
+        </aside>
+        <div class="main-aside-wrapper">
+            <!-- main -->
+            <main class="main">
+                <!-- 비디오 재생 화면 -->
+                <article class="video">
+                    <div class="player">
+                        <img src="./img/video/video-player-yt.svg">
+                        <!-- 비디오 재생 화면 상단 구역 -->
+                        <header class="player-frame">
+                            <!-- 비디오 상단 제목 -->
+                            <span class="player-title">Blind Woodturner: Turning passion info fine art</span>
+                            <!-- 비디오 상단 정보 아이콘 -->
+                            <button class="player-info-icon">
+                                <img src="./img/video/ico-info.svg" alt="정보 아이콘">
                             </button>
                         </header>
-                </div>
-                <!-- 채널 설명 -->
-                <p class="info-description">Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to hundreds of hours of YouTube videos and experimenting in his workshop. Now he's a YouTube creator himself, sells his products worldwide, and does demonstrations all around the country.</p>
-                <!-- 채널 설명 더보기 -->
-                <p class="info-show-more">SHOW MORE</p>
+                        <!-- 재생시간 바 -->
+                        <div class="progress-bar">
+                            <div class="progress-buffered"></div>
+                            <div class="progress-played"></div>
+                        </div>
+                    
+                    
+                        <!-- 비디오 재생 화면 하단 아이콘들 모음 -->
+                        <footer class="player-controls">
+                            <div class="player-controls-left">
+                                <button class="player-play-btn"><!-- 플레이 버튼 -->
+                                    <img src="./img/video/ico-play.svg" alt="">
+                                </button>
+                            
+                                <!-- 다음 영상 버튼 -->
+                                <button class="player-next-btn">
+                                    <img src="./img/video/ico-next.svg" alt="">
+                                </button>
+                            
+                                <!-- 볼륨 버튼 -->
+                                <button class="player-volume-btn">
+                                    <img src="./img/video/ico-sound.svg" alt="">
+                                </button>
+                            
+                                <!-- 재생 시간 -->
+                                <span class="player-time">5:07 / 15:28</span>
+                            </div>    
+                            <!-- 우측 버튼 모음 -->
+                            <div class="player-settings">
+                                <!-- 자막 버튼 -->
+                                <li><button class="player-caption-btn">
+                                    <img src="./img/video/ico-titles.svg" alt="">
+                                </button></li>
+                            
+                                <!-- 화질 설정 버튼 -->
+                                <li><button class="player-quality-btn">
+                                    <img src="./img/video/ico-hd.svg" alt="">
+                                </button></li>
+                            
+                                <!-- 작은 화면 버튼 -->
+                                <li><button class="player-theater-btn">
+                                    <img src="./img/video/ico-theater.svg" alt="">
+                                </button></li>
+                            
+                                <!-- 미러링 버튼 -->
+                                <li><button class="player-miniplayer-btn">
+                                    <img src="./img/video/ico-tv.svg" alt="">
+                                </button></li>
+                            
+                                <!-- 풀 스크린 버튼 -->
+                                <li><button class="player-fullscreen-btn">
+                                    <img src="./img/video/ico-fullscreen.svg" alt="">
+                                </button></li>
+                            </div>
+                        </footer>
+                    </div>
+                    <!-- 제목/조회수/좋아요 등 영상 메타정보 -->
+                    <div class="video-details">
+                        <!-- 영상 제목 -->
+                        <h3 class="details-title">Blind Woodturner: Turning passion into fine art</h3>
+                        <!-- 제목 아래 그룹 -->
+                        <div class="details-statsgroup">
+                            <!-- 조회수, 업로드 날짜 -->
+                            <span class="details-stats">576,969 views . Oct 8, 2021</span>
+                            <!-- 아이콘 메뉴들 -->
+                            <menu class="details-actions">
+                            
+                                <!-- 좋아요 아이콘 -->
+                                <li><button class="details-like">
+                                    <img src="./img/video/liked.svg" alt=""><span>1.7K</span>
+                                </button></li>
+                            
+                                <!-- 싫어요 아이콘 -->
+                                <li><button class="details-dislike">
+                                    <img src="./img/video/disliked.svg" alt=""><span>632</span>
+                                </button></li>
+                            
+                                <!-- 공유 아이콘 -->
+                                <li><button class="details-share">
+                                    <img src="./img/video/share.svg" alt=""><span>SHARE</span>
+                                </button></li>
+                            
+                                <!-- 저장 아이콘 -->
+                                <li><button class="details-save">
+                                    <img src="./img/video/save.svg" alt=""><span>SAVE</span>
+                                </button></li>
+                            
+                                <!-- 더보기 아이콘 -->
+                                <li><button class="details-more">
+                                    <img src="./img/video/more.svg" alt="">
+                                </button></li>
+                            </menu>
+                        </div>
+                    </div>
+                </article>
+            
+                <!-- 채널 정보 -->
+                <section class="channel-info">
+                    <div class="channel-info-wrapper">
+                        <!-- 채널 프사 -->
+                        <img src="./img/video/Marcus Levin.svg" alt="채널사진" class="info-avatar">
+                    
+                            <!-- 채널 정보 상단 구역 -->
+                            <header class="channel-info-row">
+                                <!-- 채널명과 구독자수 -->
+                                <div class="info-meta">
+                                    <!-- 채널명 -->
+                                    <p class="info-name">Marcus Levin</p>
+                                    <!-- 구독자 수 -->
+                                    <p class="info-subscribers">1.2M subscribers</p>
+                                </div>
+                            
+                                <!-- 구독 버튼 -->
+                                <button class="info-subscribe-btn">
+                                    <img src="./img/video/Subscribes-Btn.svg" alt="구독 버튼">
+                                </button>
+                            </header>
+                    </div>
+                    <!-- 채널 설명 -->
+                    <p class="info-description">Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to hundreds of hours of YouTube videos and experimenting in his workshop. Now he's a YouTube creator himself, sells his products worldwide, and does demonstrations all around the country.</p>
+                    <!-- 채널 설명 더보기 -->
+                    <p class="info-show-more">SHOW MORE</p>
+                    
+                </section>
+            
+                <!-- 댓글 창 -->
+                <section class="comment">
+                    <!-- 댓글 수, 정렬 -->
+                    <header class="cm-header">
+                        <!-- 댓글 수 -->
+                        <span class="cm-count">286 Comments</span>
+                        <!-- 댓글 정렬 -->
+                        <div class="sort">
+                            <!-- 댓글 정렬 버튼 -->
+                            <button class="sort-btn">
+                                <img src="./img/video/Dropdown.svg" alt="정렬" class="cm-sort-img">
+                            </button>
+                            <!-- 댓글 정렬 방법 -->
+                            <span class="sort-label">SORT BY</span>
+                        </div>
+                    </header>
                 
-            </section>
-
-            <!-- 댓글 창 -->
-            <section class="comment">
-                <!-- 댓글 수, 정렬 -->
-                <header class="cm-header">
-                    <!-- 댓글 수 -->
-                    <span class="cm-count">286 Comments</span>
-                    <!-- 댓글 정렬 -->
-                    <div class="sort">
-                        <!-- 댓글 정렬 버튼 -->
-                        <button class="sort-btn">
-                            <img src="./img/video/Dropdown.svg" alt="정렬" class="cm-sort-img">
-                        </button>
-                        <!-- 댓글 정렬 방법 -->
-                        <span class="sort-label">SORT BY</span>
-                    </div>
-                </header>
-
-                <!-- 댓글 입력창 -->
-                <form class="cm-input">
-                    <!-- 댓글 다는 사람의 프사 -->
-                    <img src="./img/video/Comment Avatar.svg" alt="" class="cm-input-avatar">
-                    <div class="cm-field-wrapper">
-                        <!-- 댓글 입력창 -->
-                        <input type="text" class="cm-field" placeholder="Add a public comment...">
-                    </div>
-                </form>
-
-                <!-- 댓글 리스트 -->
-                <ul class="cm-list">
-                    <!-- 댓글 구역 -->
-                    <article class="cm-item">
-                        <!-- 댓글 단 사람 프사 -->
-                        <img src="./img/video/James Gouse.svg" alt="" class="cm-item-avatar">
-                        <!-- 댓글 정보 -->
-                        <div class="cm-item-body">
-                            <!-- 댓글 단 사람 이름, 댓글 단 시간 -->
-                            <header class="cm-item-header">
-                                <!-- 댓글 단 사람 이름 -->
-                                <span class="cm-name">James Gouse</span>
-                                <!-- 댓글 단 시간 -->
-                                <span class="cm-timestamp">8 hours ago</span>
-                            </header>
-
-                            <!-- 댓글 내용 -->
-                            <p class="cm-item-text">Wow, world is full of different skills</p>
-                            <!-- 댓글 아이콘 모음 -->
-                            <footer class="cm-item-actions">
-                                <!-- 좋아요 버튼 -->
-                                <button class="like">
-                                    <img src="./img/video/Liked.svg" alt="좋아요 버튼">
-                                </button>
-                                <!-- 좋아요 수 -->
-                                <span class="likecount">3</span>
-                                <!-- 싫어요 버튼 -->
-                                <button class="dislike">
-                                    <img src="./img/video/DisLiked.svg" alt="싫어요 버튼">
-                                </button>
-                                <!-- 답글 달기 버튼 -->
-                                <button class="reply">REPLY</button>
-                            </footer>
+                    <!-- 댓글 입력창 -->
+                    <form class="cm-input">
+                        <!-- 댓글 다는 사람의 프사 -->
+                        <img src="./img/video/Comment Avatar.svg" alt="" class="cm-input-avatar">
+                        <div class="cm-field-wrapper">
+                            <!-- 댓글 입력창 -->
+                            <input type="text" class="cm-field" placeholder="Add a public comment...">
                         </div>
-                    </article>
-
-
-                    <!-- 댓글 구역 -->
-                    <article class="cm-item">
-                        <!-- 댓글 단 사람 프사 -->
-                        <img src="./img/video/Alan Cooper.svg" alt="" class="cm-item-avatar">
-                        <!-- 댓글 정보 -->
-                        <div class="cm-item-body">
-                            <!-- 댓글 단 사람 이름, 댓글 단 시간 -->
-                            <header class="cm-item-header">
-                                <!-- 댓글 단 사람 이름 -->
-                                <span class="cm-name">Alan Cooper</span>
-                                <!-- 댓글 단 시간 -->
-                                <span class="cm-timestamp">4 days ago</span>
-                            </header>
-
-                            <!-- 댓글 내용 -->
-                            <p class="cm-item-text">Can you provide?</p>
-                            <!-- 댓글 아이콘 모음 -->
-                            <footer class="cm-item-actions">
-                                <!-- 좋아요 버튼 -->
-                                <button class="like">
-                                    <img src="./img/video/Liked.svg" alt="좋아요 버튼">
-                                </button>
-                                <!-- 좋아요 수 -->
-                                <span class="likecount">3</span>
-                                <!-- 싫어요 버튼 -->
-                                <button class="dislike">
-                                    <img src="./img/video/DisLiked.svg" alt="싫어요 버튼">
-                                </button>
-                                <!-- 답글 달기 버튼 -->
-                                <button class="reply">REPLY</button>
-                            </footer>
-                        </div>
-                    </article>
+                    </form>
+                
+                    <!-- 댓글 리스트 -->
+                    <ul class="cm-list">
+                        <!-- 댓글 구역 -->
+                        <article class="cm-item">
+                            <!-- 댓글 단 사람 프사 -->
+                            <img src="./img/video/James Gouse.svg" alt="" class="cm-item-avatar">
+                            <!-- 댓글 정보 -->
+                            <div class="cm-item-body">
+                                <!-- 댓글 단 사람 이름, 댓글 단 시간 -->
+                                <header class="cm-item-header">
+                                    <!-- 댓글 단 사람 이름 -->
+                                    <span class="cm-name">James Gouse</span>
+                                    <!-- 댓글 단 시간 -->
+                                    <span class="cm-timestamp">8 hours ago</span>
+                                </header>
+                            
+                                <!-- 댓글 내용 -->
+                                <p class="cm-item-text">Wow, world is full of different skills</p>
+                                <!-- 댓글 아이콘 모음 -->
+                                <footer class="cm-item-actions">
+                                    <!-- 좋아요 버튼 -->
+                                    <button class="like">
+                                        <img src="./img/video/Liked.svg" alt="좋아요 버튼">
+                                    </button>
+                                    <!-- 좋아요 수 -->
+                                    <span class="likecount">3</span>
+                                    <!-- 싫어요 버튼 -->
+                                    <button class="dislike">
+                                        <img src="./img/video/DisLiked.svg" alt="싫어요 버튼">
+                                    </button>
+                                    <!-- 답글 달기 버튼 -->
+                                    <button class="reply">REPLY</button>
+                                </footer>
+                            </div>
+                        </article>
+                    
+                    
+                        <!-- 댓글 구역 -->
+                        <article class="cm-item">
+                            <!-- 댓글 단 사람 프사 -->
+                            <img src="./img/video/Alan Cooper.svg" alt="" class="cm-item-avatar">
+                            <!-- 댓글 정보 -->
+                            <div class="cm-item-body">
+                                <!-- 댓글 단 사람 이름, 댓글 단 시간 -->
+                                <header class="cm-item-header">
+                                    <!-- 댓글 단 사람 이름 -->
+                                    <span class="cm-name">Alan Cooper</span>
+                                    <!-- 댓글 단 시간 -->
+                                    <span class="cm-timestamp">4 days ago</span>
+                                </header>
+                            
+                                <!-- 댓글 내용 -->
+                                <p class="cm-item-text">Can you provide?</p>
+                                <!-- 댓글 아이콘 모음 -->
+                                <footer class="cm-item-actions">
+                                    <!-- 좋아요 버튼 -->
+                                    <button class="like">
+                                        <img src="./img/video/Liked.svg" alt="좋아요 버튼">
+                                    </button>
+                                    <!-- 좋아요 수 -->
+                                    <span class="likecount">3</span>
+                                    <!-- 싫어요 버튼 -->
+                                    <button class="dislike">
+                                        <img src="./img/video/DisLiked.svg" alt="싫어요 버튼">
+                                    </button>
+                                    <!-- 답글 달기 버튼 -->
+                                    <button class="reply">REPLY</button>
+                                </footer>
+                            </div>
+                        </article>
+                    </ul>
+                </section>
+            </main>
+        
+            <!-- 사이드 추천영상 리스트  -->
+            <aside class="rm-list">
+                <!-- 추천 영상 선택 버튼모음 -->
+                <nav class="rm-list__filters">
+                    <!-- 모든 영상 보기 버튼 -->
+                    <div class="chip-wrapper">
+                        <button class="rm-list__filter-chip1">All</button>
+                    </div>
+                    <!-- 현재 채널 영상 보기 버튼 -->
+                    <div class="chip-wrapper">
+                        <button class="rm-list__filter-chip2">From Marcus Levin</button>
+                    </div>
+                </nav>
+            
+                <!--추천 영상 리스트 -->
+                <ul class="rm-list__items">
+                    <!-- 추천 영상 카드 -->
+                    <li>
+                        <a class="video-card" href="#">
+                            <!-- 추천 영상 · 썸네일 구역 -->
+                            <div class="video-card__thumbnail">
+                                <!-- 추천 영상 · 썸네일 -->
+                                <img src="./img/video/list-img-yt.svg" alt="" class="video-card__thumbnail-image">
+                                
+                                
+                            </div>
+                        
+                            <!-- 추천 영상 정보 -->
+                            <div class="video-card__info">
+                                <!-- 추천 영상 · 제목 -->
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <!-- 추천 영상 · 채널명 -->
+                                <p class="video-card__channel">James Gouse</p>
+                                <!-- 추천 영상 · 조회수, 업로드 시간 -->
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="video-card" href="#">
+                            <div class="video-card__thumbnail">
+                                <img src="./img/video/list-img-ig.svg" alt="" class="video-card__thumbnail-image">
+                                
+                            </div>
+                            <div class="video-card__info">
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="video-card__channel">Marcus Levin</p>
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="video-card" href="#">
+                            <div class="video-card__thumbnail">
+                                <img src="./img/video/list-img-tict.svg" alt="" class="video-card__thumbnail-image">
+                                
+                            </div>
+                            <div class="video-card__info">
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="video-card__channel">Alexis Sears</p>
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="video-card" href="#">
+                            <div class="video-card__thumbnail">
+                                <img src="./img/video/list-img-nf.svg" alt="" class="video-card__thumbnail-image">
+                                
+                            </div>
+                            <div class="video-card__info">
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="video-card__channel">Jesica Lambert</p>
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="video-card" href="#">
+                            <div class="video-card__thumbnail">
+                                <img src="./img/video/list-img-twit.svg" alt="" class="video-card__thumbnail-image">
+                                
+                            </div>
+                            <div class="video-card__info">
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="video-card__channel">Anna White</p>
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="video-card" href="#">
+                            <div class="video-card__thumbnail">
+                                <img src="./img/video/list-img-spoti.svg" alt="" class="video-card__thumbnail-image">
+                            
+                            </div>
+                            <div class="video-card__info">
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="video-card__channel">Skylar Dias</p>
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="video-card" href="#">
+                            <div class="video-card__thumbnail">
+                                <img src="./img/video/list-img-disc.svg" alt="" class="video-card__thumbnail-image">
+                                
+                            </div>
+                            <div class="video-card__info">
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="video-card__channel">Alan Cooper</p>
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="video-card" href="#">
+                            <div class="video-card__thumbnail">
+                                <img src="./img/video/list-img-tesla.svg" alt="" class="video-card__thumbnail-image">
+                                
+                            </div>
+                            <div class="video-card__info">
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="video-card__channel">James Gouse</p>
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="video-card" href="#">
+                            <div class="video-card__thumbnail">
+                                <img src="./img/video/list-img-igshort.svg" alt="" class="video-card__thumbnail-image">
+                                
+                            </div>
+                            <div class="video-card__info">
+                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="video-card__channel">James Gouse</p>
+                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
-            </section>
-        </main>
-
-        <!-- 사이드 추천영상 리스트  -->
-        <aside class="rm-list">
-            <!-- 추천 영상 선택 버튼모음 -->
-            <nav class="rm-list__filters">
-                <!-- 모든 영상 보기 버튼 -->
-                <div class="chip-wrapper">
-                    <button class="rm-list__filter-chip1">All</button>
-                </div>
-                <!-- 현재 채널 영상 보기 버튼 -->
-                <div class="chip-wrapper">
-                    <button class="rm-list__filter-chip2">From Marcus Levin</button>
-                </div>
-            </nav>
-
-            <!--추천 영상 리스트 -->
-            <ul class="rm-list__items">
-                <!-- 추천 영상 카드 -->
-                <li>
-                    <a class="video-card" href="#">
-                        <!-- 추천 영상 · 썸네일 구역 -->
-                        <div class="video-card__thumbnail">
-                            <!-- 추천 영상 · 썸네일 -->
-                            <img src="./img/video/list-img-yt.svg" alt="" class="video-card__thumbnail-image">
-                            
-                            
-                        </div>
-
-                        <!-- 추천 영상 정보 -->
-                        <div class="video-card__info">
-                            <!-- 추천 영상 · 제목 -->
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <!-- 추천 영상 · 채널명 -->
-                            <p class="video-card__channel">James Gouse</p>
-                            <!-- 추천 영상 · 조회수, 업로드 시간 -->
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="video-card" href="#">
-                        <div class="video-card__thumbnail">
-                            <img src="./img/video/list-img-ig.svg" alt="" class="video-card__thumbnail-image">
-                            
-                        </div>
-                        <div class="video-card__info">
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <p class="video-card__channel">Marcus Levin</p>
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="video-card" href="#">
-                        <div class="video-card__thumbnail">
-                            <img src="./img/video/list-img-tict.svg" alt="" class="video-card__thumbnail-image">
-                            
-                        </div>
-                        <div class="video-card__info">
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <p class="video-card__channel">Alexis Sears</p>
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="video-card" href="#">
-                        <div class="video-card__thumbnail">
-                            <img src="./img/video/list-img-nf.svg" alt="" class="video-card__thumbnail-image">
-                            
-                        </div>
-                        <div class="video-card__info">
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <p class="video-card__channel">Jesica Lambert</p>
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="video-card" href="#">
-                        <div class="video-card__thumbnail">
-                            <img src="./img/video/list-img-twit.svg" alt="" class="video-card__thumbnail-image">
-                            
-                        </div>
-                        <div class="video-card__info">
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <p class="video-card__channel">Anna White</p>
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="video-card" href="#">
-                        <div class="video-card__thumbnail">
-                            <img src="./img/video/list-img-spoti.svg" alt="" class="video-card__thumbnail-image">
-                           
-                        </div>
-                        <div class="video-card__info">
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <p class="video-card__channel">Skylar Dias</p>
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="video-card" href="#">
-                        <div class="video-card__thumbnail">
-                            <img src="./img/video/list-img-disc.svg" alt="" class="video-card__thumbnail-image">
-                            
-                        </div>
-                        <div class="video-card__info">
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <p class="video-card__channel">Alan Cooper</p>
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="video-card" href="#">
-                        <div class="video-card__thumbnail">
-                            <img src="./img/video/list-img-tesla.svg" alt="" class="video-card__thumbnail-image">
-                            
-                        </div>
-                        <div class="video-card__info">
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <p class="video-card__channel">James Gouse</p>
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="video-card" href="#">
-                        <div class="video-card__thumbnail">
-                            <img src="./img/video/list-img-igshort.svg" alt="" class="video-card__thumbnail-image">
-                            
-                        </div>
-                        <div class="video-card__info">
-                            <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                            <p class="video-card__channel">James Gouse</p>
-                            <p class="video-card__meta">1M views &middot; 3 years ago</p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </aside>
+            </aside>
+        </div>
     </div>
-    
+    <!-- 모바일/태블릿 전용 하단 내비게이션 -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item">
+            <img src="./img/youtube-index/sidebar/home.svg" alt="">
+        </a>
+        <a href="#" class="nav-item">
+            <img src="./img/youtube-index/sidebar/Your Videos.svg" alt="">
+        </a>
+        <a href="#" class="nav-item">
+            <img src="./img/youtube-index/sidebar/subscriptions.svg" alt="">
+        </a>
+        <a href="#" class="nav-item">
+            <img src="./img/youtube-index/header/User-Avatar.png" alt="">
+        </a>
+    </nav>
 </body> 
 </html>
