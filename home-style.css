@@ -85,7 +85,6 @@
 .main-grid {
     flex: 1;
     min-width: 0;
-    padding-top: 56px;
     z-index: 80;
 }
 
@@ -103,18 +102,20 @@
     flex-direction: column;
     width: 100%;
     height: 247px;
+    text-decoration: none;
+    color: inherit; 
 }
 
 /* 썸네일 영역 */
 .grid-video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 276 / 155;
     overflow: hidden;
 }
 
 .grid-video img {
     width: 100%;
-    height: 155px;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -158,19 +159,14 @@
 
 /* 태블릿 */
 @media (max-width: 1023px) {
-    .main-grid {
-        margin-left: 0;
-        padding-bottom: 56px;
-    }
+    .main-grid { margin-left: 0; padding-bottom: 56px; }
 
-    .grid-item {
-        width: 100%;
-        height: auto; 
-    }
-
-    .grid-video img {
-        height: 100%; 
-    }
+    .grid-item { width: 100%; height: auto; }
+    .grid-video img { height: 100%; }
+    .grid-desc { padding: 12px 16px 16px 16px; gap: 12px; }
+    .grid-desc > img { width: 40px; height: 40px; }
+    .grid-text h3 { font-size: 15px; }
+    .grid-text p { font-size: 13px; }
 }
 
 
@@ -180,18 +176,17 @@
 }
 
 @media (max-width: 767px) {
-    .grid { grid-template-columns: 1fr; }
-
-    .grid-item { width: 100%; max-width: none; }
-
-    .grid-video { width: 100%; aspect-ratio: 16 / 9; }
-
-    .grid-video img { width: 100%; height: 100%; object-fit: cover; }
-
     .main-grid { margin-left: 0; }
 
-    .top-menu {
-        left: 0;
-        width: 100%;
-    }
+    .top-menu { left: 0; width: 100%; }
+
+    .grid { grid-template-columns: 1fr; }
+    .grid-item { width: 100%; max-width: none; }
+    .grid-video { width: 100%; aspect-ratio: 16 / 9; }
+    .grid-video img { width: 100%; height: 100%; object-fit: cover; }
+    .grid-desc { padding: 20px 16px 20px 16px; gap: 12px; }
+    .grid-desc > img { width: 44px; height: 44px; }
+    .grid-text h3 { font-size: 16px; line-height: 1.35; }
+    .grid-text p { font-size: 14px; }
+    
 }
