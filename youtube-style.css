@@ -55,7 +55,7 @@ body {
     width: 426px;
     height: 40px;
     padding: 0;
-    border: 3px solid var(--boder);
+    border: 1px solid var(--boder);
     overflow: hidden;
     border-radius: 2px;
     box-sizing: border-box;
@@ -272,7 +272,7 @@ body {
 .drop-chevron {
     width: 16px;
     height: 16px;
-    margin-left: auto;   /* 화살표를 오른쪽 끝으로 밀어냄 */
+    margin-left: auto;
     flex-shrink: 0;
 }
 
