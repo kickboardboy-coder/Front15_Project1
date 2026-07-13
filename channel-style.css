@@ -35,6 +35,7 @@ button {
 .banner-info-wrap {
     display: flex;
     justify-content: space-between;
+    background: #181818;
 }
 .info-left {
     display: flex;
@@ -51,7 +52,7 @@ button {
 .subcribes-btn { margin: 16px 65px 4px 0; }
 
 /* tabs */
-.tabs { margin: 0 0 0 65px; }
+.tabs { padding-left: 65px; background: #181818;}
 .tab-content {  background: black; }
 .tab-input { display: none; }
 .tab-item {
@@ -64,7 +65,7 @@ button {
     padding: 16px 32px 15px 32px;
 }
 
-.tab-input:checked + .tab-item { color: white; border-bottom: 2px solid white; }
+.tab-input:checked + .tab-item { color: white; border-bottom: 1px solid white; }
 /* 콘텐츠 기본은 숨김 */
 .tab-content { display: none; }
 
@@ -79,7 +80,7 @@ body:has(#tab-about:checked) #content-about {
 }
 
 /* 비디오 */
-.video-box { display: flex; gap: 24px; margin: 24px 287px 24px 65px; }
+.video-box { display: flex; gap: 24px; padding: 24px 287px 24px 65px; }
 .player {
     position: relative;
     width: 424px;
@@ -100,12 +101,13 @@ body:has(#tab-about:checked) #content-about {
     justify-content: space-between;
     display: flex;
     align-items: center;
+    padding-bottom: 24px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0));
 }
 .player-title { font-size: 14px; margin: 14px 0 0 16px; }
 .player-info-icon { margin: 14px 16px 0 0; }
 
 .player-controls {
-    border-top: 1px solid;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -113,19 +115,76 @@ body:has(#tab-about:checked) #content-about {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 8px;
+    height: 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
 }
+
+
+/* 좌측 그룹: 재생/다음/볼륨/시간 */
+.ctr-left {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 16px -> 10px */
+}
+.ctr-left .play-btn { padding-left: 10px;}
+
+.ctr-left .time {
+    margin-left: 6px;
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.player-settings {
+    display: flex;
+    align-items: center;
+    gap: 14px; /* 20px -> 14px */
+}
+
+.player-controls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;  /* 28px -> 20px */
+    height: 20px; /* 28px -> 20px */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.9;
+    transition: opacity 0.15s;
+}
+
+.player-controls button:hover {
+    opacity: 1;
+}
+
+.player-controls button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.play-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+
 
 /* 재생바 */
 .progress-bar {
     position: relative;
-    width: 100%;
+    width: 95%;
     height: 4px;
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
     z-index: 100;
     bottom: 42px;
+    margin-left: 10px;
 }
-.progress-buffered {
+.buffered {
     position: absolute;
     top: 0;
     left: 0;
@@ -133,7 +192,7 @@ body:has(#tab-about:checked) #content-about {
     width: 40%;
     background-color: rgba(255, 255, 255, 0.5);
 }
-.progress-played {
+.played {
     position: absolute;
     top: 0;
     left: 0;
@@ -142,7 +201,7 @@ body:has(#tab-about:checked) #content-about {
     background-color: #ff0000;
 
 }
-.progress-handle {
+.handle {
     position: absolute;
     top: 50%;
     left: 33%;
@@ -152,7 +211,6 @@ body:has(#tab-about:checked) #content-about {
 
 }
 
-.player-settings { display: flex; }
 .video-desc {
     display: flex;
     flex-direction: column;
