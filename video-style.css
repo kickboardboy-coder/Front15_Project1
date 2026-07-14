@@ -26,7 +26,7 @@ body {
 .body-wrap {
     max-width: 1440px;
     margin: 0 auto;
-    position: relative;
+    display:flex;
     padding-top: 56px;   /* 헤더 높이(56px)만큼 아래로 밀어줌 */
 }
 
@@ -47,8 +47,10 @@ body {
 
 /* 메인 콘텐츠(.main) + 추천영상(.rm-list)을 가로로 배치하는 컨테이너
    - 데스크탑 기준 두 영역을 나란히 중앙 정렬 */
-.main-aside-wrapper {
+.main-aside-wrap {
     display: flex;
+    flex: 1;
+    min-width: 0;
     gap: 24px;
     justify-content: center;
     background-color: #181818;
@@ -315,7 +317,7 @@ li, button {
 
 /* 아바타 + 이름/구독버튼을 가로로 배치하는 줄
    - 위쪽에 구분선(border-top) */
-.channel-info-wrapper {
+.channel-info-wrap {
     display: flex;
     border-top: 1px solid var(--boder);
     padding-top: 16px;
@@ -370,9 +372,15 @@ li, button {
 
 /* "더보기" 텍스트 - 설명과 같은 들여쓰기 */
 .info-show-more {
+    display: block;
+    border: none;
+    background: none;
+    font-family: inherit;
+    text-align: left;
     font-size: 12px;
     color: var(--bg2);
     padding: 8px 0 0 64px;
+    cursor: pointer;
 }
 
 
@@ -454,13 +462,13 @@ li, button {
 .sort-option:hover {
     background: #e5e5e5;
 }
-.sort-option__title {
+.sort-title {
     font-size: 16px;
     font-weight: 700;
     color: #030303;
     margin-bottom: 4px;
 }
-.sort-option__desc {
+.sort-desc {
     font-size: 14px;
     color: #606060;
     line-height: 1.4;
@@ -478,8 +486,8 @@ li, button {
     margin-right: 16px;
 }
 
-/* 댓글 입력창을 감싸는 wrapper - 밑줄 텍스트 입력 형태 */
-.cm-field-wrapper {
+/* 댓글 입력창을 감싸는 wrap - 밑줄 텍스트 입력 형태 */
+.cm-field-wrap {
     display: flex;
     width: 584px;   /* 데스크탑 고정 너비 (반응형에서 100%로 재정의됨) */
     align-items: center;
@@ -567,19 +575,19 @@ li, button {
 }
 
 /* "All" / "From Marcus Levin" 필터 칩 묶음 */
-.rm-list__filters {
+.list-filter {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 /* 필터용 라디오 버튼 자체는 화면에서 숨김 (라디오+label 조합으로 선택 상태 표현) */
-.rm-filter-input {
+.filter-input {
     display: none;
 }
 
 /* 필터 칩 버튼(label) 기본 스타일 - 알약(pill) 모양 */
-.rm-list__filter-chip {
+.filter-chip {
     display: inline-flex;
     align-items: center;
     padding: 8px 12px;
@@ -596,13 +604,13 @@ li, button {
 
 /* 라디오가 체크된(선택된) 필터 칩만 흰 배경 + 검정 글씨로 강조
    - 인접 형제 선택자(+)로 "체크된 input 바로 다음 label"만 선택 */
-.rm-filter-input:checked + .rm-list__filter-chip {
+.filter-input:checked + .filter-chip {
     color: #000;
     background-color: white;
 }
 
 /* 추천 영상 카드들을 세로로 쌓는 리스트 */
-.rm-list__items {
+.rm-list-items {
     display: flex;
     flex-direction: column;
 }
@@ -617,19 +625,19 @@ li, button {
 }
 
 /* 카드 썸네일 이미지 영역 */
-.video-card__thumbnail {
+.card-thumb {
     width: 168px;
     height: 94px;
     margin-right: 8px;
 }
-.video-card__thumbnail-image {
+.card-thumb-img {
     width: 100%;
     height: 100%;
 }
 
 /* 카드 텍스트 정보(제목/채널명/조회수) 영역
    - justify-content: center로 세로 중앙 배치 */
-.video-card__info {
+.card-info {
     display: flex;
     flex-direction: column;
     padding-right: 24px;
@@ -637,7 +645,7 @@ li, button {
     height: 94px;
     justify-content: center
 }
-.video-card__title {
+.card-title {
     font-size: 14px;
     font-weight: 400;
     color: white;
@@ -650,7 +658,7 @@ li, button {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.video-card__channel {
+.card-channel {
     font-size: 12px;
     color: var(--bg2);
     margin-bottom: 4px;   /* 채널명과 조회수 사이 간격 */
@@ -659,7 +667,7 @@ li, button {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.video-card__meta {
+.card-meta {
     font-size: 12px;
     color: var(--bg2);
     /* 한 줄로 표시하고 넘치면 ... 처리 */
@@ -678,7 +686,7 @@ li, button {
    ============================================ */
 @media (max-width: 1300px) {
     /* 메인 영역(80%) : 추천 리스트(20%) 비율로 재배치 */
-    .main-aside-wrapper {
+    .main-aside-wrap {
         gap: 16px;
         align-items: flex-start;
     }
@@ -702,31 +710,31 @@ li, button {
         width: 100%;
         height: auto;
     }
-    .video-card__thumbnail {
+    .card-thumb {
         width: 45%;
         height: auto;
         aspect-ratio: 16 / 9;   /* 비율 고정, 너비만 줄어들어도 찌그러지지 않게 */
         overflow: hidden;
     }
-    .video-card__thumbnail-image {
+    .card-thumbimg {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
     }
-    .video-card__info {
+    .card-info {
         width: 55%;
         height: auto;
     }
-    .video-card__title {
+    .card-title {
         font-size: 12px;
     }
-    .video-card__channel, .video-card__meta {
+    .card-channel, .card-meta {
         font-size: 11px;
     }
 
     /* 댓글 입력창도 고정폭(584px) 대신 100%로 */
-    .cm-field-wrapper {
+    .cm-field-wrap {
         width: 100%;
     }
 }
@@ -778,7 +786,7 @@ li, button {
 
     /* 메인 콘텐츠(.main)와 추천 리스트(.rm-list)를
        가로 배치 → 세로 배치(column)로 전환 */
-    .main-aside-wrapper {
+    .main-aside-wrap {
         flex-direction: column;
         gap: 0;
     }
@@ -818,13 +826,17 @@ li, button {
         padding: 16px;
     }
 
+    .comment {
+    padding: 0 16px;
+    }
+
     /* 데스크탑에서 아바타 기준으로 줬던 좌측 들여쓰기(64px) 제거 */
     .info-description,
     .info-show-more {
         padding-left: 0;
     }
 
-    .cm-field-wrapper {
+    .cm-field-wrap {
         width: 100%;
     }
 
@@ -839,17 +851,17 @@ li, button {
         width: 100%;
         height: auto;
     }
-    .video-card__thumbnail {
+    .card-thumb {
         width: 40%;
         aspect-ratio: 16 / 9;
         height: auto;
     }
-    .video-card__thumbnail-image {
+    .card-thumb-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
-    .video-card__info {
+    .card-info {
         width: 60%;
         height: auto;
     }
