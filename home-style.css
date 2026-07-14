@@ -1,4 +1,3 @@
-
 :root { 
     --bg1: #212121;
     --bg2: #AAAAAA;
@@ -11,10 +10,12 @@
     Main 
    ======= */
 
-/* 탭 버튼 */
+/* =========================================
+    상단 카테고리 필터 탭 메뉴 (전체/음악/게임 등)
+   ========================================= */
 .top-menu {
     position: sticky;
-    top: 56px;
+    top: 56px;             /* 상단 헤더(56px) 바로 아래에 붙어서 스크롤 시 고정됨 */
     display: flex;
     align-items: center;
     height: 56px;
@@ -24,6 +25,7 @@
     z-index: 90;
 }
 
+/* 카테고리 칩(chip)들이 가로로 나열되는 리스트, 넘치면 가로 스크롤 */
 .menu-list {
     display: flex;
     flex: 1;
@@ -35,13 +37,15 @@
     padding: 0;
     overflow-x: auto;
     white-space: nowrap;
-    scrollbar-width: none;
+    scrollbar-width: none;  /* 파이어폭스: 스크롤바 숨김 */
 }
 
+/* 크롬/사파리 등: 스크롤바 숨김 */
 .menu-list::-webkit-scrollbar {
     display: none;
 }
 
+/* 개별 카테고리 칩 버튼 (예: "전체", "음악", "게임"...) */
 .menu-item {
     display: inline-flex;
     align-items: center;
@@ -49,7 +53,7 @@
     width: auto;
     height: 32px;
     flex: 0 0 auto;
-    border-radius: 32px;
+    border-radius: 32px;   /* 알약(pill) 모양 */
     border: 1px solid var(--bg2);
     padding: 0 12px;
     margin: 12px 0 12px 0;
@@ -62,14 +66,16 @@
     line-height: 1;
 }
 
+/* 현재 선택된 칩: 흰 배경 + 검정 글씨로 반전 강조 */
 .menu-item.active {
     width: 40px;
     background: #fff;
     color: #000;
     border-color: #fff;
-    margin: 12px 0 12px 24px;
+    margin: 12px 0 12px 24px; /* 왼쪽 여백을 크게 줘서 다른 칩들과 구분 */
 }
 
+/* 칩 목록 좌우 끝에 있는 스크롤 이동 화살표 버튼 */
 .arrow {
     flex: 0 0 auto;
     width: 56px;
@@ -86,45 +92,48 @@
 
 
 
-/* 메인 */
+/* =========================================
+    메인 영상 그리드 영역
+   ========================================= */
 .main-grid {
     flex: 1;
     min-width: 0;
     z-index: 80;
 }
 
-
+/* 영상 카드들이 배치되는 그리드 컨테이너 */
 .grid {
     display: grid;
     background: #000;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px 24px;
+    grid-template-columns: repeat(4, 1fr); /* 데스크탑 기본: 4열 */
+    gap: 40px 24px; /* 세로 40px, 가로 24px 간격 */
     padding: 24px;
 }
 
+/* 영상 카드 하나 (썸네일 + 아바타/텍스트로 구성) */
 .grid-item {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 247px;
-    text-decoration: none;
+    text-decoration: none; /* a 태그 밑줄 제거 */
     color: inherit; 
 }
 
 /* 썸네일 영역 */
 .grid-video {
     width: 100%;
-    aspect-ratio: 276 / 155;
+    aspect-ratio: 276 / 155; /* 썸네일 가로세로 비율 고정 */
     overflow: hidden;
 }
 
 .grid-video img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* 비율 유지하며 영역 꽉 채우고 초과분은 잘라냄 */
 }
 
-/* 아바타 + 텍스트 영역 */
+/* 썸네일 하단: 채널 아바타 + 제목/채널명 텍스트 영역 */
 .grid-desc {
     display: flex;
     align-items: flex-start;
@@ -132,20 +141,23 @@
     padding: 12px 24px 18px 0;
 }
 
+/* 채널 아바타 */
 .grid-desc > img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
-    flex-shrink: 0;
+    flex-shrink: 0; /* 텍스트가 길어도 아바타가 찌그러지지 않도록 고정 */
 }
 
+/* 영상 제목 + 채널명/조회수 텍스트를 감싸는 컨테이너 */
 .grid-text {
     display: flex;
     flex-direction: column;
-    min-width: 0; 
+    min-width: 0;  /* flex 자식의 text-overflow가 정상 작동하도록 */
 }
 
+/* 영상 제목 */
 .grid-text h3 {
     font-size: 12px;
     font-weight: bold;
@@ -153,6 +165,7 @@
     margin: 0 0 6px 0;
 }
 
+/* 채널명 / 조회수 / 업로드 시점 등 보조 텍스트 */
 .grid-text p {
     font-size: 12px;
     color: var(--bg2);
@@ -162,35 +175,40 @@
 
 
 
-/* 태블릿 */
+/* =========================================
+    반응형 - 태블릿 이하 (1023px 이하) 공통
+   ========================================= */
 @media (max-width: 1023px) {
     .main-grid { margin-left: 0; padding-bottom: 56px; }
 
-    .grid-item { width: 100%; height: auto; }
+    .grid-item { width: 100%; height: auto; } /* 고정 높이 해제, 내용에 맞춰 늘어남 */
     .grid-video img { height: 100%; }
     .grid-desc { padding: 12px 16px 16px 16px; gap: 12px; }
-    .grid-desc > img { width: 40px; height: 40px; }
+    .grid-desc > img { width: 40px; height: 40px; } /* 아바타 살짝 확대 */
     .grid-text h3 { font-size: 15px; }
     .grid-text p { font-size: 13px; }
 }
 
 
-
+/* 태블릿 전용 구간(768px~1023px): 그리드를 2열로 축소 */
 @media (min-width: 768px) and (max-width: 1023px) {
     .grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* =========================================
+    반응형 - 모바일 (767px 이하)
+   ========================================= */
 @media (max-width: 767px) {
     .main-grid { margin-left: 0; }
 
     .top-menu { left: 0; width: 100%; }
 
-    .grid { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; } /* 1열: 카드가 세로로 쭉 나열 */
     .grid-item { width: 100%; max-width: none; }
-    .grid-video { width: 100%; aspect-ratio: 16 / 9; }
+    .grid-video { width: 100%; aspect-ratio: 16 / 9; } /* 모바일에서는 일반적인 16:9 비율 사용 */
     .grid-video img { width: 100%; height: 100%; object-fit: cover; }
     .grid-desc { padding: 20px 16px 20px 16px; gap: 12px; }
-    .grid-desc > img { width: 44px; height: 44px; }
+    .grid-desc > img { width: 44px; height: 44px; } /* 아바타 한 번 더 확대 */
     .grid-text h3 { font-size: 16px; line-height: 1.35; }
     .grid-text p { font-size: 14px; }
     

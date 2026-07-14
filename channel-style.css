@@ -1,12 +1,15 @@
+/* =========================================
+    전역 초기화 & 공통 설정
+   ========================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
 
 :root { 
-    --bg1: #212121;
-    --bg2: #AAAAAA;
-    --boder: #303030;
-    --youtube: #FF0000;
+    --bg1: #212121;         /* 페이지 기본 배경색(다크) */
+    --bg2: #AAAAAA;         /* 보조 텍스트 색상(구독자 수, 설명 등) */
+    --boder: #303030;       /* 구분선 색상 */
+    --youtube: #FF0000;     /* 유튜브 브랜드 레드 */
 
-    --side-gutter: clamp(16px, 5vw, 65px);
+    --side-gutter: clamp(16px, 5vw, 65px); /* 화면 크기에 따라 좌우 여백이 16px~65px 사이로 유동 */
 }
 
 body {
@@ -20,6 +23,10 @@ button {
     cursor: pointer;
 
 }
+
+/* =========================================
+    레이아웃 뼈대
+   ========================================= */
 .main-wrap {
     display: flex;
     flex-direction: column;
@@ -30,14 +37,18 @@ button {
     flex-direction: column;
 
 }
+
+/* 채널 상단 배너 이미지 */
 .main-banner {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 192;
+    aspect-ratio: 1200 / 192; /* 배너 원본 비율 고정 */
     display: block;
     background: #000;
     object-fit: contain;
 }
+
+/* 배너 아래: 채널 이름/구독자수 + 구독 버튼이 들어가는 영역 */
 .banner-info-wrap {
     display: flex;
     justify-content: space-between;
@@ -57,10 +68,16 @@ button {
 .channel-subs { font-size: 14px; color: var(--bg2); }
 
 
-/* 구독  */ 
+/* =========================================
+    구독 버튼 & 구독 취소 확인 모달
+    (checkbox hack: JS 없이 CSS만으로 상태 관리)
+   ========================================= */
+
+/* 상태를 저장하는 실제 체크박스는 화면에서 숨김 */
 .subs-toggle-input,
 .unsub-modal-toggle-input { display: none; }
 
+/* "구독" 버튼 기본 스타일 (미구독 상태) */
 .subs-btn,
 .subscribe-btn {
     display: inline-flex;
@@ -87,10 +104,13 @@ button {
     background: #a30000;
 }
 
-/* 구독 안 함 */
+/* "구독중" 버튼은 기본적으로 숨겨둠 (미구독 상태가 기본값) */
 .btn-subscribed { display: none; }
 
-/* 구독함 or 모달 열림 -> 버튼 스와핑 + 색상 변경 */
+/*  구독 체크박스가 checked 되었거나, 모달이 열린 상태(state-modal checked)면
+    -> 구독 버튼(.btn-subscribe)을 숨기고 구독중 버튼(.btn-subscribed)을 보여줌
+    (state-modal도 함께 체크하는 이유: 구독 취소 확인 모달이 열려있는 동안에도
+    버튼은 계속 "구독중" 형태를 유지시키기 위함) */
 body:has(#state-sub:checked) .btn-subscribe,
 body:has(#state-modal:checked) .btn-subscribe {
     display: none;
@@ -105,12 +125,12 @@ body:has(#state-modal:checked) .btn-subscribed:hover {
     background: #3f3f3f;
 }
 
-/* 구독 취소 확인 모달: 모달 상태일 때만 */
+/* 구독 취소 확인 모달: state-modal 체크박스가 켜졌을 때만 화면에 표시 */
 body:has(#state-modal:checked) .modal-overlay {
     display: flex;
 }
 
-/* 구독 취소 확인 모달 */
+/* 모달 배경 오버레이 (기본은 숨김) */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -121,6 +141,7 @@ body:has(#state-modal:checked) .modal-overlay {
     z-index: 2000;
 }
 
+/* 모달 본체(흰색 카드) */
 .modal-box {
     width: 320px;
     height: 152px;
@@ -133,6 +154,7 @@ body:has(#state-modal:checked) .modal-overlay {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
+/* 모달 안내 문구 영역: "채널명 구독을 취소하시겠습니까?" 형태 */
 .modal-text-box {
     display: flex;
     justify-content: center;
@@ -144,6 +166,8 @@ body:has(#state-modal:checked) .modal-overlay {
 }
 .modal-name { font-size: 14px; line-height: 1.5;  }
 .modal-text { font-size: 14px; color: var(--bg2); line-height: 1.5;}
+
+/* 모달 하단 버튼(취소 / 구독취소) 영역 */
 .modal-actions {
     display: flex;
     justify-content: end;
@@ -159,12 +183,15 @@ body:has(#state-modal:checked) .modal-overlay {
     cursor: pointer;
     padding: 11px 22px;
 }
-.modal-cancel { color: #030303; }
-.modal-confirm { color: #FE2A3E; }
+.modal-cancel { color: #030303; }   /* 취소 버튼: 검정 */
+.modal-confirm { color: #FE2A3E; }  /* 구독취소 확정 버튼: 빨강 강조 */
 
 
 
-/* tabs */
+/* =========================================
+    탭 메뉴 (홈/동영상/재생목록/커뮤니티/채널/정보)
+    (checkbox hack으로 탭 전환 구현)
+   ========================================= */
 .tabs { 
     display: flex;
     align-items: center;
@@ -173,7 +200,7 @@ body:has(#state-modal:checked) .modal-overlay {
     background: #181818;
 }
 .tab-content {  background: black; }
-.tab-input { display: none; }
+.tab-input { display: none; } /* 탭 선택 상태를 저장하는 라디오/체크박스는 숨김 */
 .tab-item {
     padding: 12px 16px;
     color: var(--bg2);
@@ -181,10 +208,10 @@ body:has(#state-modal:checked) .modal-overlay {
     display: inline-block;
     font-size: 14px;
     font-weight: bold;
-    padding: 16px 32px 15px 32px;
+    padding: 16px 32px 15px 32px; 
 }
 .tab-search { margin-left: 24px; }
-.tab-forward { margin-left: auto; }
+.tab-forward { margin-left: auto; } /* 이동 아이콘 오른쪽 끝으로 밀어내기  */
 .tab-search,
 .tab-forward {
     display: flex;
@@ -204,11 +231,13 @@ body:has(#state-modal:checked) .modal-overlay {
     object-fit: contain;
 }
 
+/* 현재 선택된 탭은 텍스트를 흰색 + 밑줄로 강조 */
 .tab-input:checked + .tab-item { color: white; border-bottom: 1px solid white; }
-/* 콘텐츠 기본은 숨김 */
+
+/* 모든 탭 콘텐츠는 기본적으로 숨김 */
 .tab-content { display: none; }
 
-/* checked -> 컨텐츠 보이기 */
+/* 해당 탭의 라디오버튼이 checked 상태일 때만 콘텐츠 표시 */
 body:has(#tab-home:checked) #content-home,
 body:has(#tab-videos:checked) #content-videos,
 body:has(#tab-playlists:checked) #content-playlists,
@@ -221,8 +250,9 @@ body:has(#tab-about:checked) #content-about {
 
 
 
-
-/* 비디오 */
+/* =========================================
+    비디오 플레이어 영역 (메인 영상 + 설명 텍스트)
+   ========================================= */
 .video-box { 
     display: flex;
     flex-wrap: nowrap;
@@ -231,9 +261,11 @@ body:has(#tab-about:checked) #content-about {
     padding: 24px var(--side-gutter) 24px var(--side-gutter);
 
 }
+
+/* 좌측: 영상 플레이어 박스 */
 .player {
     position: relative;
-    aspect-ratio: 424 / 238;
+    aspect-ratio: 424 / 238; /* 16:9에 가까운 플레이어 비율 고정 */
     height: auto;
     flex: 0 1 424px;
     min-width: 120px;
@@ -245,6 +277,8 @@ body:has(#tab-about:checked) #content-about {
     display: block;
     object-fit: contain;
 }
+
+/* 플레이어 상단: 그라데이션 배경 위에 제목 + 정보 아이콘 */
 .player-frame {
     position: absolute;
     top: 1px;
@@ -256,18 +290,19 @@ body:has(#tab-about:checked) #content-about {
     display: flex;
     align-items: center;
     padding-bottom: 24px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0));
+    background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)); /* 위->아래 서서히 투명해짐 */
 }
 .player-title { 
     font-size: 14px;
     margin: 14px 0 0 16px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* 제목이 길면 ... 처리 */
     white-space: nowrap;
     min-width: 0;
 }
 .player-info-icon { margin: 14px 16px 0 0; }
 
+/* 플레이어 하단: 재생 컨트롤 바(재생/음량/설정 등) */
 .player-controls {
     position: absolute;
     bottom: 0;
@@ -278,7 +313,7 @@ body:has(#tab-about:checked) #content-about {
     justify-content: space-between;
     padding: 0 8px;
     height: 40px;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0)); /* 아래->위 서서히 투명해짐 */
 }
 
 
@@ -297,12 +332,14 @@ body:has(#tab-about:checked) #content-about {
     white-space: nowrap;
 }
 
+/* 우측 그룹: 자막/설정/전체화면 등 아이콘 묶음 */
 .player-settings {
     display: flex;
     align-items: center;
     gap: 14px;
 }
 
+/* 컨트롤 바 내부 아이콘 버튼 공통 스타일 */
 .player-controls button {
     display: flex;
     align-items: center;
@@ -327,6 +364,7 @@ body:has(#tab-about:checked) #content-about {
     object-fit: contain;
 }
 
+/* 재생 버튼만 다른 버튼보다 살짝 크게 */
 .player-controls .play-btn {
     width: 28px;
     height: 28px;
@@ -334,15 +372,17 @@ body:has(#tab-about:checked) #content-about {
 
 
 
-/* 재생바 */
+/* =========================================
+    재생바 (progress bar)
+   ========================================= */
 .progress-bar {
     position: relative;
     width: 95%;
     height: 4px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2); /* 전체 재생 길이(회색 트랙) */
     cursor: pointer;
     z-index: 100;
-    bottom: 42px;
+    bottom: 42px;      /* 컨트롤 바 위쪽으로 끌어올려 배치 */
     margin-left: 10px;
 }
 .buffered {
@@ -350,7 +390,7 @@ body:has(#tab-about:checked) #content-about {
     top: 0;
     left: 0;
     height: 100%;
-    width: 40%;
+    width: 40%;  /* 버퍼링(미리 로드)된 구간 비율 (예시값) */
     background-color: rgba(255, 255, 255, 0.5);
 }
 .played {
@@ -358,20 +398,21 @@ body:has(#tab-about:checked) #content-about {
     top: 0;
     left: 0;
     height: 100%;
-    width: 33%;
+    width: 33%; /* 현재까지 재생된 구간 비율 (예시값), 유튜브 레드 */
     background-color: #ff0000;
 
 }
 .handle {
     position: absolute;
     top: 50%;
-    left: 33%;
+    left: 33%; /* .played 와 같은 위치에 재생 헤드(동그란 손잡이) 표시 */
     width: 12px;
     height: 12px;
     border-radius: 50%;
 
 }
 
+/* 영상 우측(또는 하단): 제목/조회수/설명 텍스트 영역 */
 .video-desc {
     display: flex;
     flex-direction: column;
@@ -384,21 +425,26 @@ body:has(#tab-about:checked) #content-about {
 .video-desc .desc-view {  font-size: 13px; font-weight: bold; color: var(--bg2); padding: 20px 0 19px 0; }
 .video-desc .desc-detail { font-size: 14px; font-weight: 400; color: white;}
 
-/* 플레이리스트 */
+/* =========================================
+    플레이리스트 섹션 (영상 카드 그리드)
+   ========================================= */
 .playlist {
     display: flex;
     flex-direction: column;
     gap: 24px;
     margin: 1px 65px;
 }
-.playlist-part { display: flex; border-top: 1px solid var(--boder); }
+.playlist-part { display: flex; border-top: 1px solid var(--boder); } /* 섹션 상단 구분선 */
 
+/* 카드가 배치되는 그리드 컨테이너 (더보기 버튼의 기준 좌표: position: relative) */
 .part-wrap {
     position: relative;
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 데스크탑: 5칸 */
     gap: 4px;
 }
+
+/* 플레이리스트 제목 + "전체재생" 링크가 나란히 놓이는 줄 */
 .list-wrap {
     display: flex;
     gap: 24px;
@@ -409,6 +455,8 @@ body:has(#tab-about:checked) #content-about {
 .play-all { padding: 6px 0 6px 0; display: flex; color:#AAAAAA; align-items: center; justify-content: center; }
 
 .playlist-part-wrap { display: flex; }
+
+/* 개별 카드: 컨테이너 쿼리를 쓸 수 있도록 container-type 지정 */
 .playlist-item {
     width: auto;
     min-width: 0;
@@ -419,10 +467,12 @@ body:has(#tab-about:checked) #content-about {
     font-weight: bold; 
     padding: 8px 0 8px 0;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* 제목 한 줄 말줄임 */
     white-space: nowrap;
 }
 .playlist-item p { font-size: 12px; color: var(--bg2); }
+
+/* 썸네일이 들어가는 영역 (영상 비율과 무관하게 높이 고정 후 object-fit으로 정리) */
 .vd-sec {
     width: 100%;
     height: 118px;
@@ -439,12 +489,12 @@ body:has(#tab-about:checked) #content-about {
     display: block;
 }
 
-/* 더보기 버튼 */
+/* 플레이리스트 카드 그룹 우측 상단에 떠있는 원형 "더보기(>)" 버튼 */
 .playlist-more {
     position: absolute;
-    top: 59px;
+    top: 59px;                      /* 썸네일 높이(118px)의 절반 지점에 배치 */
     right: 0;
-    transform: translate(50%, -50%);
+    transform: translate(50%, -50%); /* 카드 경계선에 걸치도록 절반씩 이동 */
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -460,15 +510,15 @@ body:has(#tab-about:checked) #content-about {
 .playlist-more svg { width: 16px; height: 16px; display: block; }
 
 
-/* ========
-    태블릿
-   ======== */
+/* =========================================
+    반응형 - 태블릿 (1024px 이하)
+   ========================================= */
 @media (max-width: 1024px) {
     .video-box {
         padding: 20px var(--side-gutter);
     }
 
-    .part-wrap { grid-template-columns: repeat(3, 1fr); }
+    .part-wrap { grid-template-columns: repeat(3, 1fr); } /* 5칸 -> 3칸 */
     /* 4번째 아이템부터 숨김 -> 3개만 노출 */
     .playlist-item:nth-child(n + 4) { display: none; }
 
@@ -476,9 +526,9 @@ body:has(#tab-about:checked) #content-about {
     .playlist-more { top: 75px; } /* 태블릿 썸네일 높이(150px)의 절반 */
 }
 
-/* ========
-    모바일 
-   ======== */
+/* =========================================
+    반응형 - 모바일 (767px 이하)
+   ========================================= */
 @media (max-width: 767px) {
     .banner-info-wrap {
         align-items: center;
@@ -496,6 +546,7 @@ body:has(#tab-about:checked) #content-about {
     .tabs { padding-right: var(--side-gutter); }
     .tab-item { padding: 12px 16px; font-size: 13px; }
 
+    /* 플레이어와 설명이 가로 배치 -> 세로 배치로 전환 */
     .video-box {
     flex-direction: column;
     gap: 12px;
@@ -527,14 +578,16 @@ body:has(#tab-about:checked) #content-about {
 
     .playlist { gap: 16px; margin: 1px var(--side-gutter); }
 
-    .part-wrap { grid-template-columns: repeat(2, 1fr); }
-    .playlist-item:nth-child(n + 3) { display: none; }
+    .part-wrap { grid-template-columns: repeat(2, 1fr); } /* 3칸 -> 2칸 */
+    .playlist-item:nth-child(n + 3) { display: none; }    /* 3번째부터 숨김 -> 2개만 노출 */
 
     .vd-sec { height: 190px; }
     .playlist-more { top: 95px; } 
 }
 
-
+/* =========================================
+    반응형 - 초소형 모바일 (380px 이하)
+   ========================================= */
 @media (max-width: 380px) {
     .vd-sec { height: 160px; }
     .playlist-more { top: 80px; }
