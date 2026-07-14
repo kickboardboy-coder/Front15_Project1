@@ -7,6 +7,10 @@
     --youtube: #FF0000;
 }
 
+html {
+    scrollbar-gutter: stable;   /* 스크롤바 유무와 상관없이 항상 그 공간을 확보 */
+}
+
 body {
     background: var(--bg1);
     width: 100%;
@@ -285,17 +289,27 @@ body {
 .sidebar {
     position: sticky; 
     top: 56px;
+    width: 0;              /* 항상 0 -> flex 레이아웃에서 자리를 차지하지 않음 */
+    min-width: 0;          /* flex item 자동 최소 크기 방지 (진짜 0이 되도록) */
+    height: calc(100vh - 56px);
+    overflow: visible;      /* 내부 콘텐츠가 밖으로 튀어나와 겹칠 수 있도록 */
+    z-index: 500;
+    flex-shrink: 0;
+}
+
+/* 실제로 늘어나고 스크롤되는 부분 */
+.sidebar-inner {
     width: 0;
+    height: 100%;
     padding-right: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: calc(100vh - 56px);
-    transition: width 0.1s ease;
     background: var(--bg1);   /* 겹칠 때 아래 콘텐츠가 비치지 않도록 */
-    z-index: 500;
+    transition: width 0.1s ease;
     scrollbar-width: none;
-    flex-shrink: 0;
 }
+
+.sidebar-inner:hover { scrollbar-width: thin; scrollbar-color: var(--boder) transparent; }
 
 .sidebar:hover { scrollbar-width: thin; scrollbar-color: var(--boder) transparent; }
 
@@ -355,8 +369,8 @@ body {
     white-space: nowrap;
     overflow: hidden;
 }
-/* 체크되면: 완전히 펼쳐짐 */
-body:has(.hamburger-input:checked) .sidebar {
+/* 체크되면: 완전히 펼쳐짐 (안쪽 wrapper만 늘어남, 바깥 .sidebar는 계속 0) */
+body:has(.hamburger-input:checked) .sidebar-inner {
     width: 240px;              
     padding-right: 16px;
 }
