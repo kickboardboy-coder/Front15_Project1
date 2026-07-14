@@ -25,9 +25,9 @@
                 <img src="./img/youtube-index/header/hamburger.svg" alt="메뉴">
             </label>
             <!-- 유튜브 로고 -->
-            <div class="main-logo">
+            <a href="youtube-index.html" class="main-logo">
                 <img src="./img/youtube-index/header/youtube-logo.svg">
-            </div>
+            </a>
         </div>
         <div class="hd-sec2">
             <!-- 헤더 - 검색 바-->
@@ -324,7 +324,7 @@
         </aside>
         <!-- 사이드바 열렸을 때 뒷배경을 어둡게 하는 오버레이 -->
         <label for="hamburger-toggle" class="sidebar-overlay"></label>
-        <div class="main-aside-wrapper">
+        <div class="main-aside-wrap">
             <!-- main -->
             <main class="main">
                 <!-- 비디오 재생 화면 -->
@@ -438,39 +438,41 @@
             
                 <!-- 채널 정보 -->
                 <section class="channel-info">
-                    <div class="channel-info-wrapper">
+                    <div class="channel-info-wrap">
                         <!-- 채널 프사 -->
-                        <img src="./img/video/Marcus Levin.svg" alt="채널사진" class="info-avatar">
-                    
+                        <a href="channel.html">
+                            <img src="./img/video/Marcus Levin.svg" alt="채널사진" class="info-avatar">
+                        </a>                    
                             <!-- 채널 정보 상단 구역 -->
                             <header class="channel-info-row">
-                                <!-- 채널명과 구독자수 -->
-                                <div class="info-meta">
+                                <!-- 채널명과 구독자수: 클릭 시 채널 페이지로 이동 -->
+                                <a href="channel.html" class="info-meta">
                                     <!-- 채널명 -->
                                     <p class="info-name">Marcus Levin</p>
                                     <!-- 구독자 수 -->
                                     <p class="info-subscribers">1.2M subscribers</p>
-                                </div>
+                                </a>
                             
                                 <!-- 구독 버튼 -->
                                 <!-- 구독 버튼 모달 -->
-                                <input type="checkbox" id="subs-toggle" class="subs-toggle-input">
-                                <input type="checkbox" id="unsub-toggle" class="unsub-modal-toggle-input">
-                                            
+                                <input type="radio" name="sub-state" id="state-unsub" class="subs-toggle-input" checked>
+                                <input type="radio" name="sub-state" id="state-sub" class="subs-toggle-input">
+                                <input type="radio" name="sub-state" id="state-modal" class="subs-toggle-input">
+
                                 <!-- 구독 전: 누르면 바로 구독 -->
-                                <label for="subs-toggle" class="subs-btn btn-subscribe">
+                                <label for="state-sub" class="subs-btn btn-subscribe">
                                     <span class="subscribe-btn-text">SUBSCRIBE</span>
                                 </label>
                                 <!-- 구독 후: 누르면 취소 확인 모달 오픈 -->
-                                <label for="unsub-toggle" class="subscribe-btn btn-subscribed">
-                                    <span class="subscribe-btn-text">SUBSCRIBE</span>
+                                <label for="state-modal" class="subscribe-btn btn-subscribed">
+                                    <span class="subscribe-btn-text">SUBSCRIBED</span>
                                 </label>
                             </header>
                     </div>
                     <!-- 채널 설명 -->
                     <p class="info-description">Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to hundreds of hours of YouTube videos and experimenting in his workshop. Now he's a YouTube creator himself, sells his products worldwide, and does demonstrations all around the country.</p>
                     <!-- 채널 설명 더보기 -->
-                    <p class="info-show-more">SHOW MORE</p>
+                    <button class="info-show-more">SHOW MORE</button>
                     
                 </section>
             
@@ -496,12 +498,12 @@
                             <!-- 댓글 정렬 모달 -->
                             <div class="sort-menu">
                                 <label for="sort-toggle" class="sort-option">
-                                    <p class="sort-option__title">인기순</p>
-                                    <p class="sort-option__desc">추천 댓글 표시</p>
+                                    <p class="sort-title">인기순</p>
+                                    <p class="sort-desc">추천 댓글 표시</p>
                                 </label>
                                 <label for="sort-toggle" class="sort-option">
-                                    <p class="sort-option__title">최신순</p>
-                                    <p class="sort-option__desc">스팸 가능성이 있는 댓글을 포함하여 최근 댓글 표시</p>
+                                    <p class="sort-title">최신순</p>
+                                    <p class="sort-desc">스팸 가능성이 있는 댓글을 포함하여 최근 댓글 표시</p>
                                 </label>
                             </div>
                         </div>
@@ -511,7 +513,7 @@
                     <form class="cm-input">
                         <!-- 댓글 다는 사람의 프사 -->
                         <img src="./img/video/Comment Avatar.svg" alt="" class="cm-input-avatar">
-                        <div class="cm-field-wrapper">
+                        <div class="cm-field-wrap">
                             <!-- 댓글 입력창 -->
                             <input type="text" class="cm-field" placeholder="Add a public comment...">
                         </div>
@@ -594,147 +596,147 @@
             <!-- 사이드 추천영상 리스트  -->
             <aside class="rm-list">
                 <!-- 추천 영상 선택 버튼모음 -->
-                <nav class="rm-list__filters">
-                    <input type="radio" name="rm-filter" id="filter-all" class="rm-filter-input" checked>
-                    <label for="filter-all" class="rm-list__filter-chip">All</label>
+                <nav class="list-filter">
+                    <input type="radio" name="rm-filter" id="filter-all" class="filter-input" checked>
+                    <label for="filter-all" class="filter-chip">All</label>
 
-                    <input type="radio" name="rm-filter" id="filter-channel" class="rm-filter-input">
-                    <label for="filter-channel" class="rm-list__filter-chip">From Marcus Levin</label>
+                    <input type="radio" name="rm-filter" id="filter-channel" class="filter-input">
+                    <label for="filter-channel" class="filter-chip">From Marcus Levin</label>
                 </nav>
             
                 <!--추천 영상 리스트 -->
-                <ul class="rm-list__items">
+                <ul class="rm-list-items">
                     <!-- 추천 영상 카드 -->
-                    <li class="video-card-wrapper">
+                    <li class="video-card-wrap">
                         <a class="video-card" href="#">
                             <!-- 추천 영상 · 썸네일 구역 -->
-                            <div class="video-card__thumbnail">
+                            <div class="card-thumb">
                                 <!-- 추천 영상 · 썸네일 -->
-                                <img src="./img/video/list-img-yt.svg" alt="" class="video-card__thumbnail-image">
+                                <img src="./img/video/list-img-yt.svg" alt="" class="card-thumb-img">
                                 
                                 
                             </div>
                         
                             <!-- 추천 영상 정보 -->
-                            <div class="video-card__info">
+                            <div class="card-info">
                                 <!-- 추천 영상 · 제목 -->
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
                                 <!-- 추천 영상 · 채널명 -->
-                                <p class="video-card__channel">James Gouse</p>
+                                <p class="card-channel">James Gouse</p>
                                 <!-- 추천 영상 · 조회수, 업로드 시간 -->
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
                     <!-- 추천 영상 카드 -->
                     <li>
                         <a class="video-card" href="#">
-                            <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-ig.svg" alt="" class="video-card__thumbnail-image">
+                            <div class="card-thumb">
+                                <img src="./img/video/list-img-ig.svg" alt="" class="card-thumb-img">
                                 
                             </div>
-                            <div class="video-card__info">
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                                <p class="video-card__channel">Marcus Levin</p>
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            <div class="card-info">
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-channel">Marcus Levin</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
                 
                     <li>
                         <a class="video-card" href="#">
-                            <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-tict.svg" alt="" class="video-card__thumbnail-image">
+                            <div class="card-thumb">
+                                <img src="./img/video/list-img-tict.svg" alt="" class="card-thumb-img">
                                 
                             </div>
-                            <div class="video-card__info">
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                                <p class="video-card__channel">Alexis Sears</p>
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            <div class="card-info">
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-channel">Alexis Sears</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
                 
                     <li>
                         <a class="video-card" href="#">
-                            <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-nf.svg" alt="" class="video-card__thumbnail-image">
+                            <div class="card-thumb">
+                                <img src="./img/video/list-img-nf.svg" alt="" class="card-thumb-img">
                                 
                             </div>
-                            <div class="video-card__info">
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                                <p class="video-card__channel">Jesica Lambert</p>
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            <div class="card-info">
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-channel">Jesica Lambert</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
                 
                     <li>
                         <a class="video-card" href="#">
-                            <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-twit.svg" alt="" class="video-card__thumbnail-image">
+                            <div class="card-thumb">
+                                <img src="./img/video/list-img-twit.svg" alt="" class="card-thumb-img">
                                 
                             </div>
-                            <div class="video-card__info">
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                                <p class="video-card__channel">Anna White</p>
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            <div class="card-info">
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-channel">Anna White</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
                 
                     <li>
                         <a class="video-card" href="#">
-                            <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-spoti.svg" alt="" class="video-card__thumbnail-image">
+                            <div class="card-thumb">
+                                <img src="./img/video/list-img-spoti.svg" alt="" class="card-thumb-img">
                             
                             </div>
-                            <div class="video-card__info">
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                                <p class="video-card__channel">Skylar Dias</p>
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            <div class="card-info">
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-channel">Skylar Dias</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
                 
                     <li>
                         <a class="video-card" href="#">
-                            <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-disc.svg" alt="" class="video-card__thumbnail-image">
+                            <div class="card-thumb">
+                                <img src="./img/video/list-img-disc.svg" alt="" class="card-thumb-img">
                                 
                             </div>
-                            <div class="video-card__info">
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                                <p class="video-card__channel">Alan Cooper</p>
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            <div class="card-info">
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-channel">Alan Cooper</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
                 
                     <li>
                         <a class="video-card" href="#">
-                            <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-tesla.svg" alt="" class="video-card__thumbnail-image">
+                            <div class="card-thumb">
+                                <img src="./img/video/list-img-tesla.svg" alt="" class="card-thumbimg">
                                 
                             </div>
-                            <div class="video-card__info">
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                                <p class="video-card__channel">James Gouse</p>
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            <div class="card-info">
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-channel">James Gouse</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
                 
                     <li>
                         <a class="video-card" href="#">
-                            <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-ig.svg" alt="" class="video-card__thumbnail-image">
+                            <div class="card-thumb">
+                                <img src="./img/video/list-img-ig.svg" alt="" class="card-thumbimg">
                                 
                             </div>
-                            <div class="video-card__info">
-                                <p class="video-card__title">Ep 6: Living to Serve | SEARCH ON</p>
-                                <p class="video-card__channel">James Gouse</p>
-                                <p class="video-card__meta">1M views &middot; 3 years ago</p>
+                            <div class="card-info">
+                                <p class="card-title">Ep 6: Living to Serve | SEARCH ON</p>
+                                <p class="card-channel">James Gouse</p>
+                                <p class="card-meta">1M views &middot; 3 years ago</p>
                             </div>
                         </a>
                     </li>
@@ -765,9 +767,9 @@
             </div>
             <div class="modal-actions">
                 <!-- 취소: 모달만 닫기 -->
-                <label for="unsub-toggle" class="modal-btn modal-cancel">취소</label>
-                <!-- 구독 취소: 구독 체크 해제 -> 모달도 같이 닫힘 -->
-                <label for="subs-toggle" class="modal-btn modal-confirm">구독 취소</label>
+                <label for="state-sub" class="modal-btn modal-cancel">취소</label>
+                <!-- 구독 취소: 구독 안 함 상태로 변경 -> 모달도 자동으로 닫힘 -->
+                <label for="state-unsub" class="modal-btn modal-confirm">구독 취소</label>
             </div>
         </div>
     </div>

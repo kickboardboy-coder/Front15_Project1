@@ -90,20 +90,23 @@ button {
 /* 구독 안 함 */
 .btn-subscribed { display: none; }
 
-/* 체크됨(구독함) -> 버튼 스와핑 + 색상 변경 */
-body:has(#subs-toggle:checked) .btn-subscribe {
+/* 구독함 or 모달 열림 -> 버튼 스와핑 + 색상 변경 */
+body:has(#state-sub:checked) .btn-subscribe,
+body:has(#state-modal:checked) .btn-subscribe {
     display: none;
 }
-body:has(#subs-toggle:checked) .btn-subscribed {
+body:has(#state-sub:checked) .btn-subscribed,
+body:has(#state-modal:checked) .btn-subscribed {
     display: inline-flex;
     background: #272727;
 }
-body:has(#subs-toggle:checked) .btn-subscribed:hover {
+body:has(#state-sub:checked) .btn-subscribed:hover,
+body:has(#state-modal:checked) .btn-subscribed:hover {
     background: #3f3f3f;
 }
 
-/* 구독 취소 확인 모달: 구독중 + 모달 토글 둘 다 체크 */
-body:has(#subs-toggle:checked):has(#unsub-toggle:checked) .modal-overlay {
+/* 구독 취소 확인 모달: 모달 상태일 때만 */
+body:has(#state-modal:checked) .modal-overlay {
     display: flex;
 }
 
