@@ -55,7 +55,7 @@ body {
     width: 426px;
     height: 40px;
     padding: 0;
-    border: 3px solid var(--boder);
+    border: 1px solid var(--boder);
     overflow: hidden;
     border-radius: 2px;
     box-sizing: border-box;
@@ -134,6 +134,13 @@ body {
 
 }
 
+.profile-btn {
+    width: 60px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .profile-btn img {
     width: 32px;
     height: 32px;
@@ -265,7 +272,7 @@ body {
 .drop-chevron {
     width: 16px;
     height: 16px;
-    margin-left: auto;   /* 화살표를 오른쪽 끝으로 밀어냄 */
+    margin-left: auto;
     flex-shrink: 0;
 }
 
@@ -356,8 +363,111 @@ body:has(.hamburger-input:checked) .sidebar {
 body:has(.hamburger-input:checked) .sidebar-overlay {
     display: block;
 }
+body:has(.hamburger-input:checked) {
+    overflow-y: hidden;
+}
 
+/* 구독  */ 
+.subs-toggle-input,
+.unsub-modal-toggle-input { display: none; }
 
+.subs-btn,
+.subscribe-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    margin: 16px var(--side-gutter) 4px 0;
+    width: 116px;
+    height: 36px;
+    padding: 0;
+    border-radius: 2px;
+    background: #CC0000;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+.subs-btn:hover,
+.subscribe-btn:hover {
+    transform: scale(1.06);
+    background: #a30000;
+}
+
+/* 구독 안 함 */
+.btn-subscribed { display: none; }
+
+/* 체크됨(구독함) -> 버튼 스와핑 + 색상 변경 */
+body:has(#subs-toggle:checked) .btn-subscribe {
+    display: none;
+}
+body:has(#subs-toggle:checked) .btn-subscribed {
+    display: inline-flex;
+    background: #272727;
+}
+body:has(#subs-toggle:checked) .btn-subscribed:hover {
+    background: #3f3f3f;
+}
+
+/* 구독 취소 확인 모달: 구독중 + 모달 토글 둘 다 체크 */
+body:has(#subs-toggle:checked):has(#unsub-toggle:checked) .modal-overlay {
+    display: flex;
+}
+
+/* 구독 취소 확인 모달 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-box {
+    width: 320px;
+    height: 152px;
+    max-width: 90vw;
+    background: #fff;
+    color: #030303;
+    border-radius: 16px;
+    padding: 16px 20px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.modal-text-box {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 4px;
+    padding: 16px 0 16px 0;
+    margin-bottom: 31px;
+    font-weight: 400;
+}
+.modal-name { font-size: 14px; line-height: 1.5;  }
+.modal-text { font-size: 14px; color: var(--bg2); line-height: 1.5;}
+.modal-actions {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    padding-bottom: 16px;
+}
+.modal-btn {
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    padding: 11px 22px;
+}
+.modal-cancel { color: #030303; }
+.modal-confirm { color: #FE2A3E; }
 
 
 /* 바텀 네비; 평소에는 숨김 */
