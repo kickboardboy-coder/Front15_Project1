@@ -55,7 +55,111 @@ button {
 }
 .channel-name { font-size: 24px; color: white; }
 .channel-subs { font-size: 14px; color: var(--bg2); }
-.subcribes-btn { margin: 16px 65px 4px 0; }
+
+
+/* 구독  */ 
+.subs-toggle-input,
+.unsub-modal-toggle-input { display: none; }
+
+.subs-btn,
+.subscribe-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    margin: 16px var(--side-gutter) 4px 0;
+    width: 116px;
+    height: 36px;
+    padding: 0;
+    border-radius: 2px;
+    background: #CC0000;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+.subs-btn:hover,
+.subscribe-btn:hover {
+    transform: scale(1.06);
+    background: #a30000;
+}
+
+/* 구독 안 함 */
+.btn-subscribed { display: none; }
+
+/* 체크됨(구독함) -> 버튼 스와핑 + 색상 변경 */
+body:has(#subs-toggle:checked) .btn-subscribe {
+    display: none;
+}
+body:has(#subs-toggle:checked) .btn-subscribed {
+    display: inline-flex;
+    background: #272727;
+}
+body:has(#subs-toggle:checked) .btn-subscribed:hover {
+    background: #3f3f3f;
+}
+
+/* 구독 취소 확인 모달: 구독중 + 모달 토글 둘 다 체크 */
+body:has(#subs-toggle:checked):has(#unsub-toggle:checked) .modal-overlay {
+    display: flex;
+}
+
+/* 구독 취소 확인 모달 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-box {
+    width: 320px;
+    height: 152px;
+    max-width: 90vw;
+    background: #fff;
+    color: #030303;
+    border-radius: 16px;
+    padding: 16px 20px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.modal-text-box {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 4px;
+    padding: 16px 0 16px 0;
+    margin-bottom: 31px;
+    font-weight: 400;
+}
+.modal-name { font-size: 14px; line-height: 1.5;  }
+.modal-text { font-size: 14px; color: var(--bg2); line-height: 1.5;}
+.modal-actions {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    padding-bottom: 16px;
+}
+.modal-btn {
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    padding: 11px 22px;
+}
+.modal-cancel { color: #030303; }
+.modal-confirm { color: #FE2A3E; }
+
+
 
 /* tabs */
 .tabs { 
@@ -110,6 +214,10 @@ body:has(#tab-channels:checked) #content-channels,
 body:has(#tab-about:checked) #content-about {
     display: block;
 }
+
+
+
+
 
 /* 비디오 */
 .video-box { 
@@ -189,15 +297,15 @@ body:has(#tab-about:checked) #content-about {
 .player-settings {
     display: flex;
     align-items: center;
-    gap: 14px; /* 20px -> 14px */
+    gap: 14px;
 }
 
 .player-controls button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;  /* 28px -> 20px */
-    height: 20px; /* 28px -> 20px */
+    width: 20px;
+    height: 20px;
     background: none;
     border: none;
     cursor: pointer;
@@ -216,9 +324,9 @@ body:has(#tab-about:checked) #content-about {
     object-fit: contain;
 }
 
-.play-btn img {
-    width: 16px;
-    height: 16px;
+.player-controls .play-btn {
+    width: 28px;
+    height: 28px;
 }
 
 
@@ -301,6 +409,7 @@ body:has(#tab-about:checked) #content-about {
 .playlist-item {
     width: auto;
     min-width: 0;
+    container-type: inline-size;
 }
 .playlist-item h4 { 
     font-size: 14px; 
@@ -348,9 +457,9 @@ body:has(#tab-about:checked) #content-about {
 .playlist-more svg { width: 16px; height: 16px; display: block; }
 
 
-/* =========================================================
-    태블릿 (~1024px 이하): 플레이리스트 3개까지 노출
-   ========================================================= */
+/* ========
+    태블릿
+   ======== */
 @media (max-width: 1024px) {
     .video-box {
         padding: 20px var(--side-gutter);
@@ -364,13 +473,12 @@ body:has(#tab-about:checked) #content-about {
     .playlist-more { top: 75px; } /* 태블릿 썸네일 높이(150px)의 절반 */
 }
 
-/* =========================================================
-    모바일 (~767px 이하): 플레이리스트 2개까지 노출
-   ========================================================= */
+/* ========
+    모바일 
+   ======== */
 @media (max-width: 767px) {
     .banner-info-wrap {
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
     .subcribes-btn {
         margin: 4px var(--side-gutter) 16px var(--side-gutter);
@@ -384,6 +492,35 @@ body:has(#tab-about:checked) #content-about {
 
     .tabs { padding-right: var(--side-gutter); }
     .tab-item { padding: 12px 16px; font-size: 13px; }
+
+    .video-box {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px var(--side-gutter);
+    }
+    .player {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 100%;
+    }
+    .video-desc {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 24px;
+        gap: 10px;
+    }
+    .video-desc h2 {
+        font-size: 20px;
+    }
+    
+    .video-desc .desc-view {
+        font-size: 14px;
+        padding: 0;
+    }
+    .video-desc .desc-detail {
+        margin-top: 18px;
+    }
 
     .playlist { gap: 16px; margin: 1px var(--side-gutter); }
 
