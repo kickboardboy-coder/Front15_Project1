@@ -159,7 +159,7 @@ li, button {
     height: 20px;
 }
 
-/
+
 /* 플레이어 하단 컨트롤 바 전체(재생/다음/볼륨/시간 + 자막/화질/극장모드/미니플레이어/전체화면)
    - 위치: <footer class="player-controls"> (.player 좌하단, ::after 그라데이션 위에 겹침) */
 .player-controls {
