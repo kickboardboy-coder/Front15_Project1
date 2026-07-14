@@ -48,16 +48,75 @@
             <!-- 헤더 - 네비 - Create 버튼 - Google Apps 버튼(지메일, 드라이브, 지도 등) - 알림 버튼 -->
                 <ul class="h-nav">
                     <li class="create-btn">
-                        <img src="./img/youtube-index/header/create.svg">
+                        <a href="#" class="create-btn"><img src="./img/youtube-index/header/create.svg"></a>
                     </li>
                     <li class="apps-btn">
-                        <img src="./img/youtube-index/header/apps.svg">
+                        <a href="#" class="apps-btn"><img src="./img/youtube-index/header/apps.svg"></a>
                     </li>
                     <li class="notification-btn">
-                        <img src="./img/youtube-index/header/notifications.svg">
+                        <a href="#" class="notifications-btn"><img src="./img/youtube-index/header/notifications.svg"></a>
                     </li>
-                    <li class="profile-btn">
-                        <img src="./img/youtube-index/header/User-Avatar.png" alt="프로필">
+                    <!-- 프로필 + 드롭다운 메뉴 -->
+                    <li class="profile-item">
+                        <input type="checkbox" id="profile-toggle" class="profile-input">
+                        <label for="profile-toggle" class="profile-btn">
+                            <img src="./img/youtube-index/header/User-Avatar.png" alt="프로필">
+                        </label>
+                    
+                        <div class="profile-drop">
+                            <!-- 1. 프로필 카드 -->
+                            <div class="drop-card">
+                                <img src="./img/youtube-index/header/User-Avatar.png" class="drop-avatar">
+                                <div class="profile-drop__info">
+                                    <p class="drop-name">Ruby Han</p>
+                                    <p class="drop-handle">@rubyhan</p>
+                                    <a href="#" class="drop-channel-link">View your channel</a>
+                                </div>
+                            </div>
+                        
+                            <!-- 2. 계정 관련 -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/google-logo.png" class="drop-icon">
+                                    <span>Google Account</span>
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/switch-account.png" class="drop-icon">
+                                    <span>Switch account</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/logout.png" class="drop-icon">
+                                    <span>Sign out</span>
+                                </a>
+                            </div>
+                        
+                            <!-- 3. Appearance / Language -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/design.png" class="drop-icon">
+                                    <span>Appearance: Device theme</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/lang-change.png" class="drop-icon">
+                                    <span>Language: English</span>
+                                    <img src="./img/youtube-index/header/forward.png" class="drop-chevron">
+                                </a>
+                            </div>
+                        
+                            <!-- 4. Settings / Help  -->
+                            <div class="drop-section">
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/setting.png" class="drop-icon">
+                                    <span>Settings</span>
+                                </a>
+                                <a href="#" class="drop-item">
+                                    <img src="./img/youtube-index/header/help.png" class="drop-icon">
+                                    <span>Help</span>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -394,9 +453,18 @@
                                 </div>
                             
                                 <!-- 구독 버튼 -->
-                                <button class="info-subscribe-btn">
-                                    <img src="./img/video/Subscribes-Btn.svg" alt="구독 버튼">
-                                </button>
+                                <!-- 구독 버튼 모달 -->
+                                <input type="checkbox" id="subs-toggle" class="subs-toggle-input">
+                                <input type="checkbox" id="unsub-toggle" class="unsub-modal-toggle-input">
+                                            
+                                <!-- 구독 전: 누르면 바로 구독 -->
+                                <label for="subs-toggle" class="subs-btn btn-subscribe">
+                                    <span class="subscribe-btn-text">SUBSCRIBE</span>
+                                </label>
+                                <!-- 구독 후: 누르면 취소 확인 모달 오픈 -->
+                                <label for="unsub-toggle" class="subscribe-btn btn-subscribed">
+                                    <span class="subscribe-btn-text">SUBSCRIBE</span>
+                                </label>
                             </header>
                     </div>
                     <!-- 채널 설명 -->
@@ -415,11 +483,27 @@
                         <!-- 댓글 정렬 -->
                         <div class="sort">
                             <!-- 댓글 정렬 버튼 -->
-                            <button class="sort-btn">
+                            <input type="checkbox" id="sort-toggle" class="sort-input">
+                            <label for="sort-toggle" class="sort-btn">
                                 <img src="./img/video/Dropdown.svg" alt="정렬" class="cm-sort-img">
-                            </button>
+                            </label>
                             <!-- 댓글 정렬 방법 -->
                             <span class="sort-label">SORT BY</span>
+                        
+                            <!-- 정렬 모달 바깥 클릭 시 닫히는 오버레이 -->
+                            <label for="sort-toggle" class="sort-overlay"></label>
+
+                            <!-- 댓글 정렬 모달 -->
+                            <div class="sort-menu">
+                                <label for="sort-toggle" class="sort-option">
+                                    <p class="sort-option__title">인기순</p>
+                                    <p class="sort-option__desc">추천 댓글 표시</p>
+                                </label>
+                                <label for="sort-toggle" class="sort-option">
+                                    <p class="sort-option__title">최신순</p>
+                                    <p class="sort-option__desc">스팸 가능성이 있는 댓글을 포함하여 최근 댓글 표시</p>
+                                </label>
+                            </div>
                         </div>
                     </header>
                 
@@ -493,7 +577,7 @@
                                         <img src="./img/video/Liked.svg" alt="좋아요 버튼">
                                     </button>
                                     <!-- 좋아요 수 -->
-                                    <span class="likecount">3</span>
+                                    <span class="likecount">2</span>
                                     <!-- 싫어요 버튼 -->
                                     <button class="dislike">
                                         <img src="./img/video/DisLiked.svg" alt="싫어요 버튼">
@@ -644,7 +728,7 @@
                     <li>
                         <a class="video-card" href="#">
                             <div class="video-card__thumbnail">
-                                <img src="./img/video/list-img-igshort.svg" alt="" class="video-card__thumbnail-image">
+                                <img src="./img/video/list-img-ig.svg" alt="" class="video-card__thumbnail-image">
                                 
                             </div>
                             <div class="video-card__info">
@@ -673,5 +757,19 @@
             <img src="./img/youtube-index/header/User-Avatar.png" alt="">
         </a>
     </nav>
+    <div class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-text-box">
+                <p class="modal-name">Marcus Levin</p>
+                <p class="modal-text">구독을 취소하시겠습니까?</p>
+            </div>
+            <div class="modal-actions">
+                <!-- 취소: 모달만 닫기 -->
+                <label for="unsub-toggle" class="modal-btn modal-cancel">취소</label>
+                <!-- 구독 취소: 구독 체크 해제 -> 모달도 같이 닫힘 -->
+                <label for="subs-toggle" class="modal-btn modal-confirm">구독 취소</label>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -136,6 +136,7 @@ li, button {
     justify-content: space-between;
     display: flex;
     align-items: center;
+    z-index: 20;
 }
 
 .player-info-icon {
@@ -153,6 +154,7 @@ li, button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 20;
 }
 
 /* 좌측 컨트롤: 재생/다음/음량/시간 */
@@ -343,7 +345,22 @@ li, button {
     font-size: 12px;
     color: var(--bg2)
 }
-
+.info-subscribe-btn {
+    background-color: #CC0000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 2px;
+    padding: 10px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.info-subscribe-btn:hover {
+    background-color: #a00000;
+}
 /* 채널 설명 텍스트 - 아바타(48px)+간격(16px) 만큼 왼쪽 들여쓰기 */
 .info-description {
     font-size: 14px;
@@ -380,16 +397,73 @@ li, button {
     color: white;
 }
 .sort {
+    position: relative;
     display: flex;
     align-items: center;
 }
 .sort-btn {
     width: 24px;
     height: 24px;
+    cursor: pointer;
 }
 .sort-label {
     font-size: 14px;
     color: white;
+}
+
+/* 댓글 정렬 모달 */
+.sort-input {
+    display: none;
+}
+
+/* 모달 바깥 클릭 시 닫히는 투명 오버레이 (sort-menu보다 낮은 z-index) */
+.sort-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1099;
+    cursor: default;
+}
+
+.sort-input:checked ~ .sort-overlay {
+    display: block;
+}
+
+.sort-menu {
+    display: none;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    width: 320px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    padding: 8px 0;
+    z-index: 1100;
+}
+
+.sort-input:checked ~ .sort-menu {
+    display: block;
+}
+
+.sort-option {
+    display: block;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+.sort-option:hover {
+    background: #e5e5e5;
+}
+.sort-option__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #030303;
+    margin-bottom: 4px;
+}
+.sort-option__desc {
+    font-size: 14px;
+    color: #606060;
+    line-height: 1.4;
 }
 
 /* 댓글 입력 폼 - 아바타 + 입력창을 가로 배치 */
@@ -537,7 +611,7 @@ li, button {
    - align-items: flex-end로 썸네일과 정보 영역을 하단 기준 정렬 */
 .video-card {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     width: 402px;
     height: 102px;
 }
@@ -568,15 +642,30 @@ li, button {
     font-weight: 400;
     color: white;
     margin-bottom: 6px;   /* 제목과 채널명 사이 간격 */
+    /* 2줄까지만 표시하고 넘치면 ... 처리 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .video-card__channel {
     font-size: 12px;
     color: var(--bg2);
     margin-bottom: 4px;   /* 채널명과 조회수 사이 간격 */
+    /* 한 줄로 표시하고 넘치면 ... 처리 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .video-card__meta {
     font-size: 12px;
     color: var(--bg2);
+    /* 한 줄로 표시하고 넘치면 ... 처리 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -595,19 +684,19 @@ li, button {
     }
 
     .main {
-        width: 80%;
+        width: 70%;
         max-width: none;
         padding: 24px 0 0 16px;
         flex-shrink: 1;
     }
 
     .rm-list {
-        width: 20%;
+        width: 30%;
         min-width: 220px;   /* 너무 좁아지지 않도록 최소값 보장 */
         padding: 24px 16px 0 0;
         flex-shrink: 0;
     }
-
+   
     /* rm-list 폭이 좁아졌으니 카드 내부도 고정 px 대신 %로 재조정 */
     .video-card {
         width: 100%;
@@ -617,11 +706,13 @@ li, button {
         width: 45%;
         height: auto;
         aspect-ratio: 16 / 9;   /* 비율 고정, 너비만 줄어들어도 찌그러지지 않게 */
+        overflow: hidden;
     }
     .video-card__thumbnail-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        display: block;
     }
     .video-card__info {
         width: 55%;
@@ -706,6 +797,7 @@ li, button {
     }
     .details-title {
         font-size: 16px;
+        margin-bottom: 12px;
     }
 
     /* 통계(조회수)와 액션 버튼을 가로 배치 대신 세로로 쌓음 */
