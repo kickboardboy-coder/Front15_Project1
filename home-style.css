@@ -176,9 +176,9 @@
 
 
 /* =========================================
-    반응형 - 태블릿 이하 (1023px 이하) 공통
+    반응형 - 태블릿 이하 (1024px 이하) 공통
    ========================================= */
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
     .main-grid { margin-left: 0; padding-bottom: 56px; }
 
     .grid-item { width: 100%; height: auto; } /* 고정 높이 해제, 내용에 맞춰 늘어남 */

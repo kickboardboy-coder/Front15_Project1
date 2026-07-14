@@ -1,5 +1,19 @@
+/* ============================================================
+   side-video.css
+   - 유튜브 페이지 전역 공통 스타일
+   - 담당 영역: 전역 리셋/변수, 상단 헤더(로고·검색·프로필드롭다운),
+     좌측 사이드바(네비/구독채널), 구독버튼+구독취소 모달, 모바일 하단 탭바
+   - 본문(플레이어/댓글/추천영상)은 video-style.css가 담당
+   ============================================================ */
+
+/* 전역 리셋: 모든 요소 margin/padding 제거, box-sizing 통일, 기본 폰트 지정 */
 * { padding: 0; margin: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif;}
 
+/* 전역 CSS 변수(컬러 팔레트)
+   - --bg1: 페이지/헤더/사이드바 기본 배경색(다크)
+   - --bg2: 보조 텍스트(회색) 컬러
+   - --boder: 구분선(테두리) 컬러
+   - --youtube: 유튜브 브랜드 레드 (재생바 등에서 사용) */
 :root { 
     --bg1: #212121;
     --bg2: #AAAAAA;
@@ -7,6 +21,7 @@
     --youtube: #FF0000;
 }
 
+/* 스크롤바가 생기고 사라질 때 레이아웃이 흔들리지 않도록 항상 스크롤바 공간 확보 */
 html {
     scrollbar-gutter: stable;   /* 스크롤바 유무와 상관없이 항상 그 공간을 확보 */
 }
@@ -19,6 +34,11 @@ body {
     overflow-y: visible;
 }
 
+
+/* ------------------------------------------------------------
+   [영역: 상단 헤더] 햄버거+로고 / 검색창+마이크 / 우측 아이콘+프로필
+   위치: <header class="header"> (body 최상단, position:fixed로 항상 고정)
+   ------------------------------------------------------------ */
 .header {
     position: fixed;
     display: flex;
@@ -34,6 +54,8 @@ body {
     z-index: 1000;
 }
 
+/* 헤더 왼쪽 구역: 햄버거 메뉴 + 유튜브 로고
+   - 위치: <div class="hd-sec1"> (.header의 첫 번째 자식) */
 .hd-sec1 { 
     display: flex;
     align-items: center;
@@ -41,18 +63,23 @@ body {
     margin-inline-start: 16px;
     flex-shrink: 0;
 }
+/* 햄버거(≡) 아이콘 버튼: 사이드바 열고 닫는 라벨(label) 역할 */
 .hamburger { width: 40px; height: 40px; padding: 8px; margin-top: 8px; margin-bottom: 8px; flex-shrink: 0; }
+/* 사이드바 열림/닫힘 상태를 담당하는 숨김 체크박스 (CSS-only 토글) */
 .hamburger-input { display: none; }
 
+/* 유튜브 로고 영역 */
 .main-logo { display: flex; align-items: center; padding: 18px 14px 18px 16px;}
 .main-logo img { width: 90px; height: 20px; }
 
-/* 검색 바 */
+/* 헤더 가운데 구역: 검색창 + 마이크 버튼
+   - 위치: <div class="hd-sec2"> (.header의 두 번째 자식) */
 .hd-sec2 { 
     display: flex;
     align-items: center;
     gap: 4px;
     width: 470px; height: 40px; }
+/* 검색 입력창 + 검색 버튼을 감싸는 테두리 박스 */
 .searchbar { 
     display: flex;
     align-items: center;
@@ -65,6 +92,7 @@ body {
     box-sizing: border-box;
 }
 
+/* 검색어 입력 필드 */
 .searchbar input {
     flex: 1;
     height: 100%;
@@ -78,6 +106,7 @@ body {
 }
 
 .searchbar input::placeholder { color: var(--bg2) }
+/* 검색 실행(돋보기) 버튼 - 입력창 오른쪽에 회색 배경으로 구분 */
 .searchbar button {
     flex: 0 0 64px;
     height: 100%;
@@ -92,6 +121,7 @@ body {
 }
 .searchbar button img { width: 24px; height: 24px; }
 
+/* 음성 검색(마이크) 버튼 - 검색창 바로 오른쪽 원형 버튼 */
 .mic-btn {
     flex: 0 0 auto;
     width: 40px;
@@ -108,12 +138,15 @@ body {
 .mic-btn:hover { background: #2c2b2b; }
 
 
+/* 헤더 오른쪽 구역: 만들기/앱/알림 아이콘 + 프로필
+   - 위치: <div class="hd-sec3"> (.header의 세 번째 자식) */
 .hd-sec3 {
     display: flex;
     align-items: center;
     flex-direction: row;
     gap: 8px;
 }
+/* 아이콘 버튼들을 담는 nav 리스트 */
 .h-nav { 
     display: flex;
     gap: 8px;
@@ -123,6 +156,7 @@ body {
     margin: 0;
 }
 
+/* 만들기(Create) / 구글앱(Apps) / 알림(Notification) 버튼 공통 크기 */
 .create-btn,.apps-btn,
 .notification-btn { 
     width: 40px; height: 40px;
@@ -138,29 +172,18 @@ body {
 
 }
 
-.profile-btn {
-    width: 60px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.profile-btn img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-/* 프로필 드롭다운 */
+/* 프로필 아바타 + 드롭다운 메뉴를 감싸는 래퍼
+   - position: relative → 하위 .profile-drop(절대위치)의 기준점 */
 .profile-item {
-    position: relative;   /* 드롭다운 위치 기준점 */
+    position: relative;
 }
 
+/* 프로필 드롭다운 열림/닫힘 상태를 담당하는 숨김 체크박스 (CSS-only 토글) */
 .profile-input {
     display: none;
 }
 
+/* 프로필 버튼 2차 정의(실제 적용되는 최종 크기: 40x40, 위의 60px 정의를 덮어씀) */
 .profile-btn {
     width: 40px;
     height: 40px;
@@ -177,7 +200,9 @@ body {
     object-fit: cover;
 }
 
-/* 드롭다운 - 평소엔 숨김 */
+/* 프로필 드롭다운 메뉴 박스 전체
+   - 위치: .profile-item 우하단(top:48px, right:0)에 절대위치로 나타남
+   - 기본은 숨김, 아래 checked 규칙으로 표시됨 */
 .profile-drop {
     display: none;
     position: absolute;
@@ -192,11 +217,13 @@ body {
     z-index: 1100;
 }
 
+/* 체크박스(profile-input)가 체크되면 드롭다운 표시 */
 .profile-input:checked ~ .profile-drop {
     display: block;
 }
 
-/* 1. 프로필 카드 */
+/* 드롭다운 맨 위 프로필 카드(아바타+이름+핸들+채널보기 링크)
+   - 위치: .profile-drop 첫 번째 섹션 */
 .drop-card {
     display: flex;
     align-items: center;
@@ -205,6 +232,7 @@ body {
     border-bottom: 1px solid var(--boder);
 }
 
+/* 드롭다운 안 프로필 아바타(원형) */
 .drop-avatar {
     width: 40px;
     height: 40px;
@@ -213,12 +241,14 @@ body {
     flex-shrink: 0;
 }
 
+/* 이름/핸들/채널링크 세로 배치 래퍼 */
 .drop-info {
     display: flex;
     flex-direction: column;
     min-width: 0;
 }
 
+/* 사용자 이름 (예: Ruby Han) */
 .drop-name {
     color: #fff;
     font-size: 16px;
@@ -226,12 +256,14 @@ body {
     margin: 0;
 }
 
+/* 사용자 핸들 (예: @rubyhan) */
 .drop-handle {
     color: var(--bg2);
     font-size: 14px;
     margin: 2px 0 4px 0;
 }
 
+/* "View your channel" 링크 (파란색 강조) */
 .drop-channel-link {
     color: #3EA6FF;
     font-size: 14px;
@@ -242,16 +274,18 @@ body {
     text-decoration: underline;
 }
 
-/* 섹션 공통 */
+/* 섹션 공통 - 드롭다운 내부를 계정/화면설정/설정·도움말 등 그룹으로 나누는 구분 블록 */
 .drop-section {
     padding: 8px 0;
     border-bottom: 1px solid var(--boder);
 }
 
+/* 마지막 섹션은 구분선 제거 */
 .drop-section:last-child {
     border-bottom: none;
 }
 
+/* 드롭다운 메뉴 항목 한 줄 (아이콘 + 텍스트 + 화살표) 공통 스타일 */
 .drop-item {
     display: flex;
     align-items: center;
@@ -267,12 +301,14 @@ body {
     background: var(--boder);
 }
 
+/* 메뉴 항목 왼쪽 아이콘 */
 .drop-icon {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
 }
 
+/* 메뉴 항목 오른쪽 화살표(>) 아이콘 - margin-left:auto로 항상 맨 오른쪽 정렬 */
 .drop-chevron {
     width: 16px;
     height: 16px;
@@ -284,20 +320,24 @@ body {
 
 
 
-/* 사이드바 */
 
+/* ------------------------------------------------------------
+   [영역: 좌측 사이드바] 홈/탐색/구독 · 라이브러리류 · 구독채널목록 · 기타메뉴
+   위치: <aside class="sidebar"> (header 아래, body-wrap의 첫 번째 자식)
+   구조: 기본은 접힌 상태(width:0)이며 햄버거 클릭 시 240px로 펼쳐짐
+   ------------------------------------------------------------ */
 .sidebar {
     position: sticky; 
     top: 56px;
-    width: 0;              /* 항상 0 -> flex 레이아웃에서 자리를 차지하지 않음 */
-    min-width: 0;          /* flex item 자동 최소 크기 방지 (진짜 0이 되도록) */
+    width: 0;
+    min-width: 0;
     height: calc(100vh - 56px);
-    overflow: visible;      /* 내부 콘텐츠가 밖으로 튀어나와 겹칠 수 있도록 */
+    overflow: visible;
     z-index: 500;
     flex-shrink: 0;
 }
 
-/* 실제로 늘어나고 스크롤되는 부분 */
+/* 사이드바 내부 스크롤 컨테이너 - 실제 너비 변화(펼침 애니메이션)는 여기서 발생 */
 .sidebar-inner {
     width: 0;
     height: 100%;
@@ -309,11 +349,12 @@ body {
     scrollbar-width: none;
 }
 
+/* 마우스 오버 시에만 얇은 스크롤바 노출 (평소엔 숨김 처리) */
 .sidebar-inner:hover { scrollbar-width: thin; scrollbar-color: var(--boder) transparent; }
 
 .sidebar:hover { scrollbar-width: thin; scrollbar-color: var(--boder) transparent; }
 
-    /* 메뉴 항목 공통 */
+/* 사이드바 메뉴 항목(링크) 기본 스타일 - Home/Explore/History 등 공통 */
 .sidenav-act {
     display: block;
     text-decoration: none;
@@ -321,7 +362,9 @@ body {
     outline: none;
 }
 
-.sidebar-act > img { width: 24px; height: 24px; flex-shrink: 0;}
+
+.sidenav-act > img { width: 24px; height: 24px; flex-shrink: 0;}
+/* 메뉴 항목 내부(아이콘+텍스트) 가로 배치 */
 .sidenav-act > span {
     display: flex;
     align-items: center;
@@ -331,8 +374,10 @@ body {
     font-size: 14px;
     overflow: hidden;
 }
+/* 현재 활성화된 메뉴(Home 등) 강조 배경 */
 .sidenav-act.is-active > span { background: var(--boder); }
 
+/* 메뉴 텍스트 - 사이드바가 접혔을 때(width:0) 함께 사라지도록 opacity/width 트랜지션 적용 */
 .menu-text {
     display: inline-block;
     opacity: 1;
@@ -343,6 +388,7 @@ body {
 }
 
 
+/* 사이드바 4개 그룹(홈그룹/구독채널그룹/추천그룹/설정그룹) 공통 - 그룹 사이 구분선 */
 .sidebar-nav1,
 .sidebar-nav2,
 .sidebar-nav3,
@@ -350,7 +396,7 @@ body {
     padding: 12px 0; border-bottom: 1px solid var(--boder);
 }
 
-/* SUBSCRIPTIONS, MORE FROM YOUTUBE 카테고리 제목 */
+/* 그룹 제목 텍스트 (예: "SUBSCRIPTIONS", "MORE FROM YOUTUBE") */
 .sidebar-nav2 > span,
 .sidebar-nav3 > span {
     display: block;
@@ -360,7 +406,7 @@ body {
     color: var(--bg2);
 }
 
-/* Show More / Show 13 more 버튼 영역 */
+/* 구독 채널 목록 안의 "Show more/Show 13 more" 같은 아코디언 토글 줄 */
 .side-acc {
     display: flex;
     align-items: center;
@@ -369,22 +415,33 @@ body {
     white-space: nowrap;
     overflow: hidden;
 }
-/* 체크되면: 완전히 펼쳐짐 (안쪽 wrapper만 늘어남, 바깥 .sidebar는 계속 0) */
+/* [상태 제어] 햄버거 체크박스가 체크되면 사이드바를 240px로 펼침
+   - :has() 선택자로 body 상태를 보고 sidebar-inner 너비를 변경 (JS 없이 CSS만으로 토글) */
 body:has(.hamburger-input:checked) .sidebar-inner {
     width: 240px;              
     padding-right: 16px;
 }
+/* 사이드바가 펼쳐지면(모바일 등에서) 배경 오버레이도 함께 표시 */
 body:has(.hamburger-input:checked) .sidebar-overlay {
     display: block;
 }
+/* 사이드바가 펼쳐진 동안 배경 스크롤 방지 */
 body:has(.hamburger-input:checked) {
     overflow-y: hidden;
 }
 
-/* 구독  */ 
+
+/* ------------------------------------------------------------
+   [영역: 구독 버튼 + 구독취소 확인 모달]
+   위치: 구독버튼은 video-style.css의 .channel-info-row 안에 위치,
+         모달(.modal-overlay)은 body 최하단에 별도로 위치
+   구조: radio 3개(state-unsub/state-sub/state-modal)로 상태를 전환하는 CSS-only 토글
+   ------------------------------------------------------------ */
+/* 구독 상태를 담당하는 숨김 라디오 버튼들 (state-unsub/state-sub/state-modal) */
 .subs-toggle-input,
 .unsub-modal-toggle-input { display: none; }
 
+/* 구독 버튼(구독 전) 기본 스타일 - 빨간 배경 */
 .subs-btn,
 .subscribe-btn {
     display: inline-flex;
@@ -411,10 +468,11 @@ body:has(.hamburger-input:checked) {
     background: #a30000;
 }
 
-/* 구독 안 함 */
+/* "구독중(SUBSCRIBED)" 상태 버튼은 기본적으로 숨김 (구독 후에만 노출됨) */
 .btn-subscribed { display: none; }
 
-/* 구독함 or 모달 열림 -> 버튼 스와핑 + 색상 변경 */
+/* [상태 제어] 구독함(state-sub) 또는 모달열림(state-modal) 상태일 때
+   → "SUBSCRIBE" 버튼 숨기고 "SUBSCRIBED" 버튼으로 전환 */
 body:has(#state-sub:checked) .btn-subscribe,
 body:has(#state-modal:checked) .btn-subscribe {
     display: none;
@@ -429,12 +487,13 @@ body:has(#state-modal:checked) .btn-subscribed:hover {
     background: #3f3f3f;
 }
 
-/* 구독 취소 확인 모달: 모달 상태일 때만 */
+/* [상태 제어] 모달열림(state-modal) 상태일 때 구독취소 확인 모달을 화면에 표시 */
 body:has(#state-modal:checked) .modal-overlay {
     display: flex;
 }
 
-/* 구독 취소 확인 모달 */
+/* 구독취소 확인 모달의 배경 오버레이(화면 전체를 어둡게 덮음)
+   - 위치: body 최하단, 기본은 숨김 상태 */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -445,6 +504,7 @@ body:has(#state-modal:checked) .modal-overlay {
     z-index: 2000;
 }
 
+/* 모달 흰색 박스(가운데 정렬된 카드) */
 .modal-box {
     width: 320px;
     height: 152px;
@@ -457,6 +517,7 @@ body:has(#state-modal:checked) .modal-overlay {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
+/* 모달 안내 문구 줄(채널명 + "구독을 취소하시겠습니까?") */
 .modal-text-box {
     display: flex;
     justify-content: center;
@@ -468,12 +529,14 @@ body:has(#state-modal:checked) .modal-overlay {
 }
 .modal-name { font-size: 14px; line-height: 1.5;  }
 .modal-text { font-size: 14px; color: var(--bg2); line-height: 1.5;}
+/* 모달 하단 버튼(취소/구독취소) 줄 - 오른쪽 정렬 */
 .modal-actions {
     display: flex;
     justify-content: end;
     gap: 10px;
     padding-bottom: 16px;
 }
+/* 모달 버튼 공통 스타일 */
 .modal-btn {
     background: none;
     border: none;
@@ -483,15 +546,14 @@ body:has(#state-modal:checked) .modal-overlay {
     cursor: pointer;
     padding: 11px 22px;
 }
+/* "취소" 버튼(모달만 닫힘) - 검은 글씨 */
 .modal-cancel { color: #030303; }
+/* "구독 취소" 버튼(실제 구독취소 실행) - 빨간 글씨로 경고 강조 */
 .modal-confirm { color: #FE2A3E; }
 
 
-/* 바텀 네비; 평소에는 숨김 */
+/* [모바일 전용] 화면 하단 고정 탭바 - 평소(PC)에는 숨김
+   767px 이하에서 video-style.css 미디어쿼리가 display:flex로 전환시킴 */
 .bottom-nav {
     display: none;
 }
-
-
-
-

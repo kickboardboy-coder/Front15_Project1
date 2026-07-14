@@ -1,38 +1,38 @@
-/* ============================================
-   기본 요소 스타일
-   ============================================ */
+/* ============================================================
+   video-style.css
+   - 유튜브 "동영상 시청 페이지" 전용 스타일
+   - 공통 헤더/사이드바 스타일은 side-video.css에 있음
+   - 이 파일은 body-wrap 이하: 메인 플레이어 + 영상정보 + 댓글 + 추천영상 리스트를 담당
+   ============================================================ */
 
-/* 링크 밑줄 제거 (전역) */
+/* 페이지 전체 링크 밑줄 제거 */
 a {
     text-decoration: none;
 }
 
-/* 페이지 전체 배경/최소 높이 설정 */
 body {
     background: var(--bg1);
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;   /* 가로 스크롤바 방지 */
+    overflow-x: hidden;
     overflow-y: visible;
 }
 
-/* ============================================
-   전체 레이아웃 뼈대
-   ============================================ */
 
-/* 헤더 아래 본문 전체를 감싸는 컨테이너
-   - max-width로 큰 화면에서 중앙 정렬
-   - position: relative → .sidebar(absolute)의 기준점 역할 */
+/* [레이아웃] 헤더 아래 전체 콘텐츠를 감싸는 최상위 래퍼
+   - 위치: <div class="body-wrap"> (사이드바 + 본문 전체를 포함)
+   - 최대 너비 1440px로 중앙 정렬, 상단은 fixed 헤더(56px) 높이만큼 padding 확보 */
 .body-wrap {
     max-width: 1440px;
     margin: 0 auto;
     display:flex;
-    padding-top: 56px;   /* 헤더 높이(56px)만큼 아래로 밀어줌 */
+    padding-top: 56px;
 }
 
-/* 사이드바가 열렸을 때 뒷배경을 어둡게 덮는 오버레이
-   - 평소엔 display: none으로 숨겨져 있다가
-   - body:has(.hamburger-input:checked) 상태일 때 side-video.css에서 block으로 전환됨 */
+
+/* [모바일] 햄버거로 사이드바를 열었을 때 뒷배경을 어둡게 덮는 오버레이
+   - 위치: <label class="sidebar-overlay"> (사이드바 아래, main-aside-wrap 위)
+   - 기본은 숨김 상태이며, side-video.css의 checkbox(hamburger-input) 체크 시 표시됨 */
 .sidebar-overlay {
     display: none;
     position: fixed;
@@ -41,12 +41,14 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 400;      /* sidebar(500)보다는 낮고, 본문 콘텐츠보다는 높게 */
-    cursor: pointer;    /* 클릭하면 사이드바 닫히는 label 역할 */
+    z-index: 400;
+    cursor: pointer;
 }
 
-/* 메인 콘텐츠(.main) + 추천영상(.rm-list)을 가로로 배치하는 컨테이너
-   - 데스크탑 기준 두 영역을 나란히 중앙 정렬 */
+
+/* [레이아웃] 사이드바를 제외한 "본문 영역" 래퍼
+   - 위치: <div class="main-aside-wrap"> (좌: main 영상영역 / 우: rm-list 추천영상)
+   - flex로 두 영역을 가로 배치, 배경색만 본문 영역에서 별도 지정(#181818) */
 .main-aside-wrap {
     display: flex;
     flex: 1;
@@ -56,14 +58,17 @@ body {
     background-color: #181818;
 }
 
-/* 비디오 페이지의 메인(왼쪽) 영역 - 플레이어, 상세정보, 댓글 포함
-   - 데스크탑 기준 664px 고정 너비 */
+
+/* [레이아웃] 실제 영상 재생 + 상세정보 + 댓글이 들어가는 메인 컬럼
+   - 위치: <main class="main"> (main-aside-wrap의 왼쪽 자식)
+   - 고정 너비 664px, 왼쪽 상단 여백만 확보 */
 .main {
     width: 664px;
     padding: 24px 0 0 24px;
 }
 
-/* 버튼 기본 스타일 초기화 (브라우저 기본 여백/테두리 제거) */
+
+/* 버튼 기본 스타일 초기화 (전역) */
 button {
     background: none;
     border: none;
@@ -72,7 +77,8 @@ button {
     cursor: pointer;
 }
 
-/* 리스트 마커 제거 */
+
+/* 리스트 마커 제거 (전역) */
 ul {
     list-style: none;
 }
@@ -81,19 +87,21 @@ li, button {
 }
 
 
-/* ============================================
-   비디오 플레이어 영역
-   ============================================ */
 
-/* 플레이어 컨테이너 - 자식 요소(::before, ::after, .player-frame 등)의
-   position: absolute 기준점 역할 */
+/* ------------------------------------------------------------
+   [영역: 동영상 플레이어]
+   위치: <div class="player"> (main 안, video-details 위)
+   ------------------------------------------------------------ */
+
+/* 플레이어 전체 래퍼: 내부 절대위치 요소(상단바/하단바/진행바)의 기준점 */
 .player {
     position: relative;
 }
 
-/* 플레이어 상단 그라데이션
-   - 제목/정보 아이콘(.player-frame)이 밝은 배경 위에서도 잘 보이도록
-     위쪽만 살짝 어둡게 처리 */
+
+/* 플레이어 상단 그라데이션 오버레이
+   - 위치: .player 상단에 겹쳐지는 가상요소
+   - 역할: player-frame(제목/정보 아이콘) 글씨가 밝은 영상 위에서도 잘 보이도록 어둡게 처리 */
 .player::before {
     content: '';
     position: absolute;
@@ -102,12 +110,14 @@ li, button {
     right: 0;
     height: 50px;
     background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0));
-    pointer-events: none;   /* 클릭/터치가 그대로 아래 버튼으로 전달되게 */
+    pointer-events: none;
     z-index: 10;
 }
 
-/* 플레이어 하단 그라데이션
-   - 재생 컨트롤(.player-controls)이 잘 보이도록 아래쪽을 어둡게 처리 */
+
+/* 플레이어 하단 그라데이션 오버레이
+   - 위치: .player 하단에 겹쳐지는 가상요소
+   - 역할: player-controls(재생/음량/설정 버튼) 가독성 확보용 어두운 배경 */
 .player::after {
     content: '';
     position: absolute;
@@ -120,14 +130,16 @@ li, button {
     z-index: 10;
 }
 
-/* 플레이어 썸네일 이미지 - 부모 너비에 꽉 차게 */
+
+/* 플레이어 안의 썸네일/영상 이미지: 가로 100%로 꽉 채움 */
 .player img {
     width: 100%;
     display: block;
 }
 
-/* 플레이어 상단 바 (영상 제목 + 정보 아이콘)
-   - .player 기준으로 절대 위치 배치 */
+
+/* 플레이어 상단 바: 영상 제목 + 정보(i) 아이콘
+   - 위치: <header class="player-frame"> (.player 좌상단, ::before 그라데이션 위에 겹침) */
 .player-frame {
     position: absolute;
     top: 14px;
@@ -141,13 +153,15 @@ li, button {
     z-index: 20;
 }
 
+/* 플레이어 상단 바의 정보(ⓘ) 아이콘 크기 */
 .player-info-icon {
     width: 20px;
     height: 20px;
 }
 
-/* 플레이어 하단 컨트롤 바 (재생/음량/자막/전체화면 등)
-   - 좌측 그룹(.player-controls-left)과 우측 그룹(.player-settings)을 양끝 정렬 */
+/
+/* 플레이어 하단 컨트롤 바 전체(재생/다음/볼륨/시간 + 자막/화질/극장모드/미니플레이어/전체화면)
+   - 위치: <footer class="player-controls"> (.player 좌하단, ::after 그라데이션 위에 겹침) */
 .player-controls {
     position: absolute;
     bottom: 8px;
@@ -159,68 +173,79 @@ li, button {
     z-index: 20;
 }
 
-/* 좌측 컨트롤: 재생/다음/음량/시간 */
+
+/* 하단 컨트롤 바의 왼쪽 그룹(재생/다음/볼륨/재생시간) */
 .player-controls-left {
     display: flex;
     align-items: center;
 }
 
-/* 개별 컨트롤 아이콘들 - 각각 원본 아이콘 비율에 맞춘 크기 + 간격용 margin-left */
+
+/* 재생 버튼 아이콘 */
 .player-play-btn {
     width: 13px;
     height: 16px;
     margin-left: 29px;
 }
+/* 다음 영상 버튼 아이콘 */
 .player-next-btn {
     width: 12px;
     height: 12px;
     margin-left: 28px;
 }
+/* 볼륨 버튼 아이콘 */
 .player-volume-btn {
     width: 13.25px;
     height: 16px;
     margin-left: 20px;
 }
+/* 현재 재생시간 / 총 재생시간 텍스트 (예: 5:07 / 15:28) */
 .player-time {
     font-size: 13px;
     margin-left: 19.75px;
     color: white;
 }
 
-/* 우측 컨트롤 그룹: 자막/화질/극장모드/미니플레이어/전체화면 */
+
+/* 하단 컨트롤 바의 오른쪽 그룹(자막/화질/극장모드/미니플레이어/전체화면) */
 .player-settings {
     display: flex;
 }
+/* 자막(CC) 버튼 */
 .player-caption-btn {
     width: 18px;
     height: 14px;
     margin-right: 20px;
 }
+/* 화질(HD) 설정 버튼 */
 .player-quality-btn {
     width: 20px;
     height: 16px;
     margin-right: 13px;
 }
+/* 극장모드 버튼 */
 .player-theater-btn {
     width: 20px;
     height: 14px;
     margin-right: 15px;
 }
+/* 미니플레이어(팝업) 버튼 */
 .player-miniplayer-btn {
     width: 22px;
     height: 18px;
     margin-right: 17px;
 }
+/* 전체화면 버튼 */
 .player-fullscreen-btn {
     width: 16px;
     height: 16px;
     margin-right: 10px;
 }
 
-/* 재생 진행 바 (progress bar)
-   - .progress-buffered: 버퍼링된 구간 (연한 흰색)
-   - .progress-played: 실제 재생된 구간 (빨간색)
-   - 둘 다 .progress-bar 기준 절대 위치, width%로 진행률 표현 */
+
+/* 재생 진행 바(트랙) 배경
+   - 위치: <div class="progress-bar"> (.player 하단, player-controls 바로 위)
+   - bottom: 36px로 컨트롤 바 위쪽에 살짝 띄워 배치 */
 .progress-bar {
     position: relative;
     width: 97%;
@@ -232,6 +257,7 @@ li, button {
     cursor: pointer;
     z-index: 100;
 }
+/* 버퍼링(미리 로드)된 구간 표시 바: progress-bar 안쪽, 흰색 반투명 */
 .progress-buffered {
     position: absolute;
     top: 0;
@@ -240,6 +266,7 @@ li, button {
     width: 49%;
     background-color: rgba(255, 255, 255, 0.5);
 }
+/* 실제 재생된 구간 표시 바: progress-bar 안쪽, 빨간색(유튜브 브랜드 컬러) */
 .progress-played {
     position: absolute;
     top: 0;
@@ -250,16 +277,17 @@ li, button {
 }
 
 
-/* ============================================
-   영상 제목 / 조회수 / 좋아요 등 메타정보
-   ============================================ */
 
-/* 플레이어 아래, 제목+통계+액션 버튼을 세로로 쌓는 컨테이너 */
+/* ------------------------------------------------------------
+   [영역: 영상 상세정보] 제목 / 조회수 / 좋아요·공유·저장 등 액션 버튼
+   위치: <div class="video-details"> (.player 바로 아래, .channel-info 위)
+   ------------------------------------------------------------ */
 .video-details {
     display: flex;
     flex-direction: column;
     padding: 20px 0 8px 0;
 }
+
 
 /* 영상 제목 텍스트 */
 .details-title {
@@ -267,71 +295,75 @@ li, button {
     font-weight: 400;
 }
 
-/* 조회수/업로드일 + 좋아요·공유 등 액션 버튼을 양끝 정렬하는 줄 */
+
+/* 제목 아래 줄: 왼쪽 조회수/날짜 - 오른쪽 액션 버튼 그룹을 양끝 정렬 */
 .details-statsgroup {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* 조회수/업로드일 텍스트 */
+/* 조회수 · 업로드 날짜 텍스트 (예: 576,969 views . Oct 8, 2021) */
 .details-stats {
     color: var(--bg2);
     font-size: 14px;
     font-weight: 700;
 }
 
-/* 좋아요/싫어요/공유/저장/더보기 버튼 그룹 */
+/* 좋아요/싫어요/공유/저장/더보기 버튼을 감싸는 메뉴(그룹) */
 .details-actions {
     display: flex;
     align-items: center;
 }
 
-/* 액션 버튼 각각 - 아이콘+숫자(텍스트)를 가로로 정렬 */
+/* details-actions 안의 각 버튼(li > button) 공통 스타일 */
 .details-actions button {
     display: flex;
     align-items: center;
     padding: 6px;
     gap: 4px;
 }
+/* 버튼 안의 텍스트(SHARE, SAVE 등) */
 .details-actions span {
     display: inline-block;
     color: white;
 }
+/* 좋아요 버튼 아이콘 크기 */
 .details-like img {
     width: 24px;
     height: 24px;
 }
 
 
-/* ============================================
-   채널 정보 (아바타 + 이름 + 구독자수 + 설명)
-   ============================================ */
 
-/* 채널 정보 섹션 전체 컨테이너 */
+/* ------------------------------------------------------------
+   [영역: 채널 정보] 채널 프로필사진 / 채널명 / 구독자수 / 구독버튼 / 채널 설명
+   위치: <section class="channel-info"> (.video-details 아래, .comment 위)
+   ------------------------------------------------------------ */
 .channel-info {
     display: flex;
     flex-direction: column;
     padding: 16px 0;
 }
 
-/* 아바타 + 이름/구독버튼을 가로로 배치하는 줄
-   - 위쪽에 구분선(border-top) */
+
+/* 채널 프사 + 채널명/구독버튼이 나란히 놓이는 첫 줄
+   - 위쪽 구분선(border-top)으로 video-details와 시각적으로 분리 */
 .channel-info-wrap {
     display: flex;
     border-top: 1px solid var(--boder);
     padding-top: 16px;
 }
 
-/* 채널 프로필 이미지 */
+/* 채널 프로필 이미지(원형 아바타) */
 .info-avatar {
     width: 48px;
     height: 48px;
     margin-right: 16px;
 }
 
-/* 채널명/구독자수(.info-meta)와 구독 버튼을 양끝 정렬하는 줄
-   - flex: 1로 남은 공간을 전부 차지해야 구독 버튼이 오른쪽 끝까지 밀림 */
+
+/* 채널명/구독자수(왼쪽)와 구독버튼(오른쪽)을 양끝 정렬하는 줄 */
 .channel-info-row {
     display: flex;
     justify-content: space-between;
@@ -339,38 +371,26 @@ li, button {
     flex: 1;
 }
 
+/* 채널명 텍스트 */
 .info-name {
     font-size: 14px;
     color: white;
 }
+/* 구독자 수 텍스트 */
 .info-subscribers {
     font-size: 12px;
     color: var(--bg2)
 }
-.info-subscribe-btn {
-    background-color: #CC0000;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    font-family: 'Roboto', sans-serif;
-    border: none;
-    border-radius: 2px;
-    padding: 10px 16px;
-    cursor: pointer;
-    white-space: nowrap;
-}
-.info-subscribe-btn:hover {
-    background-color: #a00000;
-}
-/* 채널 설명 텍스트 - 아바타(48px)+간격(16px) 만큼 왼쪽 들여쓰기 */
+
+/* 채널 설명 텍스트
+   - 왼쪽 padding 64px = 아바타(48px) + margin(16px) 폭에 맞춰 들여쓰기 정렬 */
 .info-description {
     font-size: 14px;
     color: white;
     padding: 12px 0 0 64px;
 }
 
-/* "더보기" 텍스트 - 설명과 같은 들여쓰기 */
+/* 채널 설명 "더보기" 버튼 (설명글과 같은 들여쓰기 64px 유지) */
 .info-show-more {
     display: block;
     border: none;
@@ -384,47 +404,54 @@ li, button {
 }
 
 
-/* ============================================
-   댓글 섹션
-   ============================================ */
 
-/* 댓글 섹션 전체 - 채널 정보와 구분선으로 분리 */
+/* ------------------------------------------------------------
+   [영역: 댓글] 댓글 수/정렬 · 댓글 입력창 · 댓글 리스트
+   위치: <section class="comment"> (.channel-info 아래, main의 마지막 섹션)
+   ------------------------------------------------------------ */
 .comment {
     border-top: 1px solid var(--boder)
 }
 
-/* "286 Comments" + 정렬(SORT BY) 버튼을 가로 배치 */
+/* 댓글 수 + 정렬 버튼이 놓이는 상단 줄
+   - 위치: <header class="cm-header"> (.comment 최상단) */
 .cm-header {
     display: flex;
     align-items: center;
     gap: 28px;
     padding: 24px 0;
 }
+/* "286 Comments" 텍스트 */
 .cm-count {
     font-size: 16px;
     color: white;
 }
+/* 정렬(SORT BY) 버튼 + 드롭다운 메뉴를 감싸는 래퍼
+   - position: relative → 하위 sort-menu(절대위치)의 기준점 */
 .sort {
     position: relative;
     display: flex;
     align-items: center;
 }
+/* 정렬 드롭다운을 여는 아이콘 버튼 */
 .sort-btn {
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
+/* "SORT BY" 라벨 텍스트 */
 .sort-label {
     font-size: 14px;
     color: white;
 }
 
-/* 댓글 정렬 모달 */
+/* 정렬 메뉴 열림/닫힘 상태를 담당하는 숨김 체크박스 (CSS-only 토글용) */
 .sort-input {
     display: none;
 }
 
-/* 모달 바깥 클릭 시 닫히는 투명 오버레이 (sort-menu보다 낮은 z-index) */
+/* 정렬 메뉴가 열렸을 때 화면 전체를 덮어 바깥 클릭 시 닫히게 하는 오버레이
+   - checked 상태일 때만 display:block으로 나타남 (아래 규칙 참고) */
 .sort-overlay {
     display: none;
     position: fixed;
@@ -433,10 +460,13 @@ li, button {
     cursor: default;
 }
 
+/* 체크박스(sort-input)가 체크되면 오버레이 표시 */
 .sort-input:checked ~ .sort-overlay {
     display: block;
 }
 
+/* 정렬 드롭다운 메뉴 박스(인기순/최신순 선택지)
+   - 위치: .sort 왼쪽 하단(top:32px, left:0)에 절대위치로 나타남 */
 .sort-menu {
     display: none;
     position: absolute;
@@ -450,10 +480,12 @@ li, button {
     z-index: 1100;
 }
 
+/* 체크박스가 체크되면 정렬 메뉴 표시 */
 .sort-input:checked ~ .sort-menu {
     display: block;
 }
 
+/* 정렬 메뉴 안 각 선택지(인기순/최신순) 한 줄 */
 .sort-option {
     display: block;
     padding: 12px 20px;
@@ -462,80 +494,92 @@ li, button {
 .sort-option:hover {
     background: #e5e5e5;
 }
+/* 선택지 제목 (예: 인기순) */
 .sort-title {
     font-size: 16px;
     font-weight: 700;
     color: #030303;
     margin-bottom: 4px;
 }
+/* 선택지 설명 텍스트 */
 .sort-desc {
     font-size: 14px;
     color: #606060;
     line-height: 1.4;
 }
 
-/* 댓글 입력 폼 - 아바타 + 입력창을 가로 배치 */
+/* 댓글 입력창 전체 줄(아바타 + 입력필드)
+   - 위치: <form class="cm-input"> (cm-header 아래, 댓글 리스트 위) */
 .cm-input {
     display: flex;
-    /* align-items: center; */  /* 필요시 세로 중앙 정렬용, 현재 비활성 */
     margin-bottom: 32px;
 }
+/* 댓글 입력창 옆 내 프로필 아바타 */
 .cm-input-avatar {
     width: 40px;
     height: 40px;
     margin-right: 16px;
 }
 
-/* 댓글 입력창을 감싸는 wrap - 밑줄 텍스트 입력 형태 */
+/* 댓글 입력 필드를 감싸는 래퍼 (밑줄 애니메이션 등 확장 여지) */
 .cm-field-wrap {
     display: flex;
-    width: 584px;   /* 데스크탑 고정 너비 (반응형에서 100%로 재정의됨) */
+    width: 584px;   
     align-items: center;
     padding-top: 5px;
 }
+/* 실제 텍스트 입력 필드 - 밑줄만 있는 심플한 스타일 */
 .cm-field {
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--boder);  /* 밑줄 형태의 입력창 */
+    border-bottom: 1px solid var(--boder);  
     outline: none;
     color: white;
     width: 100%;
     font-size: 14px;
-    padding-bottom: 5px;   /* 텍스트와 밑줄 사이 간격 */
+    padding-bottom: 5px;   
 }
 
-/* 댓글 한 개 항목 - 아바타 + 본문(이름/시간/내용/액션)을 가로 배치 */
+
+/* 댓글 한 개 항목(아바타 + 내용) 가로 배치
+   - 위치: <article class="cm-item"> (.cm-list 안, 댓글마다 반복) */
 .cm-item {
     display: flex;
     gap: 16px;
 }
+/* 댓글 작성자 아바타 */
 .cm-item-avatar {
     width: 40px;
     height: 40px;
 }
+/* 작성자 이름 + 작성 시간이 있는 줄 */
 .cm-item-header {
     padding-bottom: 2px;
 }
+/* 댓글 작성자 이름 */
 .cm-name {
     font-size: 13px;
     font-weight: 700;
     color: white;
 }
+/* 댓글 작성 시간(예: 8 hours ago) */
 .cm-timestamp {
     font-size: 12px;
     color: var(--bg2);
 }
+/* 댓글 본문 텍스트 */
 .cm-item-text {
     font-size: 14px;
     color: white;
     padding: 2px 0;
 }
 
-/* 댓글 좋아요/싫어요/답글 버튼 그룹 */
+/* 댓글 하단 액션 줄(좋아요/싫어요/답글) */
 .cm-item-actions {
     display: flex;
     align-items: center;
 }
+/* 좋아요 버튼 */
 .like {
     padding: 8px;
 }
@@ -543,11 +587,13 @@ li, button {
     width: 16px;
     height: 16px;
 }
+/* 좋아요 수 */
 .likecount {
     font-size: 12px;
     color: var(--bg2);
     padding-right: 8px;
 }
+/* 싫어요 버튼 */
 .dislike {
     padding: 8px;
 }
@@ -555,6 +601,7 @@ li, button {
     width: 16px;
     height: 16px;
 }
+/* 답글 달기 버튼(REPLY) */
 .reply {
     font-size: 12px;
     color: var(--bg2);
@@ -562,11 +609,11 @@ li, button {
 }
 
 
-/* ============================================
-   우측 추천 영상 리스트 (rm-list)
-   ============================================ */
 
-/* 추천 리스트 전체 컨테이너 - 데스크탑 기준 426px 고정 너비 */
+/* ------------------------------------------------------------
+   [영역: 추천 영상 리스트] 필터 칩(All / From 채널명) + 영상 카드 리스트
+   위치: <aside class="rm-list"> (main-aside-wrap의 오른쪽 자식, main과 나란히 배치)
+   ------------------------------------------------------------ */
 .rm-list {
     display: flex;
     flex-direction: column;
@@ -574,19 +621,21 @@ li, button {
     padding: 24px 24px 0 0;
 }
 
-/* "All" / "From Marcus Levin" 필터 칩 묶음 */
+
+/* 필터 칩(All / From Marcus Levin)이 나열되는 줄
+   - 위치: <nav class="list-filter"> (.rm-list 최상단) */
 .list-filter {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-/* 필터용 라디오 버튼 자체는 화면에서 숨김 (라디오+label 조합으로 선택 상태 표현) */
+/* 필터 라디오 버튼 자체는 숨김 (CSS-only 토글용) */
 .filter-input {
     display: none;
 }
 
-/* 필터 칩 버튼(label) 기본 스타일 - 알약(pill) 모양 */
+/* 필터 칩(알약 모양 버튼) 기본 스타일 */
 .filter-chip {
     display: inline-flex;
     align-items: center;
@@ -602,21 +651,23 @@ li, button {
     margin: 8px 0;
 }
 
-/* 라디오가 체크된(선택된) 필터 칩만 흰 배경 + 검정 글씨로 강조
-   - 인접 형제 선택자(+)로 "체크된 input 바로 다음 label"만 선택 */
+
+/* 선택된(checked) 필터 칩: 흰 배경 + 검은 글씨로 강조 */
 .filter-input:checked + .filter-chip {
     color: #000;
     background-color: white;
 }
 
-/* 추천 영상 카드들을 세로로 쌓는 리스트 */
+/* 추천 영상 카드들을 세로로 나열하는 리스트
+   - 위치: <ul class="rm-list-items"> (.list-filter 아래) */
 .rm-list-items {
     display: flex;
     flex-direction: column;
 }
 
-/* 추천 영상 카드 한 개 - 썸네일 + 정보를 가로 배치
-   - align-items: flex-end로 썸네일과 정보 영역을 하단 기준 정렬 */
+
+/* 추천 영상 카드 한 개(썸네일 + 정보) 가로 배치
+   - 위치: <a class="video-card"> (rm-list-items 안, 카드마다 반복) */
 .video-card {
     display: flex;
     align-items: center;
@@ -635,8 +686,8 @@ li, button {
     height: 100%;
 }
 
-/* 카드 텍스트 정보(제목/채널명/조회수) 영역
-   - justify-content: center로 세로 중앙 배치 */
+
+/* 카드 오른쪽 정보 영역(제목/채널명/조회수) */
 .card-info {
     display: flex;
     flex-direction: column;
@@ -645,12 +696,12 @@ li, button {
     height: 94px;
     justify-content: center
 }
+/* 영상 제목: 2줄까지만 표시하고 넘치면 ...으로 말줄임(line-clamp) */
 .card-title {
     font-size: 14px;
     font-weight: 400;
     color: white;
-    margin-bottom: 6px;   /* 제목과 채널명 사이 간격 */
-    /* 2줄까지만 표시하고 넘치면 ... 처리 */
+    margin-bottom: 6px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -658,39 +709,39 @@ li, button {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+/* 채널명: 1줄, 넘치면 말줄임 */
 .card-channel {
     font-size: 12px;
     color: var(--bg2);
-    margin-bottom: 4px;   /* 채널명과 조회수 사이 간격 */
-    /* 한 줄로 표시하고 넘치면 ... 처리 */
+    margin-bottom: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+/* 조회수 · 업로드 시간: 1줄, 넘치면 말줄임 */
 .card-meta {
     font-size: 12px;
     color: var(--bg2);
-    /* 한 줄로 표시하고 넘치면 ... 처리 */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 
-/* ============================================
-   반응형: 태블릿 가로모드 (뷰포트 1300px 이하)
-   - 데스크탑 고정폭(.main 664px, .rm-list 426px)을
-     비율(%) 기반으로 바꿔서 화면 크기에 맞게 유동적으로 조절
-   - 반드시 위쪽 데스크탑 기본 스타일보다 "뒤에" 위치해야
-     같은 우선순위에서 이 규칙이 덮어씀
-   ============================================ */
-@media (max-width: 1300px) {
-    /* 메인 영역(80%) : 추천 리스트(20%) 비율로 재배치 */
+
+/* ============================================================
+   [반응형: 태블릿 이하, max-width 1024px]
+   - main(영상)과 rm-list(추천영상)를 %비율로 전환 (70% / 30%)
+   - 추천 영상 카드를 가로 100%로 확장, 썸네일은 비율(16:9) 유지
+   ============================================================ */
+@media (max-width: 1024px) {
+    /* 본문 영역: 두 컬럼을 위쪽 정렬로, 간격은 좁게 */
     .main-aside-wrap {
         gap: 16px;
         align-items: flex-start;
     }
 
+    /* 영상 영역: 고정폭(664px) → 가변폭(70%)으로 전환 */
     .main {
         width: 70%;
         max-width: none;
@@ -698,34 +749,40 @@ li, button {
         flex-shrink: 1;
     }
 
+    /* 추천 영상 영역: 고정폭(426px) → 가변폭(30%, 최소 220px)으로 전환 */
     .rm-list {
         width: 30%;
-        min-width: 220px;   /* 너무 좁아지지 않도록 최소값 보장 */
+        min-width: 220px;
         padding: 24px 16px 0 0;
         flex-shrink: 0;
     }
    
-    /* rm-list 폭이 좁아졌으니 카드 내부도 고정 px 대신 %로 재조정 */
+    /* 추천 영상 카드: 고정 크기 → 부모 너비에 맞춰 가변, 높이는 auto */
     .video-card {
         width: 100%;
         height: auto;
     }
+    /* 카드 썸네일: 비율(45%) + 16:9 유지, 넘치는 부분은 잘라냄 */
     .card-thumb {
         width: 45%;
         height: auto;
-        aspect-ratio: 16 / 9;   /* 비율 고정, 너비만 줄어들어도 찌그러지지 않게 */
+        aspect-ratio: 16 / 9;
         overflow: hidden;
     }
-    .card-thumbimg {
+    /* 참고: 오타로 보이는 클래스명(.card-thumbimg, 하이픈 누락) - 실제 HTML의
+       card-thumb-img와 일치하지 않아 적용되지 않을 수 있음 */
+    .card-thumb-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
     }
+    /* 카드 정보 영역: 비율(55%)로 전환 */
     .card-info {
         width: 55%;
         height: auto;
     }
+    /* 좁아진 화면에 맞춰 폰트 축소 */
     .card-title {
         font-size: 12px;
     }
@@ -733,27 +790,27 @@ li, button {
         font-size: 11px;
     }
 
-    /* 댓글 입력창도 고정폭(584px) 대신 100%로 */
+    /* 댓글 입력창: 고정폭(584px) → 100%로 확장 */
     .cm-field-wrap {
         width: 100%;
     }
 }
 
 
-/* ============================================
-   반응형: 모바일 (뷰포트 767px 이하)
-   - 1300px 블록과 겹치는 구간(0~767px)이 있으므로
-     반드시 1300px 블록보다 "뒤에" 위치해야 최종 적용됨
-   - 헤더를 모바일 형태로 축소하고,
-     본문을 완전히 세로 스택 구조로 전환
-   ============================================ */
+
+/* ============================================================
+   [반응형: 모바일, max-width 767px]
+   - 헤더/사이드바는 side-video.css가 담당하는 부분과 함께 조정
+   - 이 파일에서는 본문(video-style.css 영역)을 1단 세로 배치로 전환
+   ============================================================ */
 @media (max-width: 767px) {
-    /* 헤더: 햄버거/검색창/마이크/생성/앱/프로필 아이콘 숨기고
-       검색 아이콘만 원형 버튼으로 대체 */
+
+    /* --- 헤더 축소(모바일용 아이콘만 노출) --- */
     .hamburger { display: none; }
     .hd-sec1 { margin-inline-start: 16px; order: 1; margin-right: auto; width: auto;}
     .searchbar input, .searchbar button { display: none; }
     .searchbar { border: none; width: auto; }
+    /* 검색창 대신 돋보기 아이콘 하나만 표시 */
     .searchbar::after {
         content: '';
         display: block;
@@ -769,37 +826,39 @@ li, button {
     .hd-sec3 { order: 2; }
     .header { justify-content: flex-end; }
 
-    /* 데스크탑 사이드바는 모바일에서 완전히 숨김 */
+    /* --- 사이드바 숨기고 하단 탭바로 대체 --- */
     .sidebar { display: none; }
     .top-menu { left: 0; width: 100%; }
 
-    /* 모바일 전용 하단 내비게이션 바 표시 */
+    /* 화면 하단 고정 네비게이션 바(모바일 전용) 표시
+       - 위치: <nav class="bottom-nav"> (body 최하단, main-aside-wrap 밖) */
     .bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; height: 56px; background: var(--bg1); border-top: 1px solid var(--boder); z-index: 150; }
     .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #fff; font-size: 10px; }
     .nav-item img { width: 27px; height: 27px; border-radius: 50%;}
 
-    /* 하단 내비게이션에 콘텐츠가 가려지지 않도록 여백 확보 */
+    /* 상단 헤더 + 하단 탭바 높이만큼 위아래 여백 확보 */
     .body-wrap {
         padding-top: 56px;
         padding-bottom: 56px;
     }
 
-    /* 메인 콘텐츠(.main)와 추천 리스트(.rm-list)를
-       가로 배치 → 세로 배치(column)로 전환 */
+
+    /* 본문(main)과 추천영상(rm-list)을 가로 배치 → 세로 배치로 전환 */
     .main-aside-wrap {
         flex-direction: column;
         gap: 0;
     }
 
+    /* 영상 영역: 폭 100%, 여백 제거 */
     .main {
         width: 100%;
         padding: 0;
     }
 
-    /* 비디오 플레이어를 화면 전체 너비로 확장 */
     .video { width: 100%; }
     .player { width: 100%; }
 
+    /* 영상 상세정보 좌우 여백 확보 */
     .video-details {
         padding: 12px 16px;
     }
@@ -808,14 +867,14 @@ li, button {
         margin-bottom: 12px;
     }
 
-    /* 통계(조회수)와 액션 버튼을 가로 배치 대신 세로로 쌓음 */
+    /* 조회수 줄 + 액션버튼 줄을 세로로 쌓기 */
     .details-statsgroup {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
 
-    /* 액션 버튼이 화면 폭을 넘으면 가로 스크롤로 확인 가능하게 */
+    /* 액션 버튼(좋아요/공유 등)이 많아지면 가로 스크롤로 처리 */
     .details-actions {
         width: 100%;
         overflow-x: auto;
@@ -826,31 +885,35 @@ li, button {
         padding: 16px;
     }
 
+    /* 댓글 영역 좌우 여백 */
     .comment {
     padding: 0 16px;
     }
 
-    /* 데스크탑에서 아바타 기준으로 줬던 좌측 들여쓰기(64px) 제거 */
+    /* 채널 설명/더보기: PC의 아바타 정렬용 들여쓰기(64px) 제거 */
     .info-description,
     .info-show-more {
         padding-left: 0;
     }
 
+    /* 댓글 입력창: 폭 100% */
     .cm-field-wrap {
         width: 100%;
     }
 
-    /* 추천 영상 리스트: 댓글 아래쪽으로 이동, 전체 너비로 세로 스택
-       - 위쪽 두꺼운 border로 섹션 구분 */
+
+    /* 추천 영상 리스트: 폭 100%, 상단에 굵은 구분선으로 섹션 분리 */
     .rm-list {
         width: 100%;
         padding: 16px;
         border-top: 8px solid var(--boder);
     }
+    /* 추천 영상 카드: 가변 크기 */
     .video-card {
         width: 100%;
         height: auto;
     }
+    /* 썸네일: 40% 비율 + 16:9 유지 */
     .card-thumb {
         width: 40%;
         aspect-ratio: 16 / 9;
@@ -861,6 +924,7 @@ li, button {
         height: 100%;
         object-fit: cover;
     }
+    /* 정보 영역: 60% 비율 */
     .card-info {
         width: 60%;
         height: auto;
