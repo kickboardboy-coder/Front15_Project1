@@ -10,15 +10,10 @@ JavaScript 없이 **순수 HTML + CSS**만으로 유튜브의 주요 페이지 3
  
 | 페이지 | 파일 | 설명 |
 |---|---|---|
-| 🏠 Home | `youtube-index.html` | 영상 그리드, 카테고리 필터 탭 |
+| 🏠 Home | `index.html` | 영상 그리드, 카테고리 필터 탭 |
 | 📺 Channel | `channel.html` | 채널 배너, 탭(HOME/VIDEOS/...), 플레이리스트, 구독 버튼 |
 | ▶️ Video | `video.html` | 영상 플레이어, 좋아요/싫어요, 댓글, 관련 영상 |
  
-<!-- 스크린샷을 넣고 싶다면 여기에 이미지 추가
-![home](./screenshots/home.png)
-![channel](./screenshots/channel.png)
-![video](./screenshots/video.png)
--->
  
 ## 기술 스택
  
@@ -108,7 +103,7 @@ JavaScript 없이 **순수 HTML + CSS**만으로 유튜브의 주요 페이지 3
 ```bash
    git clone <repository-url>
 ```
-2. `youtube-index.html`, `channel.html`, `video.html` 중 원하는 파일을 브라우저로 열거나, VSCode의 Live Server 확장으로 실행합니다.
+2. `index.html`, `channel.html`, `video.html` 중 원하는 파일을 브라우저로 열거나, VSCode의 Live Server 확장으로 실행합니다.
 3. 별도의 빌드 과정이나 패키지 설치가 필요 없습니다.
 ## 브라우저 지원
  
