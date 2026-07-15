@@ -458,10 +458,10 @@ body:has(.hamburger-input:checked) .sidebar-nav3 .sidenav-act > span {
 }
 
 /* =========================================
-    반응형 - 태블릿 이하 (1023px 이하)
+    반응형 - 태블릿 이하 (1024px 이하)
     헤더를 아이콘 위주로 압축하고, 사이드바 대신 하단 탭바 사용
    ========================================= */
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
     .hamburger { display: none; } /* 사이드바 자체를 안 쓰므로 접기 버튼도 숨김 */
     .hd-sec1 { margin-inline-start: 16px; order: 1; margin-right: auto; }
     .searchbar input, .searchbar button { display: none; } /* 입력창/검색버튼 숨기고 */

@@ -509,6 +509,13 @@ body:has(#tab-about:checked) #content-about {
 .playlist-more:hover { background: rgba(105, 105, 105, 0.8); }
 .playlist-more svg { width: 16px; height: 16px; display: block; }
 
+/* [모바일 전용] 화면 하단 고정 탭바 - 평소(PC)에는 숨김
+   767px 이하에서 video-style.css 미디어쿼리가 display:flex로 전환시킴 */
+.bottom-nav {
+    display: none;
+}
+
+
 
 /* =========================================
     반응형 - 태블릿 (1024px 이하)
@@ -583,12 +590,9 @@ body:has(#tab-about:checked) #content-about {
 
     .vd-sec { height: 190px; }
     .playlist-more { top: 95px; } 
-}
-
-/* =========================================
-    반응형 - 초소형 모바일 (380px 이하)
-   ========================================= */
-@media (max-width: 380px) {
-    .vd-sec { height: 160px; }
-    .playlist-more { top: 80px; }
+    /* 화면 하단 고정 네비게이션 바(모바일 전용) 표시
+    - 위치: <nav class="bottom-nav"> (body 최하단, main-aside-wrap 밖) */
+    .bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; height: 56px; background: var(--bg1); border-top: 1px solid var(--boder); z-index: 150; }
+    .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #fff; font-size: 10px; }
+    .nav-item img { width: 27px; height: 27px; border-radius: 50%;}
 }
