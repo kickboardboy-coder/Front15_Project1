@@ -1,5 +1,5 @@
 # Oreumi Frontend 15기
-## First Team Project (Team 3)
+## First Team Project (OH.js팀)
 
 # YouTube Clone (HTML/CSS Only)
  
