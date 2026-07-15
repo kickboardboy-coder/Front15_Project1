@@ -33,9 +33,9 @@ JavaScript 없이 **순수 HTML + CSS**만으로 유튜브의 주요 페이지 3
 ## 폴더 구조
  
 ```
-├── index.html      # 홈 페이지
+├── index.html               # 홈 페이지
 ├── channel.html             # 채널 페이지
-├── video.html                # 동영상 시청 페이지
+├── video.html               # 동영상 시청 페이지
 │
 ├── youtube-style.css        # 공통 헤더 + 사이드바 (홈, 채널에서 사용)
 ├── side-video.css           # 동영상 페이지 전용 헤더 + 사이드바 (오버레이형)
