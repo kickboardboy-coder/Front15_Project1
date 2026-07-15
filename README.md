@@ -5,7 +5,24 @@
  
 JavaScript 없이 **순수 HTML + CSS**만으로 유튜브의 주요 페이지 3개(홈 / 채널 / 동영상 시청)를 구현한 프로젝트입니다.
 탭 전환, 사이드바 접기/펼치기, 드롭다운 메뉴, 구독 상태 관리, 모달까지 전부 `<input type="checkbox|radio">`와 CSS `:checked`, `:has()` 선택자만으로 동작합니다.
+
+
+## 프로젝트 팀 구성 및 역할
  
+| 이름 | 역할 | 담당 업무 |
+|---|---|---|
+| 오수빈 | 팀장, 서기 총괄 | HOME 페이지 제작(HTML/CSS), 공통 헤더·사이드바 제작(HTML/CSS), CHANNEL 페이지 HTML 제작, CHANNEL 페이지 CSS 디테일 추가, 발표자료 제작 |
+| 황길용 | 팀원, Git 관리 총괄 | VIDEO 페이지 제작(HTML/CSS), CHANNEL 페이지 기본 CSS 제작, 발표 |
+
+
+## 프로젝트 팀 구성 및 역할
+ 
+| 이름 | 역할 | 담당 업무 |
+|---|---|---|
+| 오수빈 | 팀장, 서기 총괄 | HOME 페이지 제작(HTML/CSS), 공통 헤더·사이드바 제작(HTML/CSS), CHANNEL 페이지 HTML 제작, CHANNEL 페이지 CSS 디테일 추가, 발표자료 제작 |
+| 황길용 | 팀원, Git 관리 총괄 | VIDEO 페이지 제작(HTML/CSS), CHANNEL 페이지 기본 CSS 제작, 발표 |
+
+
 ## 데모
  
 | 페이지 | 파일 | 설명 |
@@ -14,6 +31,11 @@ JavaScript 없이 **순수 HTML + CSS**만으로 유튜브의 주요 페이지 3
 | 📺 Channel | `channel.html` | 채널 배너, 탭(HOME/VIDEOS/...), 플레이리스트, 구독 버튼 |
 | ▶️ Video | `video.html` | 영상 플레이어, 좋아요/싫어요, 댓글, 관련 영상 |
  
+
+![home](./img/capture/home.jpg)
+![channel](./img/capture/channel.jpg)
+![video](./img/capture/video.jpg)
+-->
  
 ## 기술 스택
  
